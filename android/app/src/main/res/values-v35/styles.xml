@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomUCropTheme" parent="Ucrop.CropTheme">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">never</item>
+    </style>
+</resources>

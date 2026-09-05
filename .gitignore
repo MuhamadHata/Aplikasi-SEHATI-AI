@@ -1,0 +1,112 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.pyo
+*.swp
+*.bak
+*.new
+*.orig
+*.tmp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Python virtual environments
+.venv/
+.venv1/
+venv/
+env/
+__pycache__/
+
+# Python environment variables
+.env
+.env.local
+secrets/*.json
+!secrets/*.example.json
+assets/config/ai_config.json
+ai_workspace/.env
+ai_workspace/.env.local
+
+# Supabase local config
+.supabase/
+supabase/.env
+
+# Sensitive keys & credentials
+google-services.json
+GoogleService-Info.plist
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+android/key.properties
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# AI Agent metadata folders
+.bob/
+.claude/
+.kilo/
+.kiro/
+.sixth/
+
+# Heavy Machine Learning models, weights, runs & datasets
+*.pt
+*.onnx
+*.bin
+runs/
+**/runs/
+ai_workspace/datasets_clean/
+ai_workspace/finetuned_datasets/
+
+# Gradle & Android build caches
+android/build/
+**/android/build/
+**/android/.gradle/
+packages/**/.gradle/
+.gradle/
+
+# Academic documents & loose binaries
+dokumen/
+yolo26n.pt
+*.docx
+*.pdf
+build_release_fix*.log
+
+

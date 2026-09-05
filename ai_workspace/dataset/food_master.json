@@ -1,0 +1,6650 @@
+{
+  "ayam goreng": {
+    "name": "Ayam Goreng",
+    "emoji": "🍗",
+    "calories": 260,
+    "protein": 19.1,
+    "carbs": 0.0,
+    "fat": 15.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "bakso": {
+    "name": "Bakso",
+    "emoji": "🍜",
+    "calories": 218,
+    "protein": 10.5,
+    "carbs": 12.0,
+    "fat": 14.5,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "category": "Makanan Utama"
+  },
+  "bubur ayam": {
+    "name": "Bubur Ayam",
+    "emoji": "🥣",
+    "calories": 155,
+    "protein": 7.0,
+    "carbs": 25.0,
+    "fat": 3.0,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "category": "Sarapan"
+  },
+  "cakwe": {
+    "name": "Cakwe",
+    "emoji": "🥖",
+    "calories": 175,
+    "protein": 4.5,
+    "carbs": 28.0,
+    "fat": 5.0,
+    "fiber": 1.0,
+    "sugar": 0.0,
+    "category": "Camilan"
+  },
+  "dadar gulung": {
+    "name": "Dadar Gulung",
+    "emoji": "🥞",
+    "calories": 145,
+    "protein": 2.5,
+    "carbs": 25.0,
+    "fat": 4.0,
+    "fiber": 1.5,
+    "sugar": 12.0,
+    "category": "Kue Tradisional"
+  },
+  "ikan goreng": {
+    "name": "Ikan Goreng",
+    "emoji": "🐟",
+    "calories": 195,
+    "protein": 18.0,
+    "carbs": 0.0,
+    "fat": 12.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "klepon": {
+    "name": "Klepon",
+    "emoji": "🍡",
+    "calories": 110,
+    "protein": 1.2,
+    "carbs": 18.0,
+    "fat": 3.5,
+    "fiber": 0.5,
+    "sugar": 10.0,
+    "category": "Kue Tradisional"
+  },
+  "lontong sayur": {
+    "name": "Lontong Sayur",
+    "emoji": "🍲",
+    "calories": 350,
+    "protein": 10.0,
+    "carbs": 45.0,
+    "fat": 15.0,
+    "fiber": 4.0,
+    "sugar": 2.0,
+    "category": "Makanan Utama"
+  },
+  "martabak manis": {
+    "name": "Martabak Manis",
+    "emoji": "🥞",
+    "calories": 350,
+    "protein": 7.0,
+    "carbs": 50.0,
+    "fat": 15.0,
+    "fiber": 2.0,
+    "sugar": 25.0,
+    "category": "Camilan",
+    "visual_clues": [
+      "thick brown spongy pancake",
+      "topped with melted chocolate, cheese, or peanuts",
+      "folded shape with visible pores/bubbles",
+      "often has sprinkles or sesame seeds"
+    ]
+  },
+  "mie goreng": {
+    "name": "Mie Goreng",
+    "emoji": "🍝",
+    "calories": 380,
+    "protein": 9.0,
+    "carbs": 55.0,
+    "fat": 14.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "category": "Makanan Utama"
+  },
+  "nasi padang": {
+    "name": "Nasi Padang",
+    "emoji": "🍛",
+    "calories": 650,
+    "protein": 25.0,
+    "carbs": 70.0,
+    "fat": 30.0,
+    "fiber": 5.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Utama",
+    "aliases": [
+      "nasi padang ayam goreng",
+      "nasi padang rendang",
+      "nasi padang gulai",
+      "nasi padang dengan ayam goreng",
+      "nasi minang",
+      "nasi bungkus padang",
+      "nasi kapau",
+      "padang rice",
+      "nasi padang lauk"
+    ],
+    "ingredients": [
+      "Nasi Putih",
+      "Ayam Goreng",
+      "Rendang",
+      "Gulai",
+      "Sayur Singkong",
+      "Sambal"
+    ],
+    "visual_clues": [
+      "nasi putih dikelilingi banyak lauk di piring",
+      "ada kuah gulai/kari berwarna kuning/merah/cokelat",
+      "lauk berlapis di atas nasi: ayam goreng atau rendang atau gulai",
+      "ada daun singkong atau sayur hijau rebus",
+      "ada sambal atau cabai merah",
+      "piring putih penuh dengan nasi dan lauk Minang",
+      "potongan ayam goreng berwarna cokelat gelap khas bumbu Padang",
+      "tampak berminyak dengan bumbu rempah khas Sumatera Barat",
+      "sering disajikan dengan perkedel atau dendeng"
+    ]
+  },
+  "rendang": {
+    "name": "Rendang",
+    "emoji": "🥩",
+    "calories": 195,
+    "protein": 22.0,
+    "carbs": 5.0,
+    "fat": 10.0,
+    "fiber": 1.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "risol": {
+    "name": "Risol",
+    "emoji": "🥟",
+    "calories": 120,
+    "protein": 4.0,
+    "carbs": 15.0,
+    "fat": 5.0,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "category": "Camilan"
+  },
+  "rujak": {
+    "name": "Rujak",
+    "emoji": "🥗",
+    "calories": 150,
+    "protein": 2.0,
+    "carbs": 35.0,
+    "fat": 1.0,
+    "fiber": 4.0,
+    "sugar": 20.0,
+    "category": "Snack"
+  },
+  "rujak buah": {
+    "name": "Rujak Buah",
+    "emoji": "🍍",
+    "calories": 150,
+    "protein": 2.0,
+    "carbs": 35.0,
+    "fat": 0.5,
+    "fiber": 5.0,
+    "sugar": 25.0,
+    "category": "Snack"
+  },
+  "sayur asem": {
+    "name": "Sayur Asem",
+    "emoji": "🥣",
+    "calories": 80,
+    "protein": 2.5,
+    "carbs": 15.0,
+    "fat": 1.5,
+    "fiber": 3.0,
+    "sugar": 4.0,
+    "category": "Sayuran"
+  },
+  "soto ayam": {
+    "name": "Soto Ayam",
+    "emoji": "🍜",
+    "calories": 312,
+    "protein": 15.0,
+    "carbs": 35.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 1.0,
+    "category": "Makanan Utama"
+  },
+  "nasi goreng": {
+    "name": "Nasi Goreng",
+    "emoji": "🍳",
+    "calories": 350,
+    "protein": 12.0,
+    "carbs": 45.0,
+    "fat": 14.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "category": "Makanan Utama"
+  },
+  "pecel lele": {
+    "name": "Pecel Lele",
+    "emoji": "🐟",
+    "calories": 250,
+    "protein": 18.0,
+    "carbs": 5.0,
+    "fat": 18.0,
+    "fiber": 1.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "rawon": {
+    "name": "Rawon",
+    "emoji": "🍲",
+    "calories": 320,
+    "protein": 20.0,
+    "carbs": 10.0,
+    "fat": 22.0,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "category": "Makanan Utama"
+  },
+  "sate": {
+    "name": "Sate",
+    "emoji": "🍢",
+    "calories": 200,
+    "protein": 22.0,
+    "carbs": 5.0,
+    "fat": 10.0,
+    "fiber": 0.5,
+    "sugar": 5.0,
+    "category": "Lauk Pauk"
+  },
+  "martabak telur": {
+    "name": "Martabak Telur",
+    "emoji": "🍳",
+    "calories": 440,
+    "protein": 10.0,
+    "carbs": 36.0,
+    "fat": 24.0,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "category": "Camilan"
+  },
+  "ayam pop": {
+    "name": "Ayam Pop",
+    "emoji": "🍗",
+    "calories": 250,
+    "protein": 18.0,
+    "carbs": 0.0,
+    "fat": 15.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "dendeng batokok": {
+    "name": "Dendeng Batokok",
+    "emoji": "🥩",
+    "calories": 300,
+    "protein": 25.0,
+    "carbs": 2.0,
+    "fat": 20.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "category": "Lauk Pauk"
+  },
+  "gulai ikan": {
+    "name": "Gulai Ikan",
+    "emoji": "🐟",
+    "calories": 220,
+    "protein": 18.0,
+    "carbs": 5.0,
+    "fat": 14.0,
+    "fiber": 1.0,
+    "sugar": 1.0,
+    "category": "Lauk Pauk"
+  },
+  "gulai tambusu": {
+    "name": "Gulai Tambusu",
+    "emoji": "🍲",
+    "calories": 450,
+    "protein": 20.0,
+    "carbs": 8.0,
+    "fat": 35.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "category": "Lauk Pauk"
+  },
+  "nasi putih": {
+    "name": "Nasi Putih",
+    "aliases": [
+      "nasi",
+      "white rice"
+    ],
+    "emoji": "🍚",
+    "calories": 175,
+    "protein": 3.1,
+    "carbs": 39.8,
+    "fat": 0.1,
+    "fiber": 0.3,
+    "sugar": 0.1,
+    "serving": "1 centong (100g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi goreng spesial": {
+    "name": "Nasi Goreng Spesial",
+    "aliases": [
+      "nasgor special",
+      "nasgor spesial"
+    ],
+    "emoji": "🍳",
+    "calories": 380,
+    "protein": 14.0,
+    "carbs": 45.0,
+    "fat": 16.0,
+    "fiber": 2.0,
+    "sugar": 2.5,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi uduk": {
+    "name": "Nasi Uduk",
+    "aliases": [
+      "nasi uduk betawi"
+    ],
+    "emoji": "🍚",
+    "calories": 265,
+    "protein": 5.5,
+    "carbs": 40.0,
+    "fat": 9.0,
+    "fiber": 1.0,
+    "sugar": 1.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi kuning": {
+    "name": "Nasi Kuning",
+    "aliases": [
+      "yellow rice",
+      "nasi kuneng"
+    ],
+    "emoji": "🍛",
+    "calories": 200,
+    "protein": 3.5,
+    "carbs": 41.0,
+    "fat": 2.5,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "serving": "1 porsi (150g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi kebuli": {
+    "name": "Nasi Kebuli",
+    "aliases": [
+      "nasi kebule"
+    ],
+    "emoji": "🍛",
+    "calories": 380,
+    "protein": 12.0,
+    "carbs": 55.0,
+    "fat": 14.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Pokok"
+  },
+  "ketupat": {
+    "name": "Ketupat",
+    "aliases": [
+      "kupat"
+    ],
+    "emoji": "🍙",
+    "calories": 160,
+    "protein": 3.0,
+    "carbs": 36.0,
+    "fat": 0.3,
+    "fiber": 0.5,
+    "sugar": 0.0,
+    "serving": "1 buah (100g)",
+    "category": "Makanan Pokok"
+  },
+  "lontong": {
+    "name": "Lontong",
+    "aliases": [
+      "lonthong"
+    ],
+    "emoji": "🍙",
+    "calories": 140,
+    "protein": 2.5,
+    "carbs": 32.0,
+    "fat": 0.2,
+    "fiber": 0.4,
+    "sugar": 0.0,
+    "serving": "2 potong (100g)",
+    "category": "Makanan Pokok"
+  },
+  "mie rebus": {
+    "name": "Mie Rebus",
+    "aliases": [
+      "mie kuah",
+      "mi rebus"
+    ],
+    "emoji": "🍜",
+    "calories": 220,
+    "protein": 7.0,
+    "carbs": 40.0,
+    "fat": 4.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Pokok"
+  },
+  "mie ayam": {
+    "name": "Mie Ayam",
+    "aliases": [
+      "mi ayam",
+      "bakmi ayam"
+    ],
+    "emoji": "🍝",
+    "calories": 350,
+    "protein": 15.0,
+    "carbs": 48.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Pokok"
+  },
+  "bihun goreng": {
+    "name": "Bihun Goreng",
+    "aliases": [
+      "bihun goreng",
+      "mihun goreng"
+    ],
+    "emoji": "🍝",
+    "calories": 260,
+    "protein": 5.0,
+    "carbs": 45.0,
+    "fat": 7.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Pokok"
+  },
+  "soto betawi": {
+    "name": "Soto Betawi",
+    "aliases": [
+      "soto jakarta"
+    ],
+    "emoji": "🍲",
+    "calories": 380,
+    "protein": 18.0,
+    "carbs": 20.0,
+    "fat": 25.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "soto madura": {
+    "name": "Soto Madura",
+    "aliases": [
+      "soto sapi"
+    ],
+    "emoji": "🍲",
+    "calories": 280,
+    "protein": 16.0,
+    "carbs": 25.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 1.5,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "soto banjar": {
+    "name": "Soto Banjar",
+    "aliases": [],
+    "emoji": "🍜",
+    "calories": 260,
+    "protein": 14.0,
+    "carbs": 28.0,
+    "fat": 10.0,
+    "fiber": 2.0,
+    "sugar": 1.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "sop buntut": {
+    "name": "Sop Buntut",
+    "aliases": [
+      "sup buntut",
+      "oxtail soup"
+    ],
+    "emoji": "🍲",
+    "calories": 420,
+    "protein": 28.0,
+    "carbs": 10.0,
+    "fat": 30.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (400g)",
+    "category": "Makanan Utama"
+  },
+  "opor ayam": {
+    "name": "Opor Ayam",
+    "aliases": [
+      "opor"
+    ],
+    "emoji": "🍗",
+    "calories": 320,
+    "protein": 20.0,
+    "carbs": 8.0,
+    "fat": 24.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama"
+  },
+  "lodeh": {
+    "name": "Sayur Lodeh",
+    "aliases": [
+      "lodeh",
+      "lodeh sayur"
+    ],
+    "emoji": "🥘",
+    "calories": 120,
+    "protein": 4.0,
+    "carbs": 15.0,
+    "fat": 6.0,
+    "fiber": 4.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (200ml)",
+    "category": "Sayuran"
+  },
+  "cap cay": {
+    "name": "Cap Cay",
+    "aliases": [
+      "capcay",
+      "cap cai"
+    ],
+    "emoji": "🥦",
+    "calories": 130,
+    "protein": 6.0,
+    "carbs": 15.0,
+    "fat": 6.0,
+    "fiber": 4.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (200g)",
+    "category": "Sayuran"
+  },
+  "tumis kangkung": {
+    "name": "Tumis Kangkung",
+    "aliases": [
+      "cah kangkung",
+      "kangkung"
+    ],
+    "emoji": "🌿",
+    "calories": 80,
+    "protein": 3.0,
+    "carbs": 8.0,
+    "fat": 4.0,
+    "fiber": 2.0,
+    "sugar": 1.0,
+    "serving": "1 porsi (150g)",
+    "category": "Sayuran"
+  },
+  "gado gado": {
+    "name": "Gado-Gado",
+    "aliases": [
+      "gado2",
+      "gado gado"
+    ],
+    "emoji": "🥗",
+    "calories": 280,
+    "protein": 12.0,
+    "carbs": 30.0,
+    "fat": 14.0,
+    "fiber": 6.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama"
+  },
+  "karedok": {
+    "name": "Karedok",
+    "aliases": [],
+    "emoji": "🥗",
+    "calories": 200,
+    "protein": 8.0,
+    "carbs": 22.0,
+    "fat": 10.0,
+    "fiber": 5.0,
+    "sugar": 6.0,
+    "serving": "1 porsi (250g)",
+    "category": "Sayuran"
+  },
+  "pecel": {
+    "name": "Pecel",
+    "aliases": [
+      "nasi pecel"
+    ],
+    "emoji": "🥜",
+    "calories": 220,
+    "protein": 9.0,
+    "carbs": 28.0,
+    "fat": 10.0,
+    "fiber": 5.0,
+    "sugar": 5.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama"
+  },
+  "lalapan": {
+    "name": "Lalapan",
+    "aliases": [
+      "lalap"
+    ],
+    "emoji": "🥬",
+    "calories": 40,
+    "protein": 2.0,
+    "carbs": 7.0,
+    "fat": 0.5,
+    "fiber": 3.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "tempe goreng": {
+    "name": "Tempe Goreng",
+    "aliases": [
+      "tempe",
+      "tempe mendoan"
+    ],
+    "emoji": "🟫",
+    "calories": 195,
+    "protein": 14.0,
+    "carbs": 12.0,
+    "fat": 11.0,
+    "fiber": 3.0,
+    "sugar": 1.0,
+    "serving": "2 potong (100g)",
+    "category": "Lauk Pauk"
+  },
+  "tahu goreng": {
+    "name": "Tahu Goreng",
+    "aliases": [
+      "tahu",
+      "tofu goreng"
+    ],
+    "emoji": "🟨",
+    "calories": 150,
+    "protein": 10.5,
+    "carbs": 5.0,
+    "fat": 10.0,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "serving": "2 potong (100g)",
+    "category": "Lauk Pauk"
+  },
+  "tempe mendoan": {
+    "name": "Tempe Mendoan",
+    "aliases": [
+      "mendoan"
+    ],
+    "emoji": "🟫",
+    "calories": 210,
+    "protein": 12.0,
+    "carbs": 18.0,
+    "fat": 11.0,
+    "fiber": 3.0,
+    "sugar": 1.0,
+    "serving": "2 potong (120g)",
+    "category": "Camilan"
+  },
+  "tahu isi": {
+    "name": "Tahu Isi",
+    "aliases": [
+      "tahu bakso"
+    ],
+    "emoji": "🟨",
+    "calories": 175,
+    "protein": 9.0,
+    "carbs": 12.0,
+    "fat": 10.0,
+    "fiber": 1.5,
+    "sugar": 1.0,
+    "serving": "2 buah (100g)",
+    "category": "Camilan"
+  },
+  "ayam bakar": {
+    "name": "Ayam Bakar",
+    "aliases": [
+      "grilled chicken",
+      "ayam panggang"
+    ],
+    "emoji": "🍗",
+    "calories": 220,
+    "protein": 22.0,
+    "carbs": 5.0,
+    "fat": 12.0,
+    "fiber": 0.5,
+    "sugar": 3.0,
+    "serving": "1 potong (150g)",
+    "category": "Lauk Pauk"
+  },
+  "ikan bakar": {
+    "name": "Ikan Bakar",
+    "aliases": [
+      "grilled fish",
+      "ikan panggang"
+    ],
+    "emoji": "🐟",
+    "calories": 175,
+    "protein": 20.0,
+    "carbs": 2.0,
+    "fat": 9.0,
+    "fiber": 0.0,
+    "sugar": 1.0,
+    "serving": "1 ekor (150g)",
+    "category": "Lauk Pauk"
+  },
+  "udang goreng": {
+    "name": "Udang Goreng",
+    "aliases": [
+      "udang",
+      "shrimp goreng"
+    ],
+    "emoji": "🦐",
+    "calories": 150,
+    "protein": 18.0,
+    "carbs": 5.0,
+    "fat": 7.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 porsi (100g)",
+    "category": "Lauk Pauk"
+  },
+  "cumi goreng": {
+    "name": "Cumi Goreng",
+    "aliases": [
+      "cumi",
+      "squid goreng"
+    ],
+    "emoji": "🦑",
+    "calories": 180,
+    "protein": 16.0,
+    "carbs": 8.0,
+    "fat": 9.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 porsi (100g)",
+    "category": "Lauk Pauk"
+  },
+  "telur dadar": {
+    "name": "Telur Dadar",
+    "aliases": [
+      "dadar telur",
+      "omelette"
+    ],
+    "emoji": "🍳",
+    "calories": 155,
+    "protein": 10.0,
+    "carbs": 1.0,
+    "fat": 12.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 buah (100g)",
+    "category": "Lauk Pauk"
+  },
+  "telur rebus": {
+    "name": "Telur Rebus",
+    "aliases": [
+      "hard boiled egg",
+      "boiled egg"
+    ],
+    "emoji": "🥚",
+    "calories": 77,
+    "protein": 6.3,
+    "carbs": 0.6,
+    "fat": 5.3,
+    "fiber": 0.0,
+    "sugar": 0.6,
+    "serving": "1 butir (60g)",
+    "category": "Lauk Pauk"
+  },
+  "telur ceplok": {
+    "name": "Telur Ceplok",
+    "aliases": [
+      "telur mata sapi",
+      "sunny side up"
+    ],
+    "emoji": "🍳",
+    "calories": 92,
+    "protein": 6.3,
+    "carbs": 0.4,
+    "fat": 7.3,
+    "fiber": 0.0,
+    "sugar": 0.4,
+    "serving": "1 butir (60g)",
+    "category": "Lauk Pauk"
+  },
+  "sate ayam": {
+    "name": "Sate Ayam",
+    "aliases": [
+      "chicken satay"
+    ],
+    "emoji": "🍢",
+    "calories": 200,
+    "protein": 22.0,
+    "carbs": 8.0,
+    "fat": 9.0,
+    "fiber": 0.5,
+    "sugar": 5.0,
+    "serving": "5 tusuk (150g)",
+    "category": "Lauk Pauk"
+  },
+  "sate kambing": {
+    "name": "Sate Kambing",
+    "aliases": [
+      "lamb satay",
+      "mutton satay"
+    ],
+    "emoji": "🍢",
+    "calories": 220,
+    "protein": 20.0,
+    "carbs": 5.0,
+    "fat": 14.0,
+    "fiber": 0.0,
+    "sugar": 3.0,
+    "serving": "5 tusuk (150g)",
+    "category": "Lauk Pauk"
+  },
+  "pisang goreng": {
+    "name": "Pisang Goreng",
+    "aliases": [
+      "goreng pisang",
+      "pisang goreng tepung"
+    ],
+    "emoji": "🍌",
+    "calories": 130,
+    "protein": 1.5,
+    "carbs": 25.0,
+    "fat": 4.0,
+    "fiber": 1.5,
+    "sugar": 12.0,
+    "serving": "2 buah (100g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "kuning keemasan",
+      "dibalut tepung",
+      "lonjong",
+      "lembut di dalam",
+      "renyah di luar"
+    ]
+  },
+  "singkong goreng": {
+    "name": "Singkong Goreng",
+    "aliases": [
+      "ubi goreng",
+      "cassava goreng"
+    ],
+    "emoji": "🟤",
+    "calories": 180,
+    "protein": 1.5,
+    "carbs": 35.0,
+    "fat": 5.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (100g)",
+    "category": "Camilan"
+  },
+  "ubi goreng": {
+    "name": "Ubi Goreng",
+    "aliases": [
+      "ketela goreng",
+      "singkong goreng",
+      "ubi jalar goreng"
+    ],
+    "emoji": "🟠",
+    "calories": 140,
+    "protein": 1.0,
+    "carbs": 28.0,
+    "fat": 4.5,
+    "fiber": 2.0,
+    "sugar": 5.0,
+    "serving": "5 potong (100g)",
+    "category": "Jajanan"
+  },
+  "kerupuk": {
+    "name": "Kerupuk",
+    "aliases": [
+      "krupuk",
+      "kerupuk udang",
+      "emping"
+    ],
+    "emoji": "🪨",
+    "calories": 120,
+    "protein": 2.5,
+    "carbs": 22.0,
+    "fat": 3.0,
+    "fiber": 0.3,
+    "sugar": 0.5,
+    "serving": "10 lembar (30g)",
+    "category": "Pelengkap",
+    "visual_clues": [
+      "tipis",
+      "transparan atau putih",
+      "renyah",
+      "mengembang",
+      "ringan"
+    ]
+  },
+  "emping": {
+    "name": "Emping",
+    "aliases": [
+      "emping melinjo"
+    ],
+    "emoji": "🌾",
+    "calories": 420,
+    "protein": 8.0,
+    "carbs": 70.0,
+    "fat": 13.0,
+    "fiber": 2.0,
+    "sugar": 0.5,
+    "serving": "5 lembar (50g)",
+    "category": "Camilan"
+  },
+  "pempek": {
+    "name": "Pempek",
+    "aliases": [
+      "mpek-mpek",
+      "empek empek",
+      "pempek palembang"
+    ],
+    "emoji": "🍢",
+    "calories": 195,
+    "protein": 9.0,
+    "carbs": 28.0,
+    "fat": 6.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "3 buah (150g)",
+    "category": "Makanan Khas Daerah",
+    "visual_clues": [
+      "abu-abu atau kecoklatan",
+      "lonjong atau bulat",
+      "disajikan dengan kuah cuka hitam",
+      "cuko pedas"
+    ]
+  },
+  "siomay": {
+    "name": "Siomay",
+    "aliases": [
+      "siomai",
+      "siomay bandung"
+    ],
+    "emoji": "🥟",
+    "calories": 195,
+    "protein": 10.0,
+    "carbs": 22.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (150g)",
+    "category": "Jajanan"
+  },
+  "batagor": {
+    "name": "Batagor",
+    "aliases": [
+      "baso tahu goreng",
+      "siomay goreng"
+    ],
+    "emoji": "🟡",
+    "calories": 245,
+    "protein": 12.0,
+    "carbs": 20.0,
+    "fat": 13.0,
+    "fiber": 1.5,
+    "sugar": 5.0,
+    "serving": "1 porsi (150g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "kotak-kotak kuning keemasan",
+      "saus kacang coklat",
+      "tahu goreng berisi"
+    ]
+  },
+  "cilok": {
+    "name": "Cilok",
+    "aliases": [
+      "aci dicolok",
+      "cilok bumbu kacang"
+    ],
+    "emoji": "⚫",
+    "calories": 115,
+    "protein": 3.0,
+    "carbs": 20.0,
+    "fat": 3.0,
+    "fiber": 0.5,
+    "sugar": 2.0,
+    "serving": "8 buah (100g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "bulat kecil abu-abu",
+      "kenyal",
+      "ditusuk tusukan",
+      "saus kacang atau sambal"
+    ]
+  },
+  "cireng": {
+    "name": "Cireng",
+    "aliases": [
+      "aci goreng",
+      "cireng bumbu"
+    ],
+    "emoji": "⭕",
+    "calories": 180,
+    "protein": 2.0,
+    "carbs": 32.0,
+    "fat": 5.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "5 buah (100g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "bulat pipih putih",
+      "transparan",
+      "renyah di luar",
+      "disajikan dengan saus sambal"
+    ]
+  },
+  "cuanki": {
+    "name": "Cuanki",
+    "aliases": [],
+    "emoji": "🥣",
+    "calories": 200,
+    "protein": 9.0,
+    "carbs": 25.0,
+    "fat": 8.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200ml)",
+    "category": "Camilan"
+  },
+  "surabi": {
+    "name": "Surabi",
+    "aliases": [
+      "srabi"
+    ],
+    "emoji": "🥞",
+    "calories": 185,
+    "protein": 4.0,
+    "carbs": 30.0,
+    "fat": 6.0,
+    "fiber": 1.0,
+    "sugar": 8.0,
+    "serving": "2 buah (100g)",
+    "category": "Kue Tradisional"
+  },
+  "onde onde": {
+    "name": "Onde-Onde",
+    "aliases": [
+      "onde2",
+      "onde onde wijen"
+    ],
+    "emoji": "🟤",
+    "calories": 125,
+    "protein": 2.5,
+    "carbs": 20.0,
+    "fat": 4.0,
+    "fiber": 1.0,
+    "sugar": 8.0,
+    "serving": "3 buah (90g)",
+    "category": "Kue Tradisional",
+    "visual_clues": [
+      "bulat",
+      "berlumur wijen putih",
+      "kecoklatan",
+      "kenyal"
+    ]
+  },
+  "lupis": {
+    "name": "Lupis",
+    "aliases": [],
+    "emoji": "🟢",
+    "calories": 160,
+    "protein": 2.0,
+    "carbs": 35.0,
+    "fat": 2.5,
+    "fiber": 1.0,
+    "sugar": 12.0,
+    "serving": "2 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "getuk": {
+    "name": "Getuk",
+    "aliases": [
+      "getuk lindri"
+    ],
+    "emoji": "🟣",
+    "calories": 155,
+    "protein": 1.0,
+    "carbs": 35.0,
+    "fat": 2.5,
+    "fiber": 2.0,
+    "sugar": 14.0,
+    "serving": "2 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "es teh": {
+    "name": "Es Teh",
+    "aliases": [
+      "iced tea",
+      "es teh manis"
+    ],
+    "emoji": "🧋",
+    "calories": 60,
+    "protein": 0.0,
+    "carbs": 15.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 14.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman"
+  },
+  "es jeruk": {
+    "name": "Es Jeruk",
+    "aliases": [
+      "jeruk peras dingin",
+      "es jeruk manis",
+      "jus jeruk dingin"
+    ],
+    "emoji": "🍊",
+    "calories": 85,
+    "protein": 0.8,
+    "carbs": 21.0,
+    "fat": 0.1,
+    "fiber": 0.3,
+    "sugar": 19.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman",
+    "visual_clues": [
+      "oranye cerah",
+      "gelas dengan es",
+      "warna jingga transparan"
+    ]
+  },
+  "teh tarik": {
+    "name": "Teh Tarik",
+    "aliases": [
+      "teh susu",
+      "pulled tea"
+    ],
+    "emoji": "🍵",
+    "calories": 120,
+    "protein": 2.5,
+    "carbs": 20.0,
+    "fat": 3.0,
+    "fiber": 0.0,
+    "sugar": 18.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman"
+  },
+  "kopi tubruk": {
+    "name": "Kopi Tubruk",
+    "aliases": [
+      "kopi hitam",
+      "black coffee"
+    ],
+    "emoji": "☕",
+    "calories": 15,
+    "protein": 0.3,
+    "carbs": 3.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 2.5,
+    "serving": "1 cangkir (200ml)",
+    "category": "Minuman"
+  },
+  "kopi susu": {
+    "name": "Kopi Susu",
+    "aliases": [
+      "kopi susu manis",
+      "coffee latte",
+      "kopi sobek susu"
+    ],
+    "emoji": "☕",
+    "calories": 120,
+    "protein": 2.5,
+    "carbs": 20.0,
+    "fat": 3.5,
+    "fiber": 0.0,
+    "sugar": 18.0,
+    "caffeineMg": 70,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman",
+    "visual_clues": [
+      "coklat terang",
+      "busa di atas",
+      "warna latte",
+      "gelas atau cangkir"
+    ]
+  },
+  "es dawet": {
+    "name": "Es Dawet",
+    "aliases": [
+      "es cendol",
+      "dawet ayu"
+    ],
+    "emoji": "🧃",
+    "calories": 180,
+    "protein": 2.0,
+    "carbs": 40.0,
+    "fat": 3.5,
+    "fiber": 1.0,
+    "sugar": 30.0,
+    "serving": "1 gelas (300ml)",
+    "category": "Minuman"
+  },
+  "es cendol": {
+    "name": "Es Cendol",
+    "aliases": [
+      "es dawet",
+      "cincau cendol"
+    ],
+    "emoji": "🟢",
+    "calories": 190,
+    "protein": 2.0,
+    "carbs": 42.0,
+    "fat": 4.0,
+    "fiber": 1.5,
+    "sugar": 32.0,
+    "serving": "1 gelas (300ml)",
+    "category": "Minuman"
+  },
+  "es campur": {
+    "name": "Es Campur",
+    "aliases": [
+      "mixed ice",
+      "es cup"
+    ],
+    "emoji": "🧊",
+    "calories": 220,
+    "protein": 2.5,
+    "carbs": 48.0,
+    "fat": 4.0,
+    "fiber": 2.0,
+    "sugar": 38.0,
+    "serving": "1 gelas (350ml)",
+    "category": "Minuman"
+  },
+  "wedang jahe": {
+    "name": "Wedang Jahe",
+    "aliases": [
+      "minuman jahe",
+      "bajigur",
+      "jahe hangat"
+    ],
+    "emoji": "🫚",
+    "calories": 55,
+    "protein": 0.2,
+    "carbs": 13.0,
+    "fat": 0.1,
+    "fiber": 0.0,
+    "sugar": 12.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional"
+  },
+  "susu kedelai": {
+    "name": "Susu Kedelai",
+    "aliases": [
+      "soy milk",
+      "susu kacang kedelai"
+    ],
+    "emoji": "🥛",
+    "calories": 70,
+    "protein": 5.0,
+    "carbs": 6.0,
+    "fat": 3.5,
+    "fiber": 0.5,
+    "sugar": 3.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman"
+  },
+  "jus alpukat": {
+    "name": "Jus Alpukat",
+    "aliases": [
+      "avocado juice",
+      "jus buah"
+    ],
+    "emoji": "🥑",
+    "calories": 200,
+    "protein": 2.0,
+    "carbs": 20.0,
+    "fat": 14.0,
+    "fiber": 5.0,
+    "sugar": 12.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman"
+  },
+  "jus mangga": {
+    "name": "Jus Mangga",
+    "aliases": [
+      "mango juice",
+      "juice mangga"
+    ],
+    "emoji": "🥭",
+    "calories": 120,
+    "protein": 1.0,
+    "carbs": 30.0,
+    "fat": 0.5,
+    "fiber": 2.0,
+    "sugar": 25.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman"
+  },
+  "bajigur": {
+    "name": "Bajigur",
+    "aliases": [],
+    "emoji": "🫗",
+    "calories": 130,
+    "protein": 1.0,
+    "carbs": 25.0,
+    "fat": 4.0,
+    "fiber": 0.0,
+    "sugar": 20.0,
+    "serving": "1 cangkir (200ml)",
+    "category": "Minuman"
+  },
+  "bandrek": {
+    "name": "Bandrek",
+    "aliases": [],
+    "emoji": "🫗",
+    "calories": 85,
+    "protein": 0.5,
+    "carbs": 18.0,
+    "fat": 2.5,
+    "fiber": 0.0,
+    "sugar": 15.0,
+    "serving": "1 cangkir (200ml)",
+    "category": "Minuman"
+  },
+  "semur daging": {
+    "name": "Semur Daging",
+    "aliases": [
+      "semur sapi",
+      "beef semur"
+    ],
+    "emoji": "🥩",
+    "calories": 280,
+    "protein": 22.0,
+    "carbs": 12.0,
+    "fat": 16.0,
+    "fiber": 1.0,
+    "sugar": 6.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk"
+  },
+  "gulai daging": {
+    "name": "Gulai Daging",
+    "aliases": [
+      "kari daging",
+      "beef curry"
+    ],
+    "emoji": "🍛",
+    "calories": 310,
+    "protein": 20.0,
+    "carbs": 8.0,
+    "fat": 22.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (200g)",
+    "category": "Lauk Pauk"
+  },
+  "tongseng": {
+    "name": "Tongseng",
+    "aliases": [
+      "tongseng kambing",
+      "tongseng sapi"
+    ],
+    "emoji": "🍲",
+    "calories": 320,
+    "protein": 22.0,
+    "carbs": 10.0,
+    "fat": 22.0,
+    "fiber": 2.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama"
+  },
+  "tengkleng": {
+    "name": "Tengkleng",
+    "aliases": [],
+    "emoji": "🍖",
+    "calories": 290,
+    "protein": 20.0,
+    "carbs": 5.0,
+    "fat": 21.0,
+    "fiber": 0.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama"
+  },
+  "nasi goreng kampung": {
+    "name": "Nasi Goreng Kampung",
+    "aliases": [
+      "nasgor kampung"
+    ],
+    "emoji": "🍳",
+    "calories": 320,
+    "protein": 10.0,
+    "carbs": 45.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi goreng seafood": {
+    "name": "Nasi Goreng Seafood",
+    "aliases": [
+      "nasgor seafood",
+      "nasi goreng laut"
+    ],
+    "emoji": "🦐",
+    "calories": 400,
+    "protein": 16.0,
+    "carbs": 48.0,
+    "fat": 16.0,
+    "fiber": 2.0,
+    "sugar": 2.5,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Pokok"
+  },
+  "bakso malang": {
+    "name": "Bakso Malang",
+    "aliases": [
+      "baso malang"
+    ],
+    "emoji": "🍜",
+    "calories": 350,
+    "protein": 18.0,
+    "carbs": 40.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (350ml)",
+    "category": "Makanan Utama"
+  },
+  "mie bakso": {
+    "name": "Mie Bakso",
+    "aliases": [
+      "bakso mie",
+      "mi bakso"
+    ],
+    "emoji": "🍜",
+    "calories": 380,
+    "protein": 16.0,
+    "carbs": 48.0,
+    "fat": 13.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 mangkuk (350g)",
+    "category": "Makanan Utama"
+  },
+  "kupat tahu": {
+    "name": "Kupat Tahu",
+    "aliases": [
+      "ketoprak",
+      "kupat tahu bandung"
+    ],
+    "emoji": "🟨",
+    "calories": 300,
+    "protein": 10.0,
+    "carbs": 45.0,
+    "fat": 10.0,
+    "fiber": 3.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama"
+  },
+  "ketoprak": {
+    "name": "Ketoprak",
+    "aliases": [
+      "ketoprak jakarta"
+    ],
+    "emoji": "🥗",
+    "calories": 310,
+    "protein": 12.0,
+    "carbs": 45.0,
+    "fat": 10.0,
+    "fiber": 4.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama",
+    "visual_clues": [
+      "lontong putih",
+      "tahu",
+      "bihun",
+      "saus kacang coklat",
+      "kerupuk di atas"
+    ]
+  },
+  "nasi bakar": {
+    "name": "Nasi Bakar",
+    "aliases": [
+      "nasi bakar ikan",
+      "nasi bakar ayam"
+    ],
+    "emoji": "🍚",
+    "calories": 320,
+    "protein": 14.0,
+    "carbs": 48.0,
+    "fat": 9.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 bungkus (250g)",
+    "category": "Makanan Utama",
+    "visual_clues": [
+      "dibungkus daun pisang",
+      "kehitaman di ujung",
+      "aroma asap",
+      "nasi tampak kuning/berbumbu"
+    ]
+  },
+  "nasi liwet": {
+    "name": "Nasi Liwet",
+    "aliases": [
+      "liwet",
+      "nasi liwet sunda"
+    ],
+    "emoji": "🍚",
+    "calories": 350,
+    "protein": 7.0,
+    "carbs": 55.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Pokok"
+  },
+  "nasi tumpeng": {
+    "name": "Nasi Tumpeng",
+    "aliases": [
+      "tumpeng"
+    ],
+    "emoji": "🎂",
+    "calories": 280,
+    "protein": 6.0,
+    "carbs": 48.0,
+    "fat": 8.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Pokok"
+  },
+  "pepes ikan": {
+    "name": "Pepes Ikan",
+    "aliases": [
+      "pepes",
+      "bobotok ikan"
+    ],
+    "emoji": "🐟",
+    "calories": 155,
+    "protein": 20.0,
+    "carbs": 3.0,
+    "fat": 7.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 bungkus (150g)",
+    "category": "Lauk Pauk"
+  },
+  "pisang": {
+    "name": "Pisang",
+    "aliases": [
+      "banana",
+      "pisang ambon",
+      "pisang mas",
+      "pisang kepok"
+    ],
+    "emoji": "🍌",
+    "calories": 89,
+    "protein": 1.1,
+    "carbs": 23.0,
+    "fat": 0.3,
+    "fiber": 2.6,
+    "sugar": 12.0,
+    "serving": "1 buah sedang (120g)",
+    "category": "Buah"
+  },
+  "mangga": {
+    "name": "Mangga",
+    "aliases": [
+      "mango",
+      "mangga harum manis",
+      "mangga manalagi"
+    ],
+    "emoji": "🥭",
+    "calories": 60,
+    "protein": 0.8,
+    "carbs": 15.0,
+    "fat": 0.4,
+    "fiber": 1.6,
+    "sugar": 14.0,
+    "serving": "1 buah sedang (200g)",
+    "category": "Buah"
+  },
+  "pepaya": {
+    "name": "Pepaya",
+    "aliases": [
+      "papaya",
+      "betik"
+    ],
+    "emoji": "🧡",
+    "calories": 43,
+    "protein": 0.5,
+    "carbs": 11.0,
+    "fat": 0.3,
+    "fiber": 1.7,
+    "sugar": 7.0,
+    "serving": "1 potong (150g)",
+    "category": "Buah",
+    "visual_clues": [
+      "oranye cerah",
+      "biji hitam di tengah",
+      "daging oranye lembut"
+    ]
+  },
+  "semangka": {
+    "name": "Semangka",
+    "aliases": [
+      "watermelon",
+      "melon air"
+    ],
+    "emoji": "🍉",
+    "calories": 30,
+    "protein": 0.6,
+    "carbs": 7.5,
+    "fat": 0.2,
+    "fiber": 0.4,
+    "sugar": 6.0,
+    "serving": "2 potong (300g)",
+    "category": "Buah",
+    "visual_clues": [
+      "merah cerah",
+      "biji hitam",
+      "kulit hijau",
+      "daging merah segar"
+    ]
+  },
+  "jambu air": {
+    "name": "Jambu Air",
+    "aliases": [
+      "jambu",
+      "water apple"
+    ],
+    "emoji": "🍒",
+    "calories": 35,
+    "protein": 0.6,
+    "carbs": 8.0,
+    "fat": 0.2,
+    "fiber": 1.5,
+    "sugar": 6.0,
+    "serving": "3 buah (100g)",
+    "category": "Buah"
+  },
+  "salak": {
+    "name": "Salak",
+    "aliases": [
+      "snake fruit",
+      "salacca"
+    ],
+    "emoji": "🍑",
+    "calories": 77,
+    "protein": 0.4,
+    "carbs": 20.9,
+    "fat": 0.1,
+    "fiber": 2.9,
+    "sugar": 14.0,
+    "serving": "2 buah (100g)",
+    "category": "Buah"
+  },
+  "rambutan": {
+    "name": "Rambutan",
+    "aliases": [],
+    "emoji": "🔴",
+    "calories": 75,
+    "protein": 0.9,
+    "carbs": 18.0,
+    "fat": 0.1,
+    "fiber": 2.8,
+    "sugar": 13.7,
+    "serving": "5 buah (100g)",
+    "category": "Buah"
+  },
+  "durian": {
+    "name": "Durian",
+    "aliases": [
+      "duren",
+      "raja buah"
+    ],
+    "emoji": "🍑",
+    "calories": 147,
+    "protein": 1.5,
+    "carbs": 27.1,
+    "fat": 5.3,
+    "fiber": 3.8,
+    "sugar": 16.0,
+    "serving": "1 biji besar (100g)",
+    "category": "Buah"
+  },
+  "nangka": {
+    "name": "Nangka",
+    "aliases": [
+      "jackfruit",
+      "nangka muda"
+    ],
+    "emoji": "🟡",
+    "calories": 95,
+    "protein": 1.7,
+    "carbs": 23.5,
+    "fat": 0.6,
+    "fiber": 1.5,
+    "sugar": 16.0,
+    "serving": "2 biji (100g)",
+    "category": "Buah"
+  },
+  "alpukat": {
+    "name": "Alpukat",
+    "aliases": [
+      "avocado",
+      "advokad"
+    ],
+    "emoji": "🥑",
+    "calories": 160,
+    "protein": 2.0,
+    "carbs": 9.0,
+    "fat": 14.7,
+    "fiber": 6.7,
+    "sugar": 0.7,
+    "serving": "setengah buah (100g)",
+    "category": "Buah"
+  },
+  "jeruk": {
+    "name": "Jeruk",
+    "aliases": [
+      "orange",
+      "jeruk manis",
+      "citrus"
+    ],
+    "emoji": "🍊",
+    "calories": 43,
+    "protein": 0.9,
+    "carbs": 10.6,
+    "fat": 0.1,
+    "fiber": 2.2,
+    "sugar": 8.5,
+    "serving": "1 buah (120g)",
+    "category": "Buah"
+  },
+  "apel": {
+    "name": "Apel",
+    "aliases": [
+      "apple",
+      "apel merah"
+    ],
+    "emoji": "🍎",
+    "calories": 52,
+    "protein": 0.3,
+    "carbs": 14.0,
+    "fat": 0.2,
+    "fiber": 2.4,
+    "sugar": 10.4,
+    "serving": "1 buah (150g)",
+    "category": "Buah"
+  },
+  "indomie goreng": {
+    "name": "Indomie Goreng",
+    "aliases": [
+      "mie goreng instan",
+      "mi goreng instan"
+    ],
+    "emoji": "🍝",
+    "calories": 390,
+    "protein": 8.0,
+    "carbs": 56.0,
+    "fat": 14.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 bungkus (85g)",
+    "category": "Makanan Instan",
+    "visual_clues": [
+      "mie kuning keriting",
+      "kering/goreng",
+      "warna kecoklatan dari kecap"
+    ]
+  },
+  "indomie rebus": {
+    "name": "Indomie Rebus",
+    "aliases": [
+      "mie kuah instant"
+    ],
+    "emoji": "🍜",
+    "calories": 330,
+    "protein": 8.0,
+    "carbs": 50.0,
+    "fat": 10.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 bungkus (85g)",
+    "category": "Fast Food Lokal"
+  },
+  "nasi box": {
+    "name": "Nasi Box",
+    "aliases": [
+      "nasi kotak",
+      "lunch box"
+    ],
+    "emoji": "🍱",
+    "calories": 550,
+    "protein": 18.0,
+    "carbs": 70.0,
+    "fat": 22.0,
+    "fiber": 4.0,
+    "sugar": 5.0,
+    "serving": "1 kotak (400g)",
+    "category": "Fast Food Lokal"
+  },
+  "ayam geprek": {
+    "name": "Ayam Geprek",
+    "aliases": [
+      "geprek",
+      "chicken geprek"
+    ],
+    "emoji": "🍗",
+    "calories": 350,
+    "protein": 24.0,
+    "carbs": 18.0,
+    "fat": 20.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (200g)",
+    "category": "Fast Food Lokal"
+  },
+  "mie ayam pangsit": {
+    "name": "Mie Ayam Pangsit",
+    "aliases": [
+      "mi ayam pangsit",
+      "mie pangsit"
+    ],
+    "emoji": "🍝",
+    "calories": 420,
+    "protein": 18.0,
+    "carbs": 52.0,
+    "fat": 15.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Utama"
+  },
+  "nasi padang rendang": {
+    "name": "Nasi Padang Rendang",
+    "aliases": [
+      "nasi rendang"
+    ],
+    "emoji": "🍛",
+    "calories": 700,
+    "protein": 28.0,
+    "carbs": 72.0,
+    "fat": 32.0,
+    "fiber": 5.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (400g)",
+    "category": "Makanan Utama"
+  },
+  "gule kambing": {
+    "name": "Gule Kambing",
+    "aliases": [
+      "gulai kambing",
+      "kari kambing"
+    ],
+    "emoji": "🍲",
+    "calories": 380,
+    "protein": 24.0,
+    "carbs": 10.0,
+    "fat": 28.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama"
+  },
+  "sate padang": {
+    "name": "Sate Padang",
+    "aliases": [],
+    "emoji": "🍢",
+    "calories": 280,
+    "protein": 20.0,
+    "carbs": 15.0,
+    "fat": 16.0,
+    "fiber": 1.0,
+    "sugar": 5.0,
+    "serving": "5 tusuk (200g)",
+    "category": "Makanan Utama"
+  },
+  "pindang ikan": {
+    "name": "Pindang Ikan",
+    "aliases": [
+      "pindang",
+      "ikan pindang"
+    ],
+    "emoji": "🐟",
+    "calories": 140,
+    "protein": 18.0,
+    "carbs": 3.0,
+    "fat": 6.0,
+    "fiber": 0.0,
+    "sugar": 1.0,
+    "serving": "1 ekor (150g)",
+    "category": "Lauk Pauk"
+  },
+  "ikan asin": {
+    "name": "Ikan Asin",
+    "aliases": [
+      "salted fish",
+      "ikan kering"
+    ],
+    "emoji": "🐟",
+    "calories": 200,
+    "protein": 40.0,
+    "carbs": 0.0,
+    "fat": 4.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 potong (50g)",
+    "category": "Lauk Pauk"
+  },
+  "tahu tempe bacem": {
+    "name": "Tahu Tempe Bacem",
+    "aliases": [
+      "bacem",
+      "tempe bacem"
+    ],
+    "emoji": "🟫",
+    "calories": 220,
+    "protein": 14.0,
+    "carbs": 20.0,
+    "fat": 10.0,
+    "fiber": 2.0,
+    "sugar": 8.0,
+    "serving": "2 potong (120g)",
+    "category": "Lauk Pauk"
+  },
+  "perkedel": {
+    "name": "Perkedel",
+    "aliases": [
+      "perkedel kentang",
+      "kroket"
+    ],
+    "emoji": "🟡",
+    "calories": 175,
+    "protein": 5.0,
+    "carbs": 20.0,
+    "fat": 9.0,
+    "fiber": 2.0,
+    "sugar": 1.0,
+    "serving": "2 buah (100g)",
+    "category": "Lauk Pauk"
+  },
+  "wajik": {
+    "name": "Wajik",
+    "aliases": [
+      "ketan wajik"
+    ],
+    "emoji": "🟫",
+    "calories": 200,
+    "protein": 2.0,
+    "carbs": 42.0,
+    "fat": 4.0,
+    "fiber": 1.0,
+    "sugar": 20.0,
+    "serving": "2 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "lemper": {
+    "name": "Lemper",
+    "aliases": [
+      "lemper ayam"
+    ],
+    "emoji": "🟢",
+    "calories": 185,
+    "protein": 6.0,
+    "carbs": 32.0,
+    "fat": 5.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "lapis legit": {
+    "name": "Lapis Legit",
+    "aliases": [
+      "spekkoek",
+      "lapis"
+    ],
+    "emoji": "🎂",
+    "calories": 380,
+    "protein": 7.0,
+    "carbs": 45.0,
+    "fat": 20.0,
+    "fiber": 0.5,
+    "sugar": 28.0,
+    "serving": "1 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "putu": {
+    "name": "Putu",
+    "aliases": [
+      "kue putu",
+      "putu bambu"
+    ],
+    "emoji": "🟢",
+    "calories": 120,
+    "protein": 2.0,
+    "carbs": 24.0,
+    "fat": 2.5,
+    "fiber": 0.5,
+    "sugar": 8.0,
+    "serving": "2 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "serabi": {
+    "name": "Serabi",
+    "aliases": [
+      "srabi",
+      "surabi"
+    ],
+    "emoji": "🥞",
+    "calories": 175,
+    "protein": 3.5,
+    "carbs": 28.0,
+    "fat": 6.0,
+    "fiber": 1.0,
+    "sugar": 7.0,
+    "serving": "2 buah (100g)",
+    "category": "Kue Tradisional"
+  },
+  "nagasari": {
+    "name": "Nagasari",
+    "aliases": [
+      "kue nagasari"
+    ],
+    "emoji": "🟡",
+    "calories": 140,
+    "protein": 2.0,
+    "carbs": 28.0,
+    "fat": 3.0,
+    "fiber": 1.0,
+    "sugar": 10.0,
+    "serving": "1 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "kue lumpur": {
+    "name": "Kue Lumpur",
+    "aliases": [
+      "mud cake"
+    ],
+    "emoji": "🟡",
+    "calories": 165,
+    "protein": 3.5,
+    "carbs": 25.0,
+    "fat": 6.0,
+    "fiber": 0.5,
+    "sugar": 12.0,
+    "serving": "1 buah (60g)",
+    "category": "Kue Tradisional"
+  },
+  "kue cucur": {
+    "name": "Kue Cucur",
+    "aliases": [
+      "cucur"
+    ],
+    "emoji": "🟤",
+    "calories": 155,
+    "protein": 2.0,
+    "carbs": 28.0,
+    "fat": 4.5,
+    "fiber": 0.5,
+    "sugar": 15.0,
+    "serving": "2 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "apem": {
+    "name": "Apem",
+    "aliases": [
+      "kue apem"
+    ],
+    "emoji": "🟡",
+    "calories": 130,
+    "protein": 2.5,
+    "carbs": 24.0,
+    "fat": 3.0,
+    "fiber": 0.5,
+    "sugar": 8.0,
+    "serving": "1 buah (60g)",
+    "category": "Kue Tradisional"
+  },
+  "ketimus": {
+    "name": "Ketimus",
+    "aliases": [
+      "kue ubi"
+    ],
+    "emoji": "🟠",
+    "calories": 145,
+    "protein": 1.5,
+    "carbs": 30.0,
+    "fat": 3.0,
+    "fiber": 2.0,
+    "sugar": 10.0,
+    "serving": "1 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "es krim": {
+    "name": "Es Krim",
+    "aliases": [
+      "ice cream",
+      "icecream"
+    ],
+    "emoji": "🍦",
+    "calories": 207,
+    "protein": 3.5,
+    "carbs": 24.0,
+    "fat": 11.0,
+    "fiber": 0.0,
+    "sugar": 21.0,
+    "serving": "1 scoop (100g)",
+    "category": "Dessert"
+  },
+  "bakpia": {
+    "name": "Bakpia",
+    "aliases": [
+      "pia",
+      "bakpia pathuk"
+    ],
+    "emoji": "🥧",
+    "calories": 225,
+    "protein": 4.0,
+    "carbs": 38.0,
+    "fat": 7.0,
+    "fiber": 1.0,
+    "sugar": 16.0,
+    "serving": "2 buah (80g)",
+    "category": "Kue Tradisional"
+  },
+  "kangkung": {
+    "name": "Kangkung",
+    "aliases": [
+      "water spinach"
+    ],
+    "emoji": "🌿",
+    "calories": 35,
+    "protein": 2.5,
+    "carbs": 5.8,
+    "fat": 0.4,
+    "fiber": 2.2,
+    "sugar": 0.5,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "bayam": {
+    "name": "Bayam",
+    "aliases": [
+      "spinach",
+      "bayem"
+    ],
+    "emoji": "🥬",
+    "calories": 23,
+    "protein": 2.9,
+    "carbs": 3.6,
+    "fat": 0.4,
+    "fiber": 2.2,
+    "sugar": 0.4,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "wortel": {
+    "name": "Wortel",
+    "aliases": [
+      "carrot",
+      "wortel rebus"
+    ],
+    "emoji": "🥕",
+    "calories": 41,
+    "protein": 0.9,
+    "carbs": 9.6,
+    "fat": 0.2,
+    "fiber": 2.8,
+    "sugar": 4.7,
+    "serving": "1 buah (100g)",
+    "category": "Sayuran"
+  },
+  "kentang rebus": {
+    "name": "Kentang Rebus",
+    "aliases": [
+      "boiled potato",
+      "kentang"
+    ],
+    "emoji": "🥔",
+    "calories": 87,
+    "protein": 1.9,
+    "carbs": 20.0,
+    "fat": 0.1,
+    "fiber": 1.8,
+    "sugar": 0.9,
+    "serving": "1 sedang (150g)",
+    "category": "Sayuran"
+  },
+  "buncis": {
+    "name": "Buncis",
+    "aliases": [
+      "green beans",
+      "kacang buncis"
+    ],
+    "emoji": "🟢",
+    "calories": 31,
+    "protein": 1.8,
+    "carbs": 7.0,
+    "fat": 0.1,
+    "fiber": 3.4,
+    "sugar": 3.3,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "taoge": {
+    "name": "Taoge",
+    "aliases": [
+      "bean sprouts",
+      "toge"
+    ],
+    "emoji": "🌱",
+    "calories": 30,
+    "protein": 3.1,
+    "carbs": 5.9,
+    "fat": 0.2,
+    "fiber": 1.8,
+    "sugar": 1.8,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "kol": {
+    "name": "Kol",
+    "aliases": [
+      "kubis",
+      "cabbage"
+    ],
+    "emoji": "🥬",
+    "calories": 25,
+    "protein": 1.3,
+    "carbs": 5.8,
+    "fat": 0.1,
+    "fiber": 2.5,
+    "sugar": 3.2,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "timun": {
+    "name": "Timun",
+    "aliases": [
+      "cucumber",
+      "ketimun"
+    ],
+    "emoji": "🥒",
+    "calories": 16,
+    "protein": 0.7,
+    "carbs": 3.6,
+    "fat": 0.1,
+    "fiber": 0.5,
+    "sugar": 1.7,
+    "serving": "1 buah (150g)",
+    "category": "Sayuran"
+  },
+  "tomat": {
+    "name": "Tomat",
+    "aliases": [
+      "tomato",
+      "tomato merah"
+    ],
+    "emoji": "🍅",
+    "calories": 18,
+    "protein": 0.9,
+    "carbs": 3.9,
+    "fat": 0.2,
+    "fiber": 1.2,
+    "sugar": 2.6,
+    "serving": "1 buah (120g)",
+    "category": "Sayuran"
+  },
+  "terong": {
+    "name": "Terong",
+    "aliases": [
+      "eggplant",
+      "aubergine"
+    ],
+    "emoji": "🍆",
+    "calories": 25,
+    "protein": 1.0,
+    "carbs": 5.7,
+    "fat": 0.2,
+    "fiber": 3.0,
+    "sugar": 3.5,
+    "serving": "1 porsi (100g)",
+    "category": "Sayuran"
+  },
+  "sop ayam": {
+    "name": "Sop Ayam",
+    "aliases": [
+      "sup ayam",
+      "chicken soup"
+    ],
+    "emoji": "🍲",
+    "calories": 200,
+    "protein": 15.0,
+    "carbs": 15.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "sop iga": {
+    "name": "Sop Iga",
+    "aliases": [
+      "sup iga sapi",
+      "iga soup"
+    ],
+    "emoji": "🍖",
+    "calories": 380,
+    "protein": 25.0,
+    "carbs": 12.0,
+    "fat": 26.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (350ml)",
+    "category": "Makanan Utama"
+  },
+  "sayur sop": {
+    "name": "Sayur Sop",
+    "aliases": [
+      "sop sayur",
+      "vegetable soup"
+    ],
+    "emoji": "🥣",
+    "calories": 80,
+    "protein": 3.5,
+    "carbs": 12.0,
+    "fat": 2.0,
+    "fiber": 3.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (250ml)",
+    "category": "Sayuran"
+  },
+  "sup jagung": {
+    "name": "Sup Jagung",
+    "aliases": [
+      "sop jagung",
+      "corn soup"
+    ],
+    "emoji": "🌽",
+    "calories": 120,
+    "protein": 4.0,
+    "carbs": 22.0,
+    "fat": 3.0,
+    "fiber": 2.5,
+    "sugar": 5.0,
+    "serving": "1 mangkuk (250ml)",
+    "category": "Sayuran"
+  },
+  "es buah": {
+    "name": "Es Buah",
+    "aliases": [
+      "fruit cocktail ice",
+      "es koktail"
+    ],
+    "emoji": "🍧",
+    "calories": 180,
+    "protein": 1.0,
+    "carbs": 42.0,
+    "fat": 2.0,
+    "fiber": 2.0,
+    "sugar": 35.0,
+    "serving": "1 gelas (300ml)",
+    "category": "Minuman"
+  },
+  "cincau": {
+    "name": "Cincau",
+    "aliases": [
+      "grass jelly",
+      "cincau hitam"
+    ],
+    "emoji": "⬛",
+    "calories": 15,
+    "protein": 0.1,
+    "carbs": 3.5,
+    "fat": 0.0,
+    "fiber": 1.5,
+    "sugar": 0.0,
+    "serving": "100g",
+    "category": "Minuman"
+  },
+  "tahu sumedang": {
+    "name": "Tahu Sumedang",
+    "aliases": [
+      "tahu goreng kering"
+    ],
+    "emoji": "🟡",
+    "calories": 185,
+    "protein": 12.0,
+    "carbs": 8.0,
+    "fat": 12.0,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "serving": "3 buah (100g)",
+    "category": "Camilan"
+  },
+  "kacang rebus": {
+    "name": "Kacang Rebus",
+    "aliases": [
+      "kacang tanah rebus",
+      "boiled peanuts"
+    ],
+    "emoji": "🥜",
+    "calories": 160,
+    "protein": 8.0,
+    "carbs": 14.0,
+    "fat": 9.0,
+    "fiber": 4.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (80g)",
+    "category": "Camilan"
+  },
+  "kacang goreng": {
+    "name": "Kacang Goreng",
+    "aliases": [
+      "fried peanuts",
+      "kacang tanah goreng"
+    ],
+    "emoji": "🥜",
+    "calories": 285,
+    "protein": 12.0,
+    "carbs": 16.0,
+    "fat": 20.0,
+    "fiber": 4.0,
+    "sugar": 1.0,
+    "serving": "1 porsi (50g)",
+    "category": "Camilan"
+  },
+  "roti bakar": {
+    "name": "Roti Bakar",
+    "aliases": [
+      "toast",
+      "roti panggang"
+    ],
+    "emoji": "🍞",
+    "calories": 220,
+    "protein": 6.0,
+    "carbs": 32.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 10.0,
+    "serving": "2 lembar (100g)",
+    "category": "Sarapan"
+  },
+  "roti tawar": {
+    "name": "Roti Tawar",
+    "aliases": [
+      "white bread",
+      "sandwich bread"
+    ],
+    "emoji": "🍞",
+    "calories": 265,
+    "protein": 9.0,
+    "carbs": 49.0,
+    "fat": 3.2,
+    "fiber": 2.3,
+    "sugar": 5.0,
+    "serving": "2 lembar (80g)",
+    "category": "Sarapan"
+  },
+  "sereal": {
+    "name": "Sereal",
+    "aliases": [
+      "cereal",
+      "corn flakes"
+    ],
+    "emoji": "🥣",
+    "calories": 370,
+    "protein": 7.0,
+    "carbs": 80.0,
+    "fat": 1.5,
+    "fiber": 3.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (50g)",
+    "category": "Sarapan"
+  },
+  "oatmeal": {
+    "name": "Oatmeal",
+    "aliases": [
+      "oat",
+      "bubur oat"
+    ],
+    "emoji": "🥣",
+    "calories": 389,
+    "protein": 17.0,
+    "carbs": 66.0,
+    "fat": 7.0,
+    "fiber": 10.6,
+    "sugar": 1.0,
+    "serving": "1 porsi (40g)",
+    "category": "Sarapan"
+  },
+  "nasi lemak": {
+    "name": "Nasi Lemak",
+    "aliases": [
+      "naslemak"
+    ],
+    "emoji": "🍚",
+    "calories": 300,
+    "protein": 7.0,
+    "carbs": 42.0,
+    "fat": 13.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Pokok"
+  },
+  "ketupat sayur": {
+    "name": "Ketupat Sayur",
+    "aliases": [
+      "kupat sayur"
+    ],
+    "emoji": "🍲",
+    "calories": 320,
+    "protein": 8.0,
+    "carbs": 48.0,
+    "fat": 12.0,
+    "fiber": 4.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama"
+  },
+  "lontong cap go meh": {
+    "name": "Lontong Cap Go Meh",
+    "aliases": [
+      "lontong capgomeh"
+    ],
+    "emoji": "🍲",
+    "calories": 480,
+    "protein": 18.0,
+    "carbs": 55.0,
+    "fat": 22.0,
+    "fiber": 4.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (400g)",
+    "category": "Makanan Utama"
+  },
+  "gulai nangka": {
+    "name": "Gulai Nangka",
+    "aliases": [
+      "kari nangka muda"
+    ],
+    "emoji": "🍛",
+    "calories": 150,
+    "protein": 4.0,
+    "carbs": 18.0,
+    "fat": 8.0,
+    "fiber": 3.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (200g)",
+    "category": "Sayuran"
+  },
+  "rendang telur": {
+    "name": "Rendang Telur",
+    "aliases": [
+      "telur rendang"
+    ],
+    "emoji": "🥚",
+    "calories": 200,
+    "protein": 12.0,
+    "carbs": 6.0,
+    "fat": 15.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "2 butir (120g)",
+    "category": "Lauk Pauk"
+  },
+  "sambal goreng ati": {
+    "name": "Sambal Goreng Ati",
+    "aliases": [
+      "ati goreng sambal"
+    ],
+    "emoji": "🥩",
+    "calories": 220,
+    "protein": 18.0,
+    "carbs": 8.0,
+    "fat": 14.0,
+    "fiber": 1.5,
+    "sugar": 4.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk"
+  },
+  "orek tempe": {
+    "name": "Orek Tempe",
+    "aliases": [
+      "tempe orek",
+      "oseng tempe"
+    ],
+    "emoji": "🟫",
+    "calories": 260,
+    "protein": 16.0,
+    "carbs": 20.0,
+    "fat": 13.0,
+    "fiber": 3.0,
+    "sugar": 6.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk"
+  },
+  "oseng oseng": {
+    "name": "Oseng-Oseng",
+    "aliases": [
+      "oseng",
+      "oseng sayur"
+    ],
+    "emoji": "🥦",
+    "calories": 100,
+    "protein": 4.0,
+    "carbs": 10.0,
+    "fat": 5.0,
+    "fiber": 3.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Sayuran"
+  },
+  "plecing kangkung": {
+    "name": "Plecing Kangkung",
+    "aliases": [
+      "plecing",
+      "kangkung plecing"
+    ],
+    "emoji": "🌿",
+    "calories": 90,
+    "protein": 3.0,
+    "carbs": 10.0,
+    "fat": 4.5,
+    "fiber": 2.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Sayuran"
+  },
+  "pecak ikan": {
+    "name": "Pecak Ikan",
+    "aliases": [],
+    "emoji": "🐟",
+    "calories": 175,
+    "protein": 18.0,
+    "carbs": 5.0,
+    "fat": 9.0,
+    "fiber": 0.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk"
+  },
+  "pelecing": {
+    "name": "Pelecing",
+    "aliases": [],
+    "emoji": "🌶",
+    "calories": 40,
+    "protein": 1.5,
+    "carbs": 7.0,
+    "fat": 1.5,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (80g)",
+    "category": "Sayuran"
+  },
+  "bubur kacang hijau": {
+    "name": "Bubur Kacang Hijau",
+    "aliases": [
+      "bubur kacang ijo",
+      "green bean porridge"
+    ],
+    "emoji": "🟢",
+    "calories": 200,
+    "protein": 8.0,
+    "carbs": 35.0,
+    "fat": 4.0,
+    "fiber": 6.0,
+    "sugar": 12.0,
+    "serving": "1 mangkuk (250ml)",
+    "category": "Sarapan"
+  },
+  "bubur sumsum": {
+    "name": "Bubur Sumsum",
+    "aliases": [
+      "bubur putih",
+      "sumsum"
+    ],
+    "emoji": "⬜",
+    "calories": 215,
+    "protein": 3.0,
+    "carbs": 40.0,
+    "fat": 5.0,
+    "fiber": 0.5,
+    "sugar": 15.0,
+    "serving": "1 mangkuk (200ml)",
+    "category": "Kue Tradisional"
+  },
+  "nasi campur": {
+    "name": "Nasi Campur",
+    "aliases": [
+      "mixed rice",
+      "nasi rames"
+    ],
+    "emoji": "🍱",
+    "calories": 520,
+    "protein": 20.0,
+    "carbs": 65.0,
+    "fat": 22.0,
+    "fiber": 4.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Utama"
+  },
+  "nasi rames": {
+    "name": "Nasi Rames",
+    "aliases": [
+      "nasi ramis"
+    ],
+    "emoji": "🍱",
+    "calories": 480,
+    "protein": 18.0,
+    "carbs": 60.0,
+    "fat": 20.0,
+    "fiber": 4.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Utama"
+  },
+  "mie pangsit": {
+    "name": "Mie Pangsit",
+    "aliases": [
+      "mi pangsit"
+    ],
+    "emoji": "🍜",
+    "calories": 360,
+    "protein": 14.0,
+    "carbs": 50.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama"
+  },
+  "kwetiau goreng": {
+    "name": "Kwetiau Goreng",
+    "aliases": [
+      "kwe tiau goreng",
+      "flat noodle"
+    ],
+    "emoji": "🍝",
+    "calories": 380,
+    "protein": 12.0,
+    "carbs": 55.0,
+    "fat": 13.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama"
+  },
+  "kwetiau rebus": {
+    "name": "Kwetiau Rebus",
+    "aliases": [
+      "kwetiau kuah"
+    ],
+    "emoji": "🍜",
+    "calories": 300,
+    "protein": 10.0,
+    "carbs": 48.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "laksa": {
+    "name": "Laksa",
+    "aliases": [
+      "laksa betawi",
+      "mie laksa"
+    ],
+    "emoji": "🍜",
+    "calories": 380,
+    "protein": 18.0,
+    "carbs": 42.0,
+    "fat": 16.0,
+    "fiber": 2.5,
+    "sugar": 4.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama",
+    "visual_clues": [
+      "kuah santan kuning-oranye",
+      "mie putih tebal",
+      "potongan ayam atau udang"
+    ]
+  },
+  "coto makassar": {
+    "name": "Coto Makassar",
+    "aliases": [
+      "coto",
+      "soto makassar"
+    ],
+    "emoji": "🍲",
+    "calories": 400,
+    "protein": 24.0,
+    "carbs": 18.0,
+    "fat": 26.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "konro": {
+    "name": "Konro",
+    "aliases": [
+      "konro bakar",
+      "iga bakar"
+    ],
+    "emoji": "🍖",
+    "calories": 450,
+    "protein": 28.0,
+    "carbs": 12.0,
+    "fat": 32.0,
+    "fiber": 0.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama"
+  },
+  "pallubasa": {
+    "name": "Pallubasa",
+    "aliases": [],
+    "emoji": "🍲",
+    "calories": 380,
+    "protein": 22.0,
+    "carbs": 15.0,
+    "fat": 26.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama"
+  },
+  "lapis talas": {
+    "name": "Lapis Talas",
+    "aliases": [
+      "taro layer cake"
+    ],
+    "emoji": "🎂",
+    "calories": 280,
+    "protein": 4.0,
+    "carbs": 42.0,
+    "fat": 11.0,
+    "fiber": 1.5,
+    "sugar": 22.0,
+    "serving": "1 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "bika ambon": {
+    "name": "Bika Ambon",
+    "aliases": [
+      "bika"
+    ],
+    "emoji": "🟡",
+    "calories": 290,
+    "protein": 5.0,
+    "carbs": 50.0,
+    "fat": 8.0,
+    "fiber": 0.5,
+    "sugar": 28.0,
+    "serving": "1 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "kue ape": {
+    "name": "Kue Ape",
+    "aliases": [
+      "kue topi"
+    ],
+    "emoji": "🟢",
+    "calories": 140,
+    "protein": 2.0,
+    "carbs": 26.0,
+    "fat": 4.0,
+    "fiber": 0.5,
+    "sugar": 10.0,
+    "serving": "2 buah (60g)",
+    "category": "Kue Tradisional"
+  },
+  "wingko babat": {
+    "name": "Wingko Babat",
+    "aliases": [
+      "wingko"
+    ],
+    "emoji": "🟫",
+    "calories": 295,
+    "protein": 4.0,
+    "carbs": 46.0,
+    "fat": 11.0,
+    "fiber": 2.0,
+    "sugar": 22.0,
+    "serving": "1 potong (80g)",
+    "category": "Kue Tradisional"
+  },
+  "pop mie": {
+    "name": "Pop Mie",
+    "aliases": [
+      "cup noodle",
+      "mie cup"
+    ],
+    "emoji": "🍜",
+    "calories": 320,
+    "protein": 6.0,
+    "carbs": 50.0,
+    "fat": 11.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "1 cup (75g)",
+    "category": "Fast Food Lokal"
+  },
+  "mie sedaap": {
+    "name": "Mie Sedaap",
+    "aliases": [
+      "mie sedap"
+    ],
+    "emoji": "🍝",
+    "calories": 380,
+    "protein": 8.0,
+    "carbs": 54.0,
+    "fat": 14.5,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 bungkus (87g)",
+    "category": "Fast Food Lokal"
+  },
+  "pizza": {
+    "name": "Pizza",
+    "aliases": [
+      "pizza hut",
+      "dominos"
+    ],
+    "emoji": "🍕",
+    "calories": 266,
+    "protein": 11.0,
+    "carbs": 33.0,
+    "fat": 10.0,
+    "fiber": 2.3,
+    "sugar": 3.6,
+    "serving": "1 slice (100g)",
+    "category": "Fast Food"
+  },
+  "burger": {
+    "name": "Burger",
+    "aliases": [
+      "hamburger",
+      "burger sapi"
+    ],
+    "emoji": "🍔",
+    "calories": 295,
+    "protein": 17.0,
+    "carbs": 24.0,
+    "fat": 14.0,
+    "fiber": 1.0,
+    "sugar": 5.0,
+    "serving": "1 buah (150g)",
+    "category": "Fast Food"
+  },
+  "ayam kfc": {
+    "name": "Ayam KFC",
+    "aliases": [
+      "kfc",
+      "kentucky fried chicken",
+      "fried chicken"
+    ],
+    "emoji": "🍗",
+    "calories": 290,
+    "protein": 20.0,
+    "carbs": 10.0,
+    "fat": 19.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 potong (120g)",
+    "category": "Fast Food"
+  },
+  "french fries": {
+    "name": "French Fries",
+    "aliases": [
+      "kentang goreng",
+      "fries"
+    ],
+    "emoji": "🍟",
+    "calories": 312,
+    "protein": 3.4,
+    "carbs": 41.0,
+    "fat": 15.0,
+    "fiber": 3.5,
+    "sugar": 0.3,
+    "serving": "1 porsi medium (115g)",
+    "category": "Fast Food"
+  },
+  "hotdog": {
+    "name": "Hotdog",
+    "aliases": [
+      "hot dog",
+      "sosis roti"
+    ],
+    "emoji": "🌭",
+    "calories": 290,
+    "protein": 11.0,
+    "carbs": 24.0,
+    "fat": 17.0,
+    "fiber": 1.0,
+    "sugar": 5.0,
+    "serving": "1 buah (120g)",
+    "category": "Fast Food"
+  },
+  "sosis bakar": {
+    "name": "Sosis Bakar",
+    "aliases": [
+      "sausage bakar",
+      "grilled sausage"
+    ],
+    "emoji": "🌭",
+    "calories": 240,
+    "protein": 9.0,
+    "carbs": 4.0,
+    "fat": 21.0,
+    "fiber": 0.0,
+    "sugar": 2.0,
+    "serving": "2 buah (100g)",
+    "category": "Lauk Pauk"
+  },
+  "nugget ayam": {
+    "name": "Nugget Ayam",
+    "aliases": [
+      "chicken nugget",
+      "nugget"
+    ],
+    "emoji": "🍗",
+    "calories": 265,
+    "protein": 15.0,
+    "carbs": 16.0,
+    "fat": 15.0,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "serving": "5 buah (100g)",
+    "category": "Lauk Pauk"
+  },
+  "dim sum": {
+    "name": "Dim Sum",
+    "aliases": [
+      "dimsum",
+      "dim sim"
+    ],
+    "emoji": "🥟",
+    "calories": 240,
+    "protein": 12.0,
+    "carbs": 28.0,
+    "fat": 9.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "4 buah (120g)",
+    "category": "Camilan"
+  },
+  "spaghetti": {
+    "name": "Spaghetti",
+    "aliases": [
+      "pasta",
+      "spageti"
+    ],
+    "emoji": "🍝",
+    "calories": 335,
+    "protein": 13.0,
+    "carbs": 58.0,
+    "fat": 6.0,
+    "fiber": 3.2,
+    "sugar": 4.0,
+    "serving": "1 porsi (220g)",
+    "category": "Makanan Barat"
+  },
+  "steak": {
+    "name": "Steak",
+    "aliases": [
+      "beef steak",
+      "sirloin"
+    ],
+    "emoji": "🥩",
+    "calories": 271,
+    "protein": 26.0,
+    "carbs": 0.0,
+    "fat": 18.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 porsi (150g)",
+    "category": "Makanan Barat"
+  },
+  "lumpia": {
+    "name": "Lumpia",
+    "aliases": [
+      "lumpiah",
+      "lumpia semarang",
+      "spring roll"
+    ],
+    "emoji": "🥢",
+    "calories": 155,
+    "protein": 5.0,
+    "carbs": 18.0,
+    "fat": 7.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "2 buah (100g)",
+    "category": "Camilan",
+    "visual_clues": [
+      "gulungan silinder",
+      "kulit coklat keemasan",
+      "renyah",
+      "isi sayuran/rebung"
+    ]
+  },
+  "tahu bulat": {
+    "name": "Tahu Bulat",
+    "aliases": [
+      "tahu bundar",
+      "tahubul"
+    ],
+    "emoji": "🟡",
+    "calories": 95,
+    "protein": 6.0,
+    "carbs": 5.0,
+    "fat": 6.0,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "serving": "5 buah (80g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "bulat sempurna",
+      "kuning",
+      "mengembang",
+      "kecil-kecil banyak"
+    ]
+  },
+  "es teh manis": {
+    "name": "Es Teh Manis",
+    "aliases": [
+      "teh manis dingin",
+      "ice tea manis",
+      "es teh"
+    ],
+    "emoji": "🧋",
+    "calories": 132,
+    "protein": 0.3,
+    "carbs": 33.0,
+    "fat": 0.1,
+    "fiber": 0.0,
+    "sugar": 30.0,
+    "caffeineMg": 47,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman",
+    "visual_clues": [
+      "coklat gelap transparan",
+      "gelas berisi es batu",
+      "warna teh coklat",
+      "banyak es"
+    ]
+  },
+  "dawet": {
+    "name": "Es Dawet",
+    "aliases": [
+      "cendol",
+      "es cendol",
+      "es dawet ayu"
+    ],
+    "emoji": "💚",
+    "calories": 175,
+    "protein": 1.5,
+    "carbs": 40.0,
+    "fat": 3.5,
+    "fiber": 1.0,
+    "sugar": 28.0,
+    "serving": "1 mangkuk (300ml)",
+    "category": "Minuman Tradisional",
+    "visual_clues": [
+      "hijau cendol",
+      "santan putih",
+      "gula merah coklat",
+      "es batu",
+      "mangkuk atau gelas besar"
+    ]
+  },
+  "nasi tim": {
+    "name": "Nasi Tim",
+    "aliases": [
+      "nasi tim ayam",
+      "tim nasi"
+    ],
+    "emoji": "🍲",
+    "calories": 185,
+    "protein": 8.0,
+    "carbs": 32.0,
+    "fat": 3.0,
+    "fiber": 0.8,
+    "sugar": 1.0,
+    "serving": "1 mangkuk (200g)",
+    "category": "Makanan Utama"
+  },
+  "kolak": {
+    "name": "Kolak",
+    "aliases": [
+      "kolak pisang",
+      "kolak ubi",
+      "kolak labu"
+    ],
+    "emoji": "🍮",
+    "calories": 185,
+    "protein": 2.0,
+    "carbs": 40.0,
+    "fat": 5.0,
+    "fiber": 2.5,
+    "sugar": 28.0,
+    "serving": "1 mangkuk (250g)",
+    "category": "Makanan Penutup",
+    "visual_clues": [
+      "kuah santan kuning-oranye",
+      "potongan pisang atau ubi",
+      "kental manis"
+    ]
+  },
+  "kue cubit": {
+    "name": "Kue Cubit",
+    "aliases": [
+      "cubit",
+      "kue mini",
+      "kue pukis mini"
+    ],
+    "emoji": "🫓",
+    "calories": 65,
+    "protein": 1.5,
+    "carbs": 11.0,
+    "fat": 2.0,
+    "fiber": 0.2,
+    "sugar": 5.0,
+    "serving": "5 buah (75g)",
+    "category": "Jajanan",
+    "visual_clues": [
+      "bulat kecil",
+      "coklat keemasan",
+      "topping coklat atau keju",
+      "setengah matang",
+      "banyak di cetakan"
+    ]
+  },
+  "telur balado": {
+    "name": "Telur Balado",
+    "aliases": [
+      "telur cabe merah",
+      "eggs balado"
+    ],
+    "emoji": "🥚",
+    "calories": 145,
+    "protein": 9.0,
+    "carbs": 4.0,
+    "fat": 10.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 butir (80g)",
+    "category": "Lauk Pauk",
+    "visual_clues": [
+      "telur rebus dibalut saus merah",
+      "warna merah terang",
+      "bumbu cabai"
+    ]
+  },
+  "tumis buncis": {
+    "name": "Tumis Buncis",
+    "aliases": [
+      "buncis tumis",
+      "oseng buncis"
+    ],
+    "emoji": "🫛",
+    "calories": 75,
+    "protein": 3.5,
+    "carbs": 10.0,
+    "fat": 3.0,
+    "fiber": 4.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Sayuran"
+  },
+  "tumis tauge": {
+    "name": "Tumis Tauge",
+    "aliases": [
+      "oseng tauge",
+      "cah tauge",
+      "taoge goreng"
+    ],
+    "emoji": "🌱",
+    "calories": 60,
+    "protein": 3.0,
+    "carbs": 8.0,
+    "fat": 2.5,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (150g)",
+    "category": "Sayuran"
+  },
+  "sup wortel": {
+    "name": "Sup Wortel",
+    "aliases": [
+      "sop wortel",
+      "sayur sup",
+      "sayur sop wortel"
+    ],
+    "emoji": "🥕",
+    "calories": 85,
+    "protein": 3.5,
+    "carbs": 14.0,
+    "fat": 2.0,
+    "fiber": 3.5,
+    "sugar": 5.0,
+    "serving": "1 mangkuk (250ml)",
+    "category": "Sayuran"
+  },
+  "sosis": {
+    "name": "Sosis",
+    "aliases": [
+      "sosis ayam",
+      "sosis sapi",
+      "hot dog"
+    ],
+    "emoji": "🌭",
+    "calories": 140,
+    "protein": 8.0,
+    "carbs": 5.0,
+    "fat": 11.0,
+    "fiber": 0.0,
+    "sugar": 1.5,
+    "serving": "2 buah (80g)",
+    "category": "Lauk Pauk"
+  },
+  "nugget": {
+    "name": "Nugget Ayam",
+    "aliases": [
+      "chicken nugget",
+      "nugget",
+      "nuget"
+    ],
+    "emoji": "🍗",
+    "calories": 210,
+    "protein": 12.0,
+    "carbs": 16.0,
+    "fat": 11.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "5 buah (100g)",
+    "category": "Lauk Pauk",
+    "visual_clues": [
+      "kotak-kotak kecil kuning keemasan",
+      "tepung roti",
+      "renyah",
+      "banyak di piring"
+    ]
+  },
+  "kroket": {
+    "name": "Kroket",
+    "aliases": [
+      "kroket kentang",
+      "croquette"
+    ],
+    "emoji": "🟡",
+    "calories": 145,
+    "protein": 4.5,
+    "carbs": 18.0,
+    "fat": 7.0,
+    "fiber": 1.5,
+    "sugar": 1.0,
+    "serving": "2 buah (100g)",
+    "category": "Camilan",
+    "visual_clues": [
+      "lonjong",
+      "coklat keemasan",
+      "tepung roti",
+      "berisi kentang atau daging"
+    ]
+  },
+  "nasi padang ayam goreng": {
+    "name": "Nasi Padang Ayam Goreng",
+    "emoji": "🍛",
+    "calories": 700,
+    "protein": 32.0,
+    "carbs": 72.0,
+    "fat": 33.0,
+    "fiber": 5.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (400g)",
+    "category": "Makanan Utama",
+    "aliases": [
+      "nasi padang dengan ayam",
+      "nasi padang + ayam goreng",
+      "nasi padang ayam",
+      "nasi minang ayam goreng"
+    ],
+    "ingredients": [
+      "Nasi Putih",
+      "Ayam Goreng Padang",
+      "Gulai",
+      "Sayur Singkong",
+      "Sambal Hijau"
+    ],
+    "visual_clues": [
+      "nasi putih dengan potongan ayam goreng besar di atasnya",
+      "ayam goreng berwarna cokelat keemasan dengan bumbu Padang",
+      "kuah kuning atau gulai di pinggir piring",
+      "daun singkong rebus atau sayur hijau",
+      "sambal hijau atau merah khas Padang",
+      "piring putih dengan susunan lauk khas restoran Padang"
+    ]
+  },
+
+  "pempek": {
+    "name": "Pempek",
+    "aliases": ["empek-empek", "pempek palembang", "mpek-mpek"],
+    "emoji": "🐟",
+    "calories": 280,
+    "protein": 14.0,
+    "carbs": 30.0,
+    "fat": 12.0,
+    "fiber": 1.0,
+    "sugar": 5.0,
+    "serving": "3 potong (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes",
+    "visual_clues": [
+      "bentuk lonjong atau bulat dari adonan ikan",
+      "berwarna putih keabu-abuan",
+      "disajikan dengan kuah cuko hitam pekat",
+      "sering dipotong-potong sebelum disajikan"
+    ]
+  },
+
+  "pempek kapal selam": {
+    "name": "Pempek Kapal Selam",
+    "aliases": ["kapal selam", "empek-empek kapal selam"],
+    "emoji": "🥚",
+    "calories": 320,
+    "protein": 16.0,
+    "carbs": 28.0,
+    "fat": 15.0,
+    "fiber": 0.5,
+    "sugar": 4.0,
+    "serving": "1 buah (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "siomay": {
+    "name": "Siomay",
+    "aliases": ["siomai", "dimsum siomay"],
+    "emoji": "🥟",
+    "calories": 175,
+    "protein": 10.0,
+    "carbs": 18.0,
+    "fat": 7.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "5 buah (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes",
+    "visual_clues": [
+      "bulat kecil dari adonan ikan atau udang",
+      "dibungkus kulit siomay tipis",
+      "disajikan dengan bumbu kacang",
+      "ada irisan kentang, tahu, pare, kol"
+    ]
+  },
+
+  "batagor": {
+    "name": "Batagor",
+    "aliases": ["baso tahu goreng", "batagor bandung"],
+    "emoji": "🥟",
+    "calories": 210,
+    "protein": 11.0,
+    "carbs": 20.0,
+    "fat": 10.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "5 buah (200g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ketoprak": {
+    "name": "Ketoprak",
+    "aliases": ["ketoprak jakarta", "ketoprak betawi"],
+    "emoji": "🥗",
+    "calories": 320,
+    "protein": 14.0,
+    "carbs": 38.0,
+    "fat": 13.0,
+    "fiber": 4.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lontong balap": {
+    "name": "Lontong Balap",
+    "aliases": ["lontong balap surabaya"],
+    "emoji": "🍲",
+    "calories": 380,
+    "protein": 18.0,
+    "carbs": 45.0,
+    "fat": 14.0,
+    "fiber": 5.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "rujak cingur": {
+    "name": "Rujak Cingur",
+    "aliases": ["rujak cingur surabaya"],
+    "emoji": "🥗",
+    "calories": 250,
+    "protein": 15.0,
+    "carbs": 22.0,
+    "fat": 12.0,
+    "fiber": 5.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "coto makassar": {
+    "name": "Coto Makassar",
+    "aliases": ["coto mangkasara"],
+    "emoji": "🍲",
+    "calories": 420,
+    "protein": 30.0,
+    "carbs": 15.0,
+    "fat": 28.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "konro": {
+    "name": "Konro",
+    "aliases": ["iga konro", "sop konro", "konro bakar"],
+    "emoji": "🍖",
+    "calories": 380,
+    "protein": 28.0,
+    "carbs": 8.0,
+    "fat": 26.0,
+    "fiber": 0.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "papeda": {
+    "name": "Papeda",
+    "aliases": ["bubur sagu papeda"],
+    "emoji": "🥣",
+    "calories": 130,
+    "protein": 1.5,
+    "carbs": 32.0,
+    "fat": 0.2,
+    "fiber": 1.0,
+    "sugar": 0.5,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ikan kuah kuning": {
+    "name": "Ikan Kuah Kuning",
+    "aliases": ["ikan kuah kuning maluku", "ikan kenari"],
+    "emoji": "🐟",
+    "calories": 200,
+    "protein": 22.0,
+    "carbs": 5.0,
+    "fat": 10.0,
+    "fiber": 1.0,
+    "sugar": 1.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi liwet": {
+    "name": "Nasi Liwet",
+    "aliases": ["nasi liwet solo", "nasi liwet sunda"],
+    "emoji": "🍚",
+    "calories": 350,
+    "protein": 8.0,
+    "carbs": 55.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi tumpeng": {
+    "name": "Nasi Tumpeng",
+    "aliases": ["tumpeng", "nasi kuning tumpeng"],
+    "emoji": "🎂",
+    "calories": 280,
+    "protein": 7.0,
+    "carbs": 45.0,
+    "fat": 8.0,
+    "fiber": 1.5,
+    "sugar": 1.5,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi gudeg": {
+    "name": "Nasi Gudeg",
+    "aliases": ["gudeg jogja", "gudeg yogyakarta"],
+    "emoji": "🍛",
+    "calories": 480,
+    "protein": 15.0,
+    "carbs": 65.0,
+    "fat": 18.0,
+    "fiber": 4.0,
+    "sugar": 12.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes",
+    "visual_clues": [
+      "nasi putih dengan gudeg (nangka muda) berwarna kecokelatan",
+      "ada telur pindang berwarna merah kecokelatan",
+      "ayam kampung atau suwiran ayam",
+      "sambal goreng krecek atau kulit sapi",
+      "santan kental berwarna cokelat manis"
+    ]
+  },
+
+  "gudeg": {
+    "name": "Gudeg",
+    "aliases": ["gudeg nangka", "gudeg basah", "gudeg kering"],
+    "emoji": "🟫",
+    "calories": 180,
+    "protein": 5.0,
+    "carbs": 28.0,
+    "fat": 6.0,
+    "fiber": 3.0,
+    "sugar": 10.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi gandul": {
+    "name": "Nasi Gandul",
+    "aliases": ["nasi gandul pati"],
+    "emoji": "🍛",
+    "calories": 450,
+    "protein": 20.0,
+    "carbs": 55.0,
+    "fat": 18.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sate lilit": {
+    "name": "Sate Lilit",
+    "aliases": ["sate lilit bali"],
+    "emoji": "🍢",
+    "calories": 220,
+    "protein": 20.0,
+    "carbs": 8.0,
+    "fat": 12.0,
+    "fiber": 1.0,
+    "sugar": 3.0,
+    "serving": "5 tusuk (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sate padang": {
+    "name": "Sate Padang",
+    "aliases": ["sate pariaman", "sate minang"],
+    "emoji": "🍢",
+    "calories": 240,
+    "protein": 22.0,
+    "carbs": 10.0,
+    "fat": 12.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "10 tusuk (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sate madura": {
+    "name": "Sate Madura",
+    "aliases": ["sate ayam madura"],
+    "emoji": "🍢",
+    "calories": 210,
+    "protein": 20.0,
+    "carbs": 8.0,
+    "fat": 10.0,
+    "fiber": 0.5,
+    "sugar": 6.0,
+    "serving": "10 tusuk (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ayam betutu": {
+    "name": "Ayam Betutu",
+    "aliases": ["betutu ayam", "ayam betutu bali"],
+    "emoji": "🍗",
+    "calories": 310,
+    "protein": 28.0,
+    "carbs": 6.0,
+    "fat": 20.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bebek betutu": {
+    "name": "Bebek Betutu",
+    "aliases": ["betutu bebek", "bebek betutu bali"],
+    "emoji": "🦆",
+    "calories": 340,
+    "protein": 26.0,
+    "carbs": 6.0,
+    "fat": 24.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lawar": {
+    "name": "Lawar",
+    "aliases": ["lawar bali", "lawar putih", "lawar merah"],
+    "emoji": "🥗",
+    "calories": 160,
+    "protein": 10.0,
+    "carbs": 10.0,
+    "fat": 10.0,
+    "fiber": 3.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "mie aceh": {
+    "name": "Mie Aceh",
+    "aliases": ["mi aceh"],
+    "emoji": "🍜",
+    "calories": 450,
+    "protein": 20.0,
+    "carbs": 55.0,
+    "fat": 18.0,
+    "fiber": 3.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (350g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "mie kocok": {
+    "name": "Mie Kocok",
+    "aliases": ["mie kocok bandung"],
+    "emoji": "🍜",
+    "calories": 380,
+    "protein": 18.0,
+    "carbs": 45.0,
+    "fat": 14.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lakse kuah": {
+    "name": "Lakse Kuah",
+    "aliases": ["laksa betawi", "laksa"],
+    "emoji": "🍜",
+    "calories": 360,
+    "protein": 15.0,
+    "carbs": 42.0,
+    "fat": 16.0,
+    "fiber": 2.5,
+    "sugar": 4.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ayam geprek": {
+    "name": "Ayam Geprek",
+    "aliases": ["ayam gepuk", "geprek"],
+    "emoji": "🍗",
+    "calories": 380,
+    "protein": 28.0,
+    "carbs": 15.0,
+    "fat": 25.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 potong + sambal (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ayam penyet": {
+    "name": "Ayam Penyet",
+    "aliases": ["ayam penyet surabaya"],
+    "emoji": "🍗",
+    "calories": 340,
+    "protein": 26.0,
+    "carbs": 10.0,
+    "fat": 22.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi bakar": {
+    "name": "Nasi Bakar",
+    "aliases": ["nasi bakar ikan asin"],
+    "emoji": "🍚",
+    "calories": 300,
+    "protein": 8.0,
+    "carbs": 48.0,
+    "fat": 10.0,
+    "fiber": 2.0,
+    "sugar": 1.5,
+    "serving": "1 bungkus (250g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi jinggo": {
+    "name": "Nasi Jinggo",
+    "aliases": ["nasi jinggo bali"],
+    "emoji": "🍚",
+    "calories": 250,
+    "protein": 8.0,
+    "carbs": 38.0,
+    "fat": 8.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 bungkus (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bubur ketan hitam": {
+    "name": "Bubur Ketan Hitam",
+    "aliases": ["ketan hitam", "bubur ketan"],
+    "emoji": "🥣",
+    "calories": 240,
+    "protein": 5.0,
+    "carbs": 48.0,
+    "fat": 4.0,
+    "fiber": 2.0,
+    "sugar": 15.0,
+    "serving": "1 mangkuk (250ml)",
+    "category": "Sarapan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bubur sumsum": {
+    "name": "Bubur Sumsum",
+    "aliases": ["sumsum"],
+    "emoji": "🥣",
+    "calories": 200,
+    "protein": 3.5,
+    "carbs": 38.0,
+    "fat": 5.0,
+    "fiber": 0.5,
+    "sugar": 18.0,
+    "serving": "1 mangkuk (200ml)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jenang": {
+    "name": "Jenang",
+    "aliases": ["dodol jawa", "jenang kudus"],
+    "emoji": "🟤",
+    "calories": 320,
+    "protein": 3.0,
+    "carbs": 62.0,
+    "fat": 8.0,
+    "fiber": 1.0,
+    "sugar": 40.0,
+    "serving": "3 potong (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cenil": {
+    "name": "Cenil",
+    "aliases": ["cenil jawa"],
+    "emoji": "🟣",
+    "calories": 145,
+    "protein": 1.5,
+    "carbs": 32.0,
+    "fat": 1.5,
+    "fiber": 0.5,
+    "sugar": 12.0,
+    "serving": "5 buah (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "getuk": {
+    "name": "Getuk",
+    "aliases": ["getuk singkong", "getuk lindri"],
+    "emoji": "🟠",
+    "calories": 175,
+    "protein": 1.5,
+    "carbs": 38.0,
+    "fat": 3.0,
+    "fiber": 2.0,
+    "sugar": 15.0,
+    "serving": "3 potong (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue putu": {
+    "name": "Kue Putu",
+    "aliases": ["putu bambu", "kue putu bambu"],
+    "emoji": "🟢",
+    "calories": 150,
+    "protein": 2.5,
+    "carbs": 30.0,
+    "fat": 3.0,
+    "fiber": 1.5,
+    "sugar": 10.0,
+    "serving": "3 buah (90g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue cubir": {
+    "name": "Kue Cubit",
+    "aliases": ["kue cubit", "egg puff"],
+    "emoji": "🟡",
+    "calories": 130,
+    "protein": 3.5,
+    "carbs": 22.0,
+    "fat": 4.0,
+    "fiber": 0.5,
+    "sugar": 10.0,
+    "serving": "5 buah (80g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue lumpur": {
+    "name": "Kue Lumpur",
+    "aliases": ["kue lumpur kentang"],
+    "emoji": "🟤",
+    "calories": 170,
+    "protein": 4.0,
+    "carbs": 28.0,
+    "fat": 6.0,
+    "fiber": 1.0,
+    "sugar": 12.0,
+    "serving": "3 buah (120g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nagasari": {
+    "name": "Nagasari",
+    "aliases": ["kue nagasari", "nagasari pisang"],
+    "emoji": "🍌",
+    "calories": 160,
+    "protein": 2.5,
+    "carbs": 30.0,
+    "fat": 4.5,
+    "fiber": 1.5,
+    "sugar": 12.0,
+    "serving": "2 buah (100g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lapis legit": {
+    "name": "Lapis Legit",
+    "aliases": ["spekkoek", "kue lapis legit"],
+    "emoji": "🎂",
+    "calories": 385,
+    "protein": 6.5,
+    "carbs": 40.0,
+    "fat": 22.0,
+    "fiber": 0.5,
+    "sugar": 28.0,
+    "serving": "2 potong (100g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue lapis": {
+    "name": "Kue Lapis",
+    "aliases": ["lapis tepung beras"],
+    "emoji": "🌈",
+    "calories": 150,
+    "protein": 2.0,
+    "carbs": 32.0,
+    "fat": 2.5,
+    "fiber": 0.5,
+    "sugar": 18.0,
+    "serving": "3 potong (100g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lupis": {
+    "name": "Lupis",
+    "aliases": ["ketan lupis"],
+    "emoji": "🍡",
+    "calories": 165,
+    "protein": 2.0,
+    "carbs": 35.0,
+    "fat": 2.0,
+    "fiber": 1.0,
+    "sugar": 12.0,
+    "serving": "3 potong (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "serabi": {
+    "name": "Serabi",
+    "aliases": ["surabi", "kue serabi"],
+    "emoji": "🥞",
+    "calories": 140,
+    "protein": 3.0,
+    "carbs": 26.0,
+    "fat": 4.0,
+    "fiber": 1.0,
+    "sugar": 8.0,
+    "serving": "2 buah (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue bikang": {
+    "name": "Kue Bikang",
+    "aliases": ["bikang ambon"],
+    "emoji": "🌸",
+    "calories": 145,
+    "protein": 2.5,
+    "carbs": 28.0,
+    "fat": 3.5,
+    "fiber": 0.5,
+    "sugar": 14.0,
+    "serving": "2 buah (80g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ongol-ongol": {
+    "name": "Ongol-Ongol",
+    "aliases": ["kue ongol ongol"],
+    "emoji": "🟤",
+    "calories": 130,
+    "protein": 1.0,
+    "carbs": 30.0,
+    "fat": 2.0,
+    "fiber": 0.5,
+    "sugar": 15.0,
+    "serving": "3 potong (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "grontol": {
+    "name": "Grontol",
+    "aliases": ["jagung grontol", "jagung rebus"],
+    "emoji": "🌽",
+    "calories": 120,
+    "protein": 3.5,
+    "carbs": 24.0,
+    "fat": 1.5,
+    "fiber": 2.5,
+    "sugar": 5.0,
+    "serving": "1 mangkuk (150g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kolak pisang": {
+    "name": "Kolak Pisang",
+    "aliases": ["kolak", "kolak ubi"],
+    "emoji": "🍌",
+    "calories": 180,
+    "protein": 2.0,
+    "carbs": 38.0,
+    "fat": 5.0,
+    "fiber": 2.0,
+    "sugar": 25.0,
+    "serving": "1 mangkuk (200ml)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "es dawet": {
+    "name": "Es Dawet",
+    "aliases": ["cendol", "es cendol", "dawet ayu"],
+    "emoji": "🟢",
+    "calories": 190,
+    "protein": 1.5,
+    "carbs": 40.0,
+    "fat": 4.5,
+    "fiber": 1.0,
+    "sugar": 30.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "es kelapa muda": {
+    "name": "Es Kelapa Muda",
+    "aliases": ["kelapa muda", "air kelapa", "es degan"],
+    "emoji": "🥥",
+    "calories": 80,
+    "protein": 1.0,
+    "carbs": 16.0,
+    "fat": 2.5,
+    "fiber": 1.5,
+    "sugar": 10.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "es teler": {
+    "name": "Es Teler",
+    "aliases": ["es teler alpukat"],
+    "emoji": "🥑",
+    "calories": 220,
+    "protein": 2.5,
+    "carbs": 35.0,
+    "fat": 9.0,
+    "fiber": 4.0,
+    "sugar": 25.0,
+    "serving": "1 gelas (300ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "es campur": {
+    "name": "Es Campur",
+    "aliases": ["es campuran", "es serut campur"],
+    "emoji": "🧊",
+    "calories": 200,
+    "protein": 2.0,
+    "carbs": 42.0,
+    "fat": 4.0,
+    "fiber": 2.0,
+    "sugar": 30.0,
+    "serving": "1 mangkuk (300ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "es doger": {
+    "name": "Es Doger",
+    "aliases": ["doger"],
+    "emoji": "🍧",
+    "calories": 215,
+    "protein": 2.5,
+    "carbs": 40.0,
+    "fat": 5.5,
+    "fiber": 1.5,
+    "sugar": 28.0,
+    "serving": "1 gelas (300ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "wedang jahe": {
+    "name": "Wedang Jahe",
+    "aliases": ["jahe hangat", "minuman jahe"],
+    "emoji": "🫚",
+    "calories": 60,
+    "protein": 0.3,
+    "carbs": 14.0,
+    "fat": 0.2,
+    "fiber": 0.5,
+    "sugar": 12.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bajigur": {
+    "name": "Bajigur",
+    "aliases": ["minuman bajigur"],
+    "emoji": "☕",
+    "calories": 120,
+    "protein": 1.5,
+    "carbs": 22.0,
+    "fat": 3.5,
+    "fiber": 0.5,
+    "sugar": 18.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bandrek": {
+    "name": "Bandrek",
+    "aliases": ["minuman bandrek"],
+    "emoji": "🌶️",
+    "calories": 85,
+    "protein": 0.5,
+    "carbs": 18.0,
+    "fat": 2.0,
+    "fiber": 0.5,
+    "sugar": 15.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sekoteng": {
+    "name": "Sekoteng",
+    "aliases": ["minuman sekoteng"],
+    "emoji": "🫘",
+    "calories": 140,
+    "protein": 3.5,
+    "carbs": 26.0,
+    "fat": 3.5,
+    "fiber": 2.0,
+    "sugar": 16.0,
+    "serving": "1 gelas (250ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kopi tubruk": {
+    "name": "Kopi Tubruk",
+    "aliases": ["kopi hitam tubruk"],
+    "emoji": "☕",
+    "calories": 5,
+    "protein": 0.3,
+    "carbs": 1.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 cangkir (150ml)",
+    "category": "Minuman",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kopi susu": {
+    "name": "Kopi Susu",
+    "aliases": ["kopi susu lokal", "kopi susu kekinian"],
+    "emoji": "☕",
+    "calories": 120,
+    "protein": 3.5,
+    "carbs": 18.0,
+    "fat": 4.0,
+    "fiber": 0.0,
+    "sugar": 15.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman",
+    "source": "TKPI Kemenkes"
+  },
+
+  "teh manis": {
+    "name": "Teh Manis",
+    "aliases": ["teh manis hangat", "teh manis dingin"],
+    "emoji": "🍵",
+    "calories": 70,
+    "protein": 0.0,
+    "carbs": 18.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 18.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jamu kunyit asam": {
+    "name": "Jamu Kunyit Asam",
+    "aliases": ["kunyit asam", "jamu"],
+    "emoji": "🌿",
+    "calories": 45,
+    "protein": 0.5,
+    "carbs": 10.0,
+    "fat": 0.5,
+    "fiber": 0.5,
+    "sugar": 8.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jamu beras kencur": {
+    "name": "Jamu Beras Kencur",
+    "aliases": ["beras kencur", "jamu beras"],
+    "emoji": "🌿",
+    "calories": 60,
+    "protein": 1.0,
+    "carbs": 13.0,
+    "fat": 0.5,
+    "fiber": 0.5,
+    "sugar": 10.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "asinan betawi": {
+    "name": "Asinan Betawi",
+    "aliases": ["asinan betawi jakarta"],
+    "emoji": "🥗",
+    "calories": 120,
+    "protein": 4.0,
+    "carbs": 18.0,
+    "fat": 4.0,
+    "fiber": 3.0,
+    "sugar": 8.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "asinan buah": {
+    "name": "Asinan Buah",
+    "aliases": ["acar buah"],
+    "emoji": "🍓",
+    "calories": 100,
+    "protein": 1.5,
+    "carbs": 22.0,
+    "fat": 1.0,
+    "fiber": 3.0,
+    "sugar": 14.0,
+    "serving": "1 porsi (200g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kerak telor": {
+    "name": "Kerak Telor",
+    "aliases": ["kerak telur"],
+    "emoji": "🥚",
+    "calories": 280,
+    "protein": 9.0,
+    "carbs": 40.0,
+    "fat": 10.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 buah (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tahu tek": {
+    "name": "Tahu Tek",
+    "aliases": ["tahu tek surabaya"],
+    "emoji": "🟨",
+    "calories": 250,
+    "protein": 12.0,
+    "carbs": 22.0,
+    "fat": 12.0,
+    "fiber": 3.5,
+    "sugar": 5.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kupat tahu": {
+    "name": "Kupat Tahu",
+    "aliases": ["ketupat tahu", "kupat tahu magelang", "kupat tahu bandung"],
+    "emoji": "🥗",
+    "calories": 290,
+    "protein": 10.0,
+    "carbs": 35.0,
+    "fat": 13.0,
+    "fiber": 3.0,
+    "sugar": 6.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lotek": {
+    "name": "Lotek",
+    "aliases": ["lotek bandung"],
+    "emoji": "🥗",
+    "calories": 230,
+    "protein": 9.0,
+    "carbs": 25.0,
+    "fat": 12.0,
+    "fiber": 5.0,
+    "sugar": 7.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tahu gejrot": {
+    "name": "Tahu Gejrot",
+    "aliases": ["tahu gejrot cirebon"],
+    "emoji": "🟨",
+    "calories": 155,
+    "protein": 8.0,
+    "carbs": 15.0,
+    "fat": 7.0,
+    "fiber": 1.0,
+    "sugar": 8.0,
+    "serving": "5 buah (100g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cireng": {
+    "name": "Cireng",
+    "aliases": ["aci goreng", "cireng bandung"],
+    "emoji": "⚪",
+    "calories": 195,
+    "protein": 2.0,
+    "carbs": 38.0,
+    "fat": 5.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "5 buah (100g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cimol": {
+    "name": "Cimol",
+    "aliases": ["aci digemol"],
+    "emoji": "⚪",
+    "calories": 175,
+    "protein": 2.0,
+    "carbs": 34.0,
+    "fat": 4.5,
+    "fiber": 0.5,
+    "sugar": 0.5,
+    "serving": "5 buah (80g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cilok": {
+    "name": "Cilok",
+    "aliases": ["aci dicolok"],
+    "emoji": "⚪",
+    "calories": 160,
+    "protein": 5.0,
+    "carbs": 28.0,
+    "fat": 4.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "5 buah (80g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "seblak": {
+    "name": "Seblak",
+    "aliases": ["seblak basah", "seblak kering", "seblak bandung"],
+    "emoji": "🌶️",
+    "calories": 260,
+    "protein": 8.0,
+    "carbs": 38.0,
+    "fat": 9.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (250g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "baso aci": {
+    "name": "Baso Aci",
+    "aliases": ["baso aci garut", "cuanki"],
+    "emoji": "🥣",
+    "calories": 240,
+    "protein": 7.0,
+    "carbs": 38.0,
+    "fat": 8.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "mie lidi": {
+    "name": "Mie Lidi",
+    "aliases": ["stik mie lidi"],
+    "emoji": "🍝",
+    "calories": 450,
+    "protein": 8.0,
+    "carbs": 65.0,
+    "fat": 18.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "1 bungkus (80g)",
+    "category": "Jajanan",
+    "source": "Open Food Facts"
+  },
+
+  "kerupuk udang": {
+    "name": "Kerupuk Udang",
+    "aliases": ["kerupuk", "prawn crackers"],
+    "emoji": "🦐",
+    "calories": 380,
+    "protein": 5.0,
+    "carbs": 62.0,
+    "fat": 14.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "10 keping (50g)",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kerupuk putih": {
+    "name": "Kerupuk Putih",
+    "aliases": ["kerupuk bawang"],
+    "emoji": "⚪",
+    "calories": 360,
+    "protein": 4.0,
+    "carbs": 65.0,
+    "fat": 11.0,
+    "fiber": 0.5,
+    "sugar": 1.0,
+    "serving": "10 keping (50g)",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "emping melinjo": {
+    "name": "Emping Melinjo",
+    "aliases": ["emping", "krupuk melinjo"],
+    "emoji": "🟡",
+    "calories": 350,
+    "protein": 5.5,
+    "carbs": 55.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "10 keping (50g)",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "keripik singkong": {
+    "name": "Keripik Singkong",
+    "aliases": ["keripik ketela", "cassava chips"],
+    "emoji": "🟡",
+    "calories": 400,
+    "protein": 2.5,
+    "carbs": 65.0,
+    "fat": 15.0,
+    "fiber": 2.0,
+    "sugar": 1.5,
+    "serving": "1 bungkus kecil (50g)",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "keripik pisang": {
+    "name": "Keripik Pisang",
+    "aliases": ["banana chips"],
+    "emoji": "🍌",
+    "calories": 380,
+    "protein": 2.5,
+    "carbs": 60.0,
+    "fat": 16.0,
+    "fiber": 3.0,
+    "sugar": 20.0,
+    "serving": "1 bungkus kecil (50g)",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kacang bawang": {
+    "name": "Kacang Bawang",
+    "aliases": ["kacang goreng bawang"],
+    "emoji": "🥜",
+    "calories": 490,
+    "protein": 22.0,
+    "carbs": 28.0,
+    "fat": 35.0,
+    "fiber": 5.0,
+    "sugar": 2.0,
+    "serving": "50g",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kacang atom": {
+    "name": "Kacang Atom",
+    "aliases": ["kacang kapri garing"],
+    "emoji": "🥜",
+    "calories": 440,
+    "protein": 18.0,
+    "carbs": 50.0,
+    "fat": 20.0,
+    "fiber": 4.0,
+    "sugar": 3.0,
+    "serving": "50g",
+    "category": "Camilan",
+    "source": "Open Food Facts"
+  },
+
+  "kacang telur": {
+    "name": "Kacang Telur",
+    "aliases": ["kacang dengan lapisan telur"],
+    "emoji": "🥚",
+    "calories": 460,
+    "protein": 20.0,
+    "carbs": 45.0,
+    "fat": 22.0,
+    "fiber": 3.0,
+    "sugar": 4.0,
+    "serving": "50g",
+    "category": "Camilan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bakpia": {
+    "name": "Bakpia",
+    "aliases": ["bakpia pathok", "bakpia jogja", "bakpia kacang hijau"],
+    "emoji": "🫓",
+    "calories": 340,
+    "protein": 6.0,
+    "carbs": 52.0,
+    "fat": 13.0,
+    "fiber": 2.0,
+    "sugar": 15.0,
+    "serving": "3 buah (90g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "dodol": {
+    "name": "Dodol",
+    "aliases": ["dodol garut", "wajit", "kue dodol"],
+    "emoji": "🟤",
+    "calories": 310,
+    "protein": 2.0,
+    "carbs": 60.0,
+    "fat": 8.0,
+    "fiber": 1.0,
+    "sugar": 40.0,
+    "serving": "3 potong (80g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kue cucur": {
+    "name": "Kue Cucur",
+    "aliases": ["cucur", "kue cucur merah"],
+    "emoji": "🟤",
+    "calories": 155,
+    "protein": 2.0,
+    "carbs": 30.0,
+    "fat": 4.0,
+    "fiber": 1.0,
+    "sugar": 15.0,
+    "serving": "2 buah (80g)",
+    "category": "Kue Tradisional",
+    "source": "TKPI Kemenkes"
+  },
+
+  "onde onde": {
+    "name": "Onde-Onde",
+    "aliases": ["onde onde wijen"],
+    "emoji": "🟡",
+    "calories": 220,
+    "protein": 4.5,
+    "carbs": 35.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 12.0,
+    "serving": "3 buah (90g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "roti canai": {
+    "name": "Roti Canai",
+    "aliases": ["roti prata", "roti maryam"],
+    "emoji": "🫓",
+    "calories": 290,
+    "protein": 7.5,
+    "carbs": 42.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "2 lembar (120g)",
+    "category": "Roti",
+    "source": "TKPI Kemenkes"
+  },
+
+  "roti gambang": {
+    "name": "Roti Gambang",
+    "aliases": ["roti gambang betawi"],
+    "emoji": "🍞",
+    "calories": 280,
+    "protein": 6.5,
+    "carbs": 48.0,
+    "fat": 7.5,
+    "fiber": 2.0,
+    "sugar": 12.0,
+    "serving": "2 potong (100g)",
+    "category": "Roti",
+    "source": "TKPI Kemenkes"
+  },
+
+  "roti buaya": {
+    "name": "Roti Buaya",
+    "aliases": ["roti buaya betawi"],
+    "emoji": "🍞",
+    "calories": 275,
+    "protein": 7.0,
+    "carbs": 50.0,
+    "fat": 6.0,
+    "fiber": 1.5,
+    "sugar": 10.0,
+    "serving": "100g",
+    "category": "Roti",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lemper": {
+    "name": "Lemper",
+    "aliases": ["lemper ayam", "lemper ketan"],
+    "emoji": "🍙",
+    "calories": 200,
+    "protein": 6.5,
+    "carbs": 32.0,
+    "fat": 6.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "2 buah (100g)",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lalampa": {
+    "name": "Lalampa",
+    "aliases": ["lalampa manado"],
+    "emoji": "🍙",
+    "calories": 190,
+    "protein": 6.0,
+    "carbs": 30.0,
+    "fat": 5.5,
+    "fiber": 1.0,
+    "sugar": 1.5,
+    "serving": "2 buah (100g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "otak-otak": {
+    "name": "Otak-Otak",
+    "aliases": ["otak otak ikan", "otakotok"],
+    "emoji": "🐟",
+    "calories": 155,
+    "protein": 14.0,
+    "carbs": 12.0,
+    "fat": 6.0,
+    "fiber": 0.5,
+    "sugar": 2.0,
+    "serving": "3 buah (100g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "balado": {
+    "name": "Balado",
+    "aliases": ["rendang balado", "ayam balado", "kentang balado"],
+    "emoji": "🌶️",
+    "calories": 180,
+    "protein": 14.0,
+    "carbs": 8.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "telur balado": {
+    "name": "Telur Balado",
+    "aliases": ["telor balado"],
+    "emoji": "🥚",
+    "calories": 175,
+    "protein": 11.0,
+    "carbs": 5.0,
+    "fat": 13.0,
+    "fiber": 0.5,
+    "sugar": 3.0,
+    "serving": "1 butir (80g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sambal goreng kentang": {
+    "name": "Sambal Goreng Kentang",
+    "aliases": ["sambal goreng", "kentang sambal goreng"],
+    "emoji": "🥔",
+    "calories": 220,
+    "protein": 4.0,
+    "carbs": 28.0,
+    "fat": 12.0,
+    "fiber": 2.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (150g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "perkedel": {
+    "name": "Perkedel",
+    "aliases": ["perkedel kentang", "frikadel"],
+    "emoji": "🟡",
+    "calories": 160,
+    "protein": 5.0,
+    "carbs": 20.0,
+    "fat": 8.0,
+    "fiber": 1.5,
+    "sugar": 1.5,
+    "serving": "2 buah (100g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tahu tempe bacem": {
+    "name": "Tahu Tempe Bacem",
+    "aliases": ["bacem", "tempe bacem", "tahu bacem"],
+    "emoji": "🟫",
+    "calories": 170,
+    "protein": 12.0,
+    "carbs": 15.0,
+    "fat": 8.0,
+    "fiber": 2.5,
+    "sugar": 8.0,
+    "serving": "2 potong (100g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "abon sapi": {
+    "name": "Abon Sapi",
+    "aliases": ["abon", "abon daging sapi"],
+    "emoji": "🟤",
+    "calories": 350,
+    "protein": 25.0,
+    "carbs": 18.0,
+    "fat": 20.0,
+    "fiber": 0.5,
+    "sugar": 5.0,
+    "serving": "2 sdm (30g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "gepuk": {
+    "name": "Gepuk",
+    "aliases": ["daging gepuk", "gepuk daging sapi"],
+    "emoji": "🥩",
+    "calories": 280,
+    "protein": 22.0,
+    "carbs": 10.0,
+    "fat": 18.0,
+    "fiber": 0.5,
+    "sugar": 5.0,
+    "serving": "1 potong (100g)",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "empal gentong": {
+    "name": "Empal Gentong",
+    "aliases": ["empal gentong cirebon"],
+    "emoji": "🍲",
+    "calories": 380,
+    "protein": 22.0,
+    "carbs": 18.0,
+    "fat": 25.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pindang": {
+    "name": "Ikan Pindang",
+    "aliases": ["pindang ikan", "pindang patin"],
+    "emoji": "🐟",
+    "calories": 210,
+    "protein": 24.0,
+    "carbs": 5.0,
+    "fat": 10.0,
+    "fiber": 0.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "gulai kambing": {
+    "name": "Gulai Kambing",
+    "aliases": ["gulai daging kambing"],
+    "emoji": "🍲",
+    "calories": 340,
+    "protein": 24.0,
+    "carbs": 8.0,
+    "fat": 24.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tongseng": {
+    "name": "Tongseng",
+    "aliases": ["tongseng kambing", "tongseng sapi"],
+    "emoji": "🍲",
+    "calories": 290,
+    "protein": 20.0,
+    "carbs": 12.0,
+    "fat": 18.0,
+    "fiber": 2.0,
+    "sugar": 4.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "gule sapi": {
+    "name": "Gulai Sapi",
+    "aliases": ["gulai sapi", "gule sapi"],
+    "emoji": "🍲",
+    "calories": 310,
+    "protein": 22.0,
+    "carbs": 8.0,
+    "fat": 22.0,
+    "fiber": 1.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sop kambing": {
+    "name": "Sop Kambing",
+    "aliases": ["sup kambing"],
+    "emoji": "🍲",
+    "calories": 255,
+    "protein": 18.0,
+    "carbs": 12.0,
+    "fat": 16.0,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "1 mangkuk (350ml)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kari ayam": {
+    "name": "Kari Ayam",
+    "aliases": ["curry ayam", "kari"],
+    "emoji": "🍛",
+    "calories": 280,
+    "protein": 20.0,
+    "carbs": 10.0,
+    "fat": 18.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (200g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sate buntel": {
+    "name": "Sate Buntel",
+    "aliases": ["sate kambing buntel solo"],
+    "emoji": "🍢",
+    "calories": 300,
+    "protein": 20.0,
+    "carbs": 6.0,
+    "fat": 22.0,
+    "fiber": 0.5,
+    "sugar": 4.0,
+    "serving": "5 tusuk (150g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi goreng seafood": {
+    "name": "Nasi Goreng Seafood",
+    "aliases": ["nasgor seafood", "nasi goreng campur laut"],
+    "emoji": "🦐",
+    "calories": 420,
+    "protein": 18.0,
+    "carbs": 52.0,
+    "fat": 16.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nasi goreng pete": {
+    "name": "Nasi Goreng Pete",
+    "aliases": ["nasgor pete", "nasi goreng petai"],
+    "emoji": "🍳",
+    "calories": 385,
+    "protein": 12.0,
+    "carbs": 50.0,
+    "fat": 15.0,
+    "fiber": 3.0,
+    "sugar": 2.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kwetiau goreng": {
+    "name": "Kwetiau Goreng",
+    "aliases": ["kwetiaw goreng", "flat noodle"],
+    "emoji": "🍝",
+    "calories": 360,
+    "protein": 12.0,
+    "carbs": 52.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 porsi (250g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kwetiau rebus": {
+    "name": "Kwetiau Rebus",
+    "aliases": ["kwetiaw kuah", "kwetiau kuah"],
+    "emoji": "🍜",
+    "calories": 280,
+    "protein": 10.0,
+    "carbs": 45.0,
+    "fat": 8.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 mangkuk (300g)",
+    "category": "Makanan Utama",
+    "source": "TKPI Kemenkes"
+  },
+
+  "lakso": {
+    "name": "Laksoan",
+    "aliases": ["lakso palembang", "mie kuning palembang"],
+    "emoji": "🍜",
+    "calories": 320,
+    "protein": 14.0,
+    "carbs": 42.0,
+    "fat": 12.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 porsi (300g)",
+    "category": "Makanan Khas Daerah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jagung bakar": {
+    "name": "Jagung Bakar",
+    "aliases": ["jagung panggang", "corn on the cob"],
+    "emoji": "🌽",
+    "calories": 130,
+    "protein": 3.5,
+    "carbs": 27.0,
+    "fat": 2.5,
+    "fiber": 3.0,
+    "sugar": 6.0,
+    "serving": "1 tongkol (150g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pisang goreng": {
+    "name": "Pisang Goreng",
+    "aliases": ["goreng pisang", "pisang goreng crispy"],
+    "emoji": "🍌",
+    "calories": 195,
+    "protein": 2.0,
+    "carbs": 35.0,
+    "fat": 7.0,
+    "fiber": 2.5,
+    "sugar": 15.0,
+    "serving": "2 buah (100g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pisang bakar": {
+    "name": "Pisang Bakar",
+    "aliases": ["pisang panggang", "banana bakar"],
+    "emoji": "🍌",
+    "calories": 155,
+    "protein": 1.5,
+    "carbs": 32.0,
+    "fat": 3.5,
+    "fiber": 2.5,
+    "sugar": 18.0,
+    "serving": "2 buah (120g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ubi goreng": {
+    "name": "Ubi Goreng",
+    "aliases": ["ubi rebus goreng", "ketela goreng"],
+    "emoji": "🍠",
+    "calories": 175,
+    "protein": 1.5,
+    "carbs": 36.0,
+    "fat": 4.0,
+    "fiber": 2.5,
+    "sugar": 8.0,
+    "serving": "2 potong (100g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "singkong rebus": {
+    "name": "Singkong Rebus",
+    "aliases": ["ketela rebus", "ubi kayu rebus"],
+    "emoji": "🍠",
+    "calories": 135,
+    "protein": 1.2,
+    "carbs": 32.0,
+    "fat": 0.3,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "2 potong (150g)",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tape singkong": {
+    "name": "Tape Singkong",
+    "aliases": ["tapai singkong", "tape ketela"],
+    "emoji": "🟡",
+    "calories": 155,
+    "protein": 1.0,
+    "carbs": 36.0,
+    "fat": 0.3,
+    "fiber": 1.5,
+    "sugar": 18.0,
+    "serving": "100g",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tape ketan": {
+    "name": "Tape Ketan",
+    "aliases": ["tapai ketan", "ketan tape"],
+    "emoji": "🟢",
+    "calories": 165,
+    "protein": 2.5,
+    "carbs": 36.0,
+    "fat": 1.0,
+    "fiber": 0.5,
+    "sugar": 15.0,
+    "serving": "100g",
+    "category": "Jajanan Pasar",
+    "source": "TKPI Kemenkes"
+  },
+
+  "brem": {
+    "name": "Brem",
+    "aliases": ["brem madiun", "brem bali"],
+    "emoji": "🟡",
+    "calories": 340,
+    "protein": 1.0,
+    "carbs": 80.0,
+    "fat": 0.2,
+    "fiber": 0.5,
+    "sugar": 55.0,
+    "serving": "50g",
+    "category": "Jajanan",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kecing": {
+    "name": "Kecipir",
+    "aliases": ["kecipir rebus", "wing bean"],
+    "emoji": "🌿",
+    "calories": 35,
+    "protein": 3.0,
+    "carbs": 5.0,
+    "fat": 0.5,
+    "fiber": 3.5,
+    "sugar": 1.0,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "daun singkong": {
+    "name": "Daun Singkong",
+    "aliases": ["daun ketela", "cassava leaves"],
+    "emoji": "🌿",
+    "calories": 75,
+    "protein": 5.5,
+    "carbs": 9.0,
+    "fat": 1.5,
+    "fiber": 4.5,
+    "sugar": 1.0,
+    "serving": "1 mangkuk (100g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bayam rebus": {
+    "name": "Bayam Rebus",
+    "aliases": ["sayur bayam", "spinach"],
+    "emoji": "🥬",
+    "calories": 25,
+    "protein": 2.5,
+    "carbs": 3.5,
+    "fat": 0.4,
+    "fiber": 2.5,
+    "sugar": 0.5,
+    "serving": "1 mangkuk (100g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kangkung rebus": {
+    "name": "Kangkung Rebus",
+    "aliases": ["water spinach"],
+    "emoji": "🌿",
+    "calories": 20,
+    "protein": 2.2,
+    "carbs": 2.8,
+    "fat": 0.2,
+    "fiber": 2.0,
+    "sugar": 0.5,
+    "serving": "1 mangkuk (100g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "brokoli": {
+    "name": "Brokoli",
+    "aliases": ["broccoli"],
+    "emoji": "🥦",
+    "calories": 34,
+    "protein": 2.8,
+    "carbs": 6.6,
+    "fat": 0.4,
+    "fiber": 2.6,
+    "sugar": 1.7,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "wortel": {
+    "name": "Wortel",
+    "aliases": ["carrot", "wotel"],
+    "emoji": "🥕",
+    "calories": 41,
+    "protein": 0.9,
+    "carbs": 9.6,
+    "fat": 0.2,
+    "fiber": 2.8,
+    "sugar": 4.7,
+    "serving": "1 buah (100g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kentang rebus": {
+    "name": "Kentang Rebus",
+    "aliases": ["potato boiled", "kentang kukus"],
+    "emoji": "🥔",
+    "calories": 87,
+    "protein": 1.9,
+    "carbs": 20.1,
+    "fat": 0.1,
+    "fiber": 1.8,
+    "sugar": 0.9,
+    "serving": "1 buah sedang (150g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jagung rebus": {
+    "name": "Jagung Rebus",
+    "aliases": ["corn boiled"],
+    "emoji": "🌽",
+    "calories": 96,
+    "protein": 3.4,
+    "carbs": 21.0,
+    "fat": 1.5,
+    "fiber": 2.4,
+    "sugar": 4.5,
+    "serving": "1 tongkol (150g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tauge": {
+    "name": "Tauge",
+    "aliases": ["toge", "bean sprouts", "kecambah"],
+    "emoji": "🌱",
+    "calories": 30,
+    "protein": 3.0,
+    "carbs": 5.9,
+    "fat": 0.2,
+    "fiber": 1.8,
+    "sugar": 4.0,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "terong": {
+    "name": "Terong",
+    "aliases": ["eggplant", "terung"],
+    "emoji": "🍆",
+    "calories": 25,
+    "protein": 1.0,
+    "carbs": 5.7,
+    "fat": 0.2,
+    "fiber": 3.0,
+    "sugar": 3.5,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pare": {
+    "name": "Pare",
+    "aliases": ["paria", "bitter melon", "bitter gourd"],
+    "emoji": "🟢",
+    "calories": 17,
+    "protein": 1.0,
+    "carbs": 3.7,
+    "fat": 0.2,
+    "fiber": 2.8,
+    "sugar": 1.5,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kacang panjang": {
+    "name": "Kacang Panjang",
+    "aliases": ["long bean"],
+    "emoji": "🫘",
+    "calories": 47,
+    "protein": 2.6,
+    "carbs": 8.4,
+    "fat": 0.4,
+    "fiber": 3.6,
+    "sugar": 3.0,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "labu siam": {
+    "name": "Labu Siam",
+    "aliases": ["chayote", "jipang"],
+    "emoji": "🟩",
+    "calories": 19,
+    "protein": 0.8,
+    "carbs": 4.5,
+    "fat": 0.1,
+    "fiber": 1.7,
+    "sugar": 1.7,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nangka muda": {
+    "name": "Nangka Muda",
+    "aliases": ["jackfruit young", "gudeg nangka muda"],
+    "emoji": "🍈",
+    "calories": 51,
+    "protein": 2.0,
+    "carbs": 11.0,
+    "fat": 0.3,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nangka matang": {
+    "name": "Nangka Matang",
+    "aliases": ["jackfruit ripe", "nangka"],
+    "emoji": "🍈",
+    "calories": 95,
+    "protein": 1.7,
+    "carbs": 23.2,
+    "fat": 0.6,
+    "fiber": 1.5,
+    "sugar": 19.0,
+    "serving": "100g",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "mangga": {
+    "name": "Mangga",
+    "aliases": ["mango"],
+    "emoji": "🥭",
+    "calories": 60,
+    "protein": 0.8,
+    "carbs": 15.0,
+    "fat": 0.4,
+    "fiber": 1.6,
+    "sugar": 13.7,
+    "serving": "1 buah sedang (150g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "alpukat": {
+    "name": "Alpukat",
+    "aliases": ["avocado", "avokad"],
+    "emoji": "🥑",
+    "calories": 160,
+    "protein": 2.0,
+    "carbs": 8.5,
+    "fat": 14.7,
+    "fiber": 6.7,
+    "sugar": 0.7,
+    "serving": "1 buah (200g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pisang kepok": {
+    "name": "Pisang Kepok",
+    "aliases": ["banana kepok"],
+    "emoji": "🍌",
+    "calories": 100,
+    "protein": 1.2,
+    "carbs": 26.0,
+    "fat": 0.3,
+    "fiber": 2.0,
+    "sugar": 14.0,
+    "serving": "1 buah (120g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pisang ambon": {
+    "name": "Pisang Ambon",
+    "aliases": ["banana cavendish"],
+    "emoji": "🍌",
+    "calories": 89,
+    "protein": 1.1,
+    "carbs": 23.0,
+    "fat": 0.3,
+    "fiber": 2.6,
+    "sugar": 12.2,
+    "serving": "1 buah sedang (118g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "papaya": {
+    "name": "Pepaya",
+    "aliases": ["papaya", "pepaya"],
+    "emoji": "🍈",
+    "calories": 43,
+    "protein": 0.5,
+    "carbs": 10.8,
+    "fat": 0.3,
+    "fiber": 1.7,
+    "sugar": 7.8,
+    "serving": "1 potong (150g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jeruk nipis": {
+    "name": "Jeruk Nipis",
+    "aliases": ["lime", "lemon nipis"],
+    "emoji": "🍋",
+    "calories": 30,
+    "protein": 0.7,
+    "carbs": 10.7,
+    "fat": 0.2,
+    "fiber": 2.8,
+    "sugar": 1.7,
+    "serving": "1 buah (50g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jeruk manis": {
+    "name": "Jeruk Manis",
+    "aliases": ["orange", "jeruk"],
+    "emoji": "🍊",
+    "calories": 47,
+    "protein": 0.9,
+    "carbs": 11.8,
+    "fat": 0.1,
+    "fiber": 2.4,
+    "sugar": 9.4,
+    "serving": "1 buah (180g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "semangka": {
+    "name": "Semangka",
+    "aliases": ["watermelon"],
+    "emoji": "🍉",
+    "calories": 30,
+    "protein": 0.6,
+    "carbs": 7.6,
+    "fat": 0.2,
+    "fiber": 0.4,
+    "sugar": 6.2,
+    "serving": "1 potong (200g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "melon": {
+    "name": "Melon",
+    "aliases": ["musk melon"],
+    "emoji": "🍈",
+    "calories": 34,
+    "protein": 0.8,
+    "carbs": 8.2,
+    "fat": 0.2,
+    "fiber": 0.9,
+    "sugar": 7.9,
+    "serving": "1 potong (200g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "nanas": {
+    "name": "Nanas",
+    "aliases": ["pineapple"],
+    "emoji": "🍍",
+    "calories": 50,
+    "protein": 0.5,
+    "carbs": 13.1,
+    "fat": 0.1,
+    "fiber": 1.4,
+    "sugar": 9.9,
+    "serving": "1 potong (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kelengkeng": {
+    "name": "Kelengkeng",
+    "aliases": ["longan", "lengkeng"],
+    "emoji": "🍇",
+    "calories": 60,
+    "protein": 1.3,
+    "carbs": 15.1,
+    "fat": 0.1,
+    "fiber": 1.1,
+    "sugar": 13.1,
+    "serving": "10 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "rambutan": {
+    "name": "Rambutan",
+    "aliases": ["rambutan buah"],
+    "emoji": "🍓",
+    "calories": 68,
+    "protein": 0.9,
+    "carbs": 16.5,
+    "fat": 0.2,
+    "fiber": 0.9,
+    "sugar": 13.5,
+    "serving": "10 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "duku": {
+    "name": "Duku",
+    "aliases": ["langsat", "duku buah"],
+    "emoji": "🍑",
+    "calories": 54,
+    "protein": 1.0,
+    "carbs": 13.4,
+    "fat": 0.2,
+    "fiber": 0.7,
+    "sugar": 10.0,
+    "serving": "10 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "salak": {
+    "name": "Salak",
+    "aliases": ["salak pondoh", "snake fruit"],
+    "emoji": "🍑",
+    "calories": 77,
+    "protein": 0.4,
+    "carbs": 20.9,
+    "fat": 0.4,
+    "fiber": 1.5,
+    "sugar": 16.0,
+    "serving": "3 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jambu biji": {
+    "name": "Jambu Biji",
+    "aliases": ["guava", "jambu merah"],
+    "emoji": "🍐",
+    "calories": 68,
+    "protein": 2.6,
+    "carbs": 14.3,
+    "fat": 1.0,
+    "fiber": 5.4,
+    "sugar": 8.9,
+    "serving": "1 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "buah naga": {
+    "name": "Buah Naga",
+    "aliases": ["dragon fruit", "pitaya"],
+    "emoji": "🐉",
+    "calories": 60,
+    "protein": 1.2,
+    "carbs": 13.0,
+    "fat": 0.4,
+    "fiber": 3.0,
+    "sugar": 8.0,
+    "serving": "1 buah sedang (200g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "durian": {
+    "name": "Durian",
+    "aliases": ["durian buah"],
+    "emoji": "🟡",
+    "calories": 147,
+    "protein": 1.5,
+    "carbs": 27.1,
+    "fat": 5.3,
+    "fiber": 3.8,
+    "sugar": 17.5,
+    "serving": "1 biji besar (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "manggis": {
+    "name": "Manggis",
+    "aliases": ["mangosteen"],
+    "emoji": "🍇",
+    "calories": 73,
+    "protein": 0.4,
+    "carbs": 17.9,
+    "fat": 0.6,
+    "fiber": 1.8,
+    "sugar": 16.1,
+    "serving": "1 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sawo": {
+    "name": "Sawo",
+    "aliases": ["sapodilla", "sawo manila"],
+    "emoji": "🟤",
+    "calories": 83,
+    "protein": 0.4,
+    "carbs": 20.0,
+    "fat": 1.1,
+    "fiber": 5.3,
+    "sugar": 15.0,
+    "serving": "1 buah (100g)",
+    "category": "Buah",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kecap manis": {
+    "name": "Kecap Manis",
+    "aliases": ["kecap", "sweet soy sauce"],
+    "emoji": "🫙",
+    "calories": 75,
+    "protein": 2.5,
+    "carbs": 16.0,
+    "fat": 0.1,
+    "fiber": 0.0,
+    "sugar": 14.0,
+    "serving": "2 sdm (30ml)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sambal terasi": {
+    "name": "Sambal Terasi",
+    "aliases": ["sambal belacan"],
+    "emoji": "🌶️",
+    "calories": 50,
+    "protein": 2.0,
+    "carbs": 8.0,
+    "fat": 2.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "2 sdm (30g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "sambal ijo": {
+    "name": "Sambal Ijo",
+    "aliases": ["sambal hijau", "sambal padang ijo"],
+    "emoji": "🟢",
+    "calories": 45,
+    "protein": 1.5,
+    "carbs": 7.5,
+    "fat": 1.5,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "2 sdm (30g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "pete": {
+    "name": "Pete",
+    "aliases": ["petai", "stinky beans", "parkia"],
+    "emoji": "🫘",
+    "calories": 142,
+    "protein": 5.8,
+    "carbs": 26.2,
+    "fat": 1.5,
+    "fiber": 8.5,
+    "sugar": 2.0,
+    "serving": "1 papan (50g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jengkol": {
+    "name": "Jengkol",
+    "aliases": ["dogfruit"],
+    "emoji": "🟤",
+    "calories": 192,
+    "protein": 5.4,
+    "carbs": 40.7,
+    "fat": 0.3,
+    "fiber": 1.5,
+    "sugar": 2.0,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tempe kedelai": {
+    "name": "Tempe Kedelai",
+    "aliases": ["tempe", "soy tempeh"],
+    "emoji": "🟫",
+    "calories": 195,
+    "protein": 20.7,
+    "carbs": 17.1,
+    "fat": 7.7,
+    "fiber": 4.9,
+    "sugar": 1.0,
+    "serving": "100g",
+    "category": "Protein Nabati",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tahu putih": {
+    "name": "Tahu Putih",
+    "aliases": ["tahu sutera", "silken tofu"],
+    "emoji": "⬜",
+    "calories": 76,
+    "protein": 8.1,
+    "carbs": 1.9,
+    "fat": 4.2,
+    "fiber": 0.3,
+    "sugar": 0.5,
+    "serving": "100g",
+    "category": "Protein Nabati",
+    "source": "TKPI Kemenkes"
+  },
+
+  "oncom": {
+    "name": "Oncom",
+    "aliases": ["oncom hitam", "oncom merah"],
+    "emoji": "🟠",
+    "calories": 135,
+    "protein": 10.9,
+    "carbs": 16.0,
+    "fat": 3.5,
+    "fiber": 4.0,
+    "sugar": 1.0,
+    "serving": "100g",
+    "category": "Protein Nabati",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ikan teri": {
+    "name": "Ikan Teri",
+    "aliases": ["teri nasi", "anchovy", "teri goreng"],
+    "emoji": "🐟",
+    "calories": 176,
+    "protein": 33.4,
+    "carbs": 0.0,
+    "fat": 4.4,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "50g",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "ikan asin": {
+    "name": "Ikan Asin",
+    "aliases": ["ikan asin goreng", "salted fish"],
+    "emoji": "🐟",
+    "calories": 195,
+    "protein": 42.0,
+    "carbs": 0.0,
+    "fat": 2.5,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "50g",
+    "category": "Lauk Pauk",
+    "source": "TKPI Kemenkes"
+  },
+
+  "telur rebus": {
+    "name": "Telur Rebus",
+    "aliases": ["boiled egg", "telor rebus"],
+    "emoji": "🥚",
+    "calories": 77,
+    "protein": 6.3,
+    "carbs": 0.6,
+    "fat": 5.3,
+    "fiber": 0.0,
+    "sugar": 0.6,
+    "serving": "1 butir (50g)",
+    "category": "Protein",
+    "source": "TKPI Kemenkes"
+  },
+
+  "telur ceplok": {
+    "name": "Telur Ceplok",
+    "aliases": ["telur sunny side up", "telur mata sapi"],
+    "emoji": "🍳",
+    "calories": 90,
+    "protein": 6.0,
+    "carbs": 0.5,
+    "fat": 7.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 butir (60g)",
+    "category": "Protein",
+    "source": "TKPI Kemenkes"
+  },
+
+  "telur pindang": {
+    "name": "Telur Pindang",
+    "aliases": ["pindang telur", "telur pindang jawa"],
+    "emoji": "🥚",
+    "calories": 75,
+    "protein": 6.0,
+    "carbs": 1.0,
+    "fat": 5.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 butir (50g)",
+    "category": "Protein",
+    "source": "TKPI Kemenkes"
+  },
+
+  "indomie goreng": {
+    "name": "Indomie Goreng",
+    "aliases": ["indomie mie goreng", "indomi goreng"],
+    "emoji": "🍝",
+    "calories": 395,
+    "protein": 8.0,
+    "carbs": 55.0,
+    "fat": 17.0,
+    "fiber": 2.0,
+    "sugar": 4.0,
+    "serving": "1 bungkus (85g)",
+    "category": "Mie Instan",
+    "source": "Open Food Facts"
+  },
+
+  "indomie kuah": {
+    "name": "Indomie Kuah",
+    "aliases": ["indomie soto", "indomie ayam bawang", "indomie rasa"],
+    "emoji": "🍜",
+    "calories": 330,
+    "protein": 7.0,
+    "carbs": 50.0,
+    "fat": 12.0,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 bungkus (75g)",
+    "category": "Mie Instan",
+    "source": "Open Food Facts"
+  },
+
+  "mie sedap goreng": {
+    "name": "Mie Sedap Goreng",
+    "aliases": ["sedaap goreng"],
+    "emoji": "🍝",
+    "calories": 385,
+    "protein": 7.5,
+    "carbs": 54.0,
+    "fat": 16.5,
+    "fiber": 2.0,
+    "sugar": 3.5,
+    "serving": "1 bungkus (85g)",
+    "category": "Mie Instan",
+    "source": "Open Food Facts"
+  },
+
+  "mie sedap kuah": {
+    "name": "Mie Sedap Kuah",
+    "aliases": ["sedaap kuah"],
+    "emoji": "🍜",
+    "calories": 320,
+    "protein": 6.5,
+    "carbs": 48.0,
+    "fat": 11.5,
+    "fiber": 1.5,
+    "sugar": 2.5,
+    "serving": "1 bungkus (75g)",
+    "category": "Mie Instan",
+    "source": "Open Food Facts"
+  },
+
+  "pop mie": {
+    "name": "Pop Mie",
+    "aliases": ["pop mie cup", "cup noodle"],
+    "emoji": "🍜",
+    "calories": 345,
+    "protein": 6.5,
+    "carbs": 46.0,
+    "fat": 15.5,
+    "fiber": 1.5,
+    "sugar": 3.0,
+    "serving": "1 cup (75g)",
+    "category": "Mie Instan",
+    "source": "Open Food Facts"
+  },
+
+  "chitato": {
+    "name": "Chitato",
+    "aliases": ["chitato keripik kentang"],
+    "emoji": "🥔",
+    "calories": 540,
+    "protein": 5.5,
+    "carbs": 54.0,
+    "fat": 34.0,
+    "fiber": 4.0,
+    "sugar": 2.0,
+    "serving": "1 bungkus (68g)",
+    "category": "Snack Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "chiki": {
+    "name": "Chiki",
+    "aliases": ["chiki balls"],
+    "emoji": "🟡",
+    "calories": 480,
+    "protein": 7.0,
+    "carbs": 60.0,
+    "fat": 24.0,
+    "fiber": 2.0,
+    "sugar": 3.0,
+    "serving": "1 bungkus (60g)",
+    "category": "Snack Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "lays": {
+    "name": "Lays",
+    "aliases": ["lays chips", "potato chips"],
+    "emoji": "🥔",
+    "calories": 520,
+    "protein": 5.0,
+    "carbs": 58.0,
+    "fat": 30.0,
+    "fiber": 3.5,
+    "sugar": 2.0,
+    "serving": "1 bungkus (70g)",
+    "category": "Snack Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "oreo": {
+    "name": "Oreo",
+    "aliases": ["biskuit oreo"],
+    "emoji": "⚫",
+    "calories": 470,
+    "protein": 5.0,
+    "carbs": 68.0,
+    "fat": 20.0,
+    "fiber": 2.5,
+    "sugar": 36.0,
+    "serving": "1 bungkus (119g)",
+    "category": "Biskuit",
+    "source": "Open Food Facts"
+  },
+
+  "roma kelapa": {
+    "name": "Roma Kelapa",
+    "aliases": ["roma kelapa biskuit"],
+    "emoji": "🥥",
+    "calories": 440,
+    "protein": 5.5,
+    "carbs": 65.0,
+    "fat": 18.0,
+    "fiber": 2.0,
+    "sugar": 20.0,
+    "serving": "1 bungkus (115g)",
+    "category": "Biskuit",
+    "source": "Open Food Facts"
+  },
+
+  "khong guan": {
+    "name": "Khong Guan",
+    "aliases": ["biskuit khong guan"],
+    "emoji": "🫙",
+    "calories": 430,
+    "protein": 6.0,
+    "carbs": 62.0,
+    "fat": 18.0,
+    "fiber": 1.5,
+    "sugar": 18.0,
+    "serving": "100g",
+    "category": "Biskuit",
+    "source": "Open Food Facts"
+  },
+
+  "wafer tango": {
+    "name": "Wafer Tango",
+    "aliases": ["tango wafer"],
+    "emoji": "🍫",
+    "calories": 480,
+    "protein": 5.5,
+    "carbs": 62.0,
+    "fat": 24.0,
+    "fiber": 1.5,
+    "sugar": 25.0,
+    "serving": "1 bungkus (50g)",
+    "category": "Snack Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "permen kopiko": {
+    "name": "Permen Kopiko",
+    "aliases": ["kopiko candy"],
+    "emoji": "☕",
+    "calories": 390,
+    "protein": 0.0,
+    "carbs": 98.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 65.0,
+    "serving": "5 buah (15g)",
+    "category": "Permen",
+    "source": "Open Food Facts"
+  },
+
+  "good day": {
+    "name": "Good Day",
+    "aliases": ["good day kopi", "kopi good day"],
+    "emoji": "☕",
+    "calories": 90,
+    "protein": 1.0,
+    "carbs": 17.0,
+    "fat": 2.5,
+    "fiber": 0.0,
+    "sugar": 14.0,
+    "serving": "1 sachet (25g)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "teh kotak": {
+    "name": "Teh Kotak",
+    "aliases": ["ultra teh kotak", "teh kotak sosro"],
+    "emoji": "🍵",
+    "calories": 70,
+    "protein": 0.0,
+    "carbs": 17.5,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 17.5,
+    "serving": "1 kotak (200ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "teh botol sosro": {
+    "name": "Teh Botol Sosro",
+    "aliases": ["teh botol", "sosro"],
+    "emoji": "🍵",
+    "calories": 140,
+    "protein": 0.0,
+    "carbs": 34.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 32.0,
+    "serving": "1 botol (390ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "pocari sweat": {
+    "name": "Pocari Sweat",
+    "aliases": ["pocari"],
+    "emoji": "💧",
+    "calories": 100,
+    "protein": 0.0,
+    "carbs": 25.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 24.0,
+    "serving": "1 botol (350ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "aqua": {
+    "name": "Aqua",
+    "aliases": ["air mineral", "air minum", "air putih"],
+    "emoji": "💧",
+    "calories": 0,
+    "protein": 0.0,
+    "carbs": 0.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 botol (600ml)",
+    "category": "Minuman",
+    "source": "Open Food Facts"
+  },
+
+  "susu uht ultrajaya": {
+    "name": "Susu UHT Ultrajaya",
+    "aliases": ["susu ultra", "ultra milk", "susu uht"],
+    "emoji": "🥛",
+    "calories": 130,
+    "protein": 7.0,
+    "carbs": 14.0,
+    "fat": 5.0,
+    "fiber": 0.0,
+    "sugar": 13.0,
+    "serving": "1 kotak (200ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "susu bear brand": {
+    "name": "Susu Bear Brand",
+    "aliases": ["bear brand", "susu bendera"],
+    "emoji": "🐻",
+    "calories": 135,
+    "protein": 7.5,
+    "carbs": 10.0,
+    "fat": 7.5,
+    "fiber": 0.0,
+    "sugar": 10.0,
+    "serving": "1 kaleng (185ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "yakult": {
+    "name": "Yakult",
+    "aliases": ["minuman probiotik yakult"],
+    "emoji": "🧃",
+    "calories": 50,
+    "protein": 0.8,
+    "carbs": 11.4,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 11.0,
+    "serving": "1 botol (65ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "sari buah abc": {
+    "name": "Sari Buah ABC",
+    "aliases": ["abc juice", "sirup abc"],
+    "emoji": "🧃",
+    "calories": 110,
+    "protein": 0.0,
+    "carbs": 27.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 25.0,
+    "serving": "1 gelas (200ml)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "kopi abc": {
+    "name": "Kopi ABC",
+    "aliases": ["abc kopi", "kopi susu abc"],
+    "emoji": "☕",
+    "calories": 130,
+    "protein": 2.5,
+    "carbs": 25.0,
+    "fat": 3.0,
+    "fiber": 0.0,
+    "sugar": 22.0,
+    "serving": "1 sachet (31g)",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "milo": {
+    "name": "Milo",
+    "aliases": ["milo susu", "susu milo"],
+    "emoji": "🍫",
+    "calories": 120,
+    "protein": 3.0,
+    "carbs": 23.0,
+    "fat": 2.5,
+    "fiber": 1.5,
+    "sugar": 18.0,
+    "serving": "1 sachet (30g) + air",
+    "category": "Minuman Kemasan",
+    "source": "Open Food Facts"
+  },
+
+  "roti tawar": {
+    "name": "Roti Tawar",
+    "aliases": ["white bread", "roti sandwich"],
+    "emoji": "🍞",
+    "calories": 265,
+    "protein": 8.0,
+    "carbs": 50.0,
+    "fat": 3.5,
+    "fiber": 2.5,
+    "sugar": 5.0,
+    "serving": "2 lembar (60g)",
+    "category": "Roti",
+    "source": "Open Food Facts"
+  },
+
+  "roti gandum": {
+    "name": "Roti Gandum",
+    "aliases": ["whole wheat bread", "roti gandum utuh"],
+    "emoji": "🍞",
+    "calories": 248,
+    "protein": 9.0,
+    "carbs": 45.0,
+    "fat": 4.0,
+    "fiber": 6.0,
+    "sugar": 4.0,
+    "serving": "2 lembar (60g)",
+    "category": "Roti",
+    "source": "Open Food Facts"
+  },
+
+  "selai kacang": {
+    "name": "Selai Kacang",
+    "aliases": ["peanut butter", "skippy"],
+    "emoji": "🥜",
+    "calories": 595,
+    "protein": 22.0,
+    "carbs": 20.0,
+    "fat": 50.0,
+    "fiber": 5.0,
+    "sugar": 9.0,
+    "serving": "2 sdm (32g)",
+    "category": "Selai",
+    "source": "Open Food Facts"
+  },
+
+  "bubur instan": {
+    "name": "Bubur Instan",
+    "aliases": ["sun bubur bayi", "nestum"],
+    "emoji": "🥣",
+    "calories": 380,
+    "protein": 10.0,
+    "carbs": 72.0,
+    "fat": 6.5,
+    "fiber": 3.0,
+    "sugar": 15.0,
+    "serving": "1 sachet (50g)",
+    "category": "Makanan Instan",
+    "source": "Open Food Facts"
+  },
+
+  "susu kental manis": {
+    "name": "Susu Kental Manis",
+    "aliases": ["SKM", "susu bendera kental manis", "susu frisian flag kental"],
+    "emoji": "🥛",
+    "calories": 340,
+    "protein": 7.0,
+    "carbs": 55.0,
+    "fat": 10.0,
+    "fiber": 0.0,
+    "sugar": 55.0,
+    "serving": "2 sdm (40g)",
+    "category": "Susu",
+    "source": "Open Food Facts"
+  },
+
+  "keju cheddar": {
+    "name": "Keju Cheddar",
+    "aliases": ["cheddar cheese", "keju"],
+    "emoji": "🧀",
+    "calories": 403,
+    "protein": 25.0,
+    "carbs": 1.3,
+    "fat": 33.0,
+    "fiber": 0.0,
+    "sugar": 0.5,
+    "serving": "1 lembar (28g)",
+    "category": "Produk Susu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "margarin": {
+    "name": "Margarin",
+    "aliases": ["blue band", "simas margarine"],
+    "emoji": "🧈",
+    "calories": 717,
+    "protein": 0.9,
+    "carbs": 0.9,
+    "fat": 80.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 sdm (14g)",
+    "category": "Lemak",
+    "source": "TKPI Kemenkes"
+  },
+
+  "minyak goreng": {
+    "name": "Minyak Goreng",
+    "aliases": ["cooking oil", "minyak kelapa sawit"],
+    "emoji": "🫙",
+    "calories": 884,
+    "protein": 0.0,
+    "carbs": 0.0,
+    "fat": 100.0,
+    "fiber": 0.0,
+    "sugar": 0.0,
+    "serving": "1 sdm (14ml)",
+    "category": "Lemak",
+    "source": "TKPI Kemenkes"
+  },
+
+  "gula pasir": {
+    "name": "Gula Pasir",
+    "aliases": ["gula", "gula putih", "sugar"],
+    "emoji": "🍬",
+    "calories": 387,
+    "protein": 0.0,
+    "carbs": 100.0,
+    "fat": 0.0,
+    "fiber": 0.0,
+    "sugar": 100.0,
+    "serving": "1 sdt (5g)",
+    "category": "Pemanis",
+    "source": "TKPI Kemenkes"
+  },
+
+  "gula jawa": {
+    "name": "Gula Jawa",
+    "aliases": ["gula merah", "gula kelapa", "palm sugar"],
+    "emoji": "🟤",
+    "calories": 370,
+    "protein": 0.5,
+    "carbs": 93.0,
+    "fat": 0.1,
+    "fiber": 0.0,
+    "sugar": 88.0,
+    "serving": "1 sdm (15g)",
+    "category": "Pemanis",
+    "source": "TKPI Kemenkes"
+  },
+
+  "santan": {
+    "name": "Santan",
+    "aliases": ["coconut milk", "santan kelapa"],
+    "emoji": "🥥",
+    "calories": 230,
+    "protein": 2.3,
+    "carbs": 6.0,
+    "fat": 23.8,
+    "fiber": 2.2,
+    "sugar": 3.3,
+    "serving": "100ml",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kemiri": {
+    "name": "Kemiri",
+    "aliases": ["candlenut"],
+    "emoji": "🟡",
+    "calories": 654,
+    "protein": 8.0,
+    "carbs": 8.0,
+    "fat": 67.0,
+    "fiber": 2.0,
+    "sugar": 2.0,
+    "serving": "2 buah (10g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "jahe": {
+    "name": "Jahe",
+    "aliases": ["ginger", "jahe segar"],
+    "emoji": "🫚",
+    "calories": 80,
+    "protein": 1.8,
+    "carbs": 18.0,
+    "fat": 0.8,
+    "fiber": 2.0,
+    "sugar": 1.7,
+    "serving": "1 ruas (15g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "kunyit": {
+    "name": "Kunyit",
+    "aliases": ["turmeric", "kunyit segar"],
+    "emoji": "🟡",
+    "calories": 354,
+    "protein": 7.8,
+    "carbs": 64.9,
+    "fat": 9.9,
+    "fiber": 21.1,
+    "sugar": 3.2,
+    "serving": "1 ruas (10g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bawang merah": {
+    "name": "Bawang Merah",
+    "aliases": ["red onion", "shallot", "bawang bombay"],
+    "emoji": "🧅",
+    "calories": 40,
+    "protein": 1.1,
+    "carbs": 9.3,
+    "fat": 0.1,
+    "fiber": 1.8,
+    "sugar": 4.2,
+    "serving": "2 siung (20g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "bawang putih": {
+    "name": "Bawang Putih",
+    "aliases": ["garlic"],
+    "emoji": "🧄",
+    "calories": 149,
+    "protein": 6.4,
+    "carbs": 33.1,
+    "fat": 0.5,
+    "fiber": 2.1,
+    "sugar": 1.0,
+    "serving": "2 siung (12g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cabai merah": {
+    "name": "Cabai Merah",
+    "aliases": ["cabe merah", "red chili", "lombok merah"],
+    "emoji": "🌶️",
+    "calories": 40,
+    "protein": 1.9,
+    "carbs": 9.0,
+    "fat": 0.4,
+    "fiber": 1.5,
+    "sugar": 5.3,
+    "serving": "3 buah (15g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "cabai rawit": {
+    "name": "Cabai Rawit",
+    "aliases": ["cabe rawit", "bird's eye chili"],
+    "emoji": "🌶️",
+    "calories": 40,
+    "protein": 2.0,
+    "carbs": 8.8,
+    "fat": 0.6,
+    "fiber": 1.5,
+    "sugar": 5.1,
+    "serving": "5 buah (10g)",
+    "category": "Bumbu",
+    "source": "TKPI Kemenkes"
+  },
+
+  "tomat": {
+    "name": "Tomat",
+    "aliases": ["tomato"],
+    "emoji": "🍅",
+    "calories": 18,
+    "protein": 0.9,
+    "carbs": 3.9,
+    "fat": 0.2,
+    "fiber": 1.2,
+    "sugar": 2.6,
+    "serving": "1 buah (120g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "timun": {
+    "name": "Timun",
+    "aliases": ["ketimun", "mentimun", "cucumber"],
+    "emoji": "🥒",
+    "calories": 16,
+    "protein": 0.7,
+    "carbs": 3.6,
+    "fat": 0.1,
+    "fiber": 0.5,
+    "sugar": 1.7,
+    "serving": "1 buah (100g)",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  },
+
+  "selada": {
+    "name": "Selada",
+    "aliases": ["lettuce", "sawi"],
+    "emoji": "🥬",
+    "calories": 15,
+    "protein": 1.4,
+    "carbs": 2.9,
+    "fat": 0.2,
+    "fiber": 1.3,
+    "sugar": 1.2,
+    "serving": "100g",
+    "category": "Sayuran",
+    "source": "TKPI Kemenkes"
+  }
+}

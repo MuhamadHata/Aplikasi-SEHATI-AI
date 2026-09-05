@@ -1,0 +1,10 @@
+{
+  "primary": "groq",
+  "groqKeys": [
+    "gsk_key_1",
+    "gsk_key_2"
+  ],
+  "geminiKeys": [
+    "AIzaSyGeminiKey"
+  ]
+}

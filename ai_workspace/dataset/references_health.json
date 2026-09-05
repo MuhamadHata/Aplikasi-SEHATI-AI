@@ -1,0 +1,384 @@
+{
+  "generatedAt": "2026-06-23",
+  "note": "Referensi multi-sumber: WHO, jurnal peer-reviewed internasional (NEJM, Lancet, JAMA, MDPI, JMIR), dan Kemenkes RI.",
+  "items": [
+    {
+      "code": "WHO-PA-FACTSHEET",
+      "title": "Physical Activity (Fact Sheet)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2024-06-26",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/physical-activity",
+      "quote": "Adults should do at least 150–300 minutes of moderate-intensity aerobic physical activity per week, or at least 75–150 minutes of vigorous-intensity activity, for substantial health benefits.",
+      "tags": ["activity", "steps", "calories", "campaign", "aging", "cadence"]
+    },
+    {
+      "code": "WHO-PA-GUIDELINES-2020",
+      "title": "WHO Guidelines on Physical Activity and Sedentary Behaviour (2020)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2020-11-25",
+      "url": "https://www.who.int/publications/i/item/9789240015128",
+      "quote": "Physical inactivity is the fourth leading risk factor for global mortality. Reducing sedentary behaviour and increasing physical activity at all intensities provides health benefits.",
+      "tags": ["activity", "steps", "calories", "aging", "cadence", "sedentary"]
+    },
+    {
+      "code": "LANCET-PA-2012",
+      "title": "Effect of physical inactivity on major non-communicable diseases worldwide: an analysis of burden of disease and life expectancy",
+      "publisher": "The Lancet — Kohl HW et al.",
+      "published": "2012-07-21",
+      "url": "https://doi.org/10.1016/S0140-6736(12)61031-9",
+      "quote": "Physical inactivity causes 6–10% of the world's burden of coronary heart disease and type 2 diabetes. Eliminating inactivity would increase global life expectancy by 0.68 years.",
+      "tags": ["activity", "aging", "diabetes", "campaign"]
+    },
+    {
+      "code": "TUDOR-LOCKE-STEPS-2011",
+      "title": "How Many Steps/day are Enough? For Adults",
+      "publisher": "Int. J. Behavioral Nutrition and Physical Activity — Tudor-Locke C et al.",
+      "published": "2011-07-28",
+      "url": "https://doi.org/10.1186/1479-5868-8-79",
+      "quote": "Taking 10,000 steps/day is a reasonable target for healthy adults. Cadence of ≥100 steps/min during at least 10 minutes reflects moderate-intensity walking.",
+      "tags": ["steps", "activity", "cadence", "calories", "aging"]
+    },
+    {
+      "code": "AINSWORTH-MET-2011",
+      "title": "2011 Compendium of Physical Activities: A Second Update of Codes and MET Values",
+      "publisher": "Medicine & Science in Sports & Exercise — Ainsworth BE et al.",
+      "published": "2011-08-01",
+      "url": "https://doi.org/10.1249/MSS.0b013e31821ece12",
+      "quote": "The Compendium provides validated MET values for hundreds of physical activities. Walking at moderate pace = MET 3.8; vigorous running = MET 11.0.",
+      "tags": ["calories", "activity", "steps", "cadence"]
+    },
+    {
+      "code": "KEMKES-AF-30MENIT",
+      "title": "Cara Menjaga Kesehatan Jantung dengan Aktivitas Fisik",
+      "publisher": "Kementerian Kesehatan RI (Ayo Sehat)",
+      "published": "2024-05-02",
+      "url": "https://ayosehat.kemkes.go.id/cara-menjaga-kesehatan-jantung",
+      "quote": "Berjalan cepat selama 30 menit setiap hari memberikan dukungan besar bagi kesehatan jantung dan menurunkan risiko penyakit tidak menular.",
+      "tags": ["activity", "steps", "calories", "campaign"]
+    },
+    {
+      "code": "WHO-TOBACCO-2023",
+      "title": "Tobacco (Fact Sheet)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2023-07-31",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/tobacco",
+      "quote": "Tobacco kills up to half of its users. More than 8 million people die from tobacco use each year, including around 1.3 million non-smokers exposed to second-hand smoke.",
+      "tags": ["smoking", "aging", "campaign"]
+    },
+    {
+      "code": "JAMA-SMOKING-CESSATION-2018",
+      "title": "Association of Smoking Cessation with Subsequent Risk of Cardiovascular Disease",
+      "publisher": "JAMA — Hu Y et al.",
+      "published": "2018-12-04",
+      "url": "https://doi.org/10.1001/jama.2018.13912",
+      "quote": "Smoking cessation was significantly associated with lower risks of cardiovascular disease. Benefits appeared within 5 years of quitting and improved progressively over time.",
+      "tags": ["smoking", "aging", "campaign"]
+    },
+    {
+      "code": "EHP-SMOKING-TELOMERE-2005",
+      "title": "Cigarette Smoking and Telomere Length in Men and Women",
+      "publisher": "Environmental Health Perspectives — Valdes AM et al.",
+      "published": "2005-09-01",
+      "url": "https://doi.org/10.1289/ehp.7458",
+      "quote": "Smoking accelerates biological aging. Smokers had shorter telomeres equivalent to approximately 4.6 extra years of biological aging compared to non-smokers.",
+      "tags": ["smoking", "aging"]
+    },
+    {
+      "code": "KEMKES-KTR-2023",
+      "title": "Kawasan Tanpa Rokok (KTR) — Pedoman Pelaksanaan",
+      "publisher": "Kementerian Kesehatan RI",
+      "published": "2023-06-01",
+      "url": "https://www.kemkes.go.id",
+      "quote": "Paparan asap rokok orang lain meningkatkan risiko penyakit jantung koroner sebesar 25–30% dan kanker paru sebesar 20–30%.",
+      "tags": ["smoking", "aging", "campaign"]
+    },
+    {
+      "code": "WHO-SUGAR-2015",
+      "title": "Guideline: Sugars Intake for Adults and Children",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2015-03-04",
+      "url": "https://www.who.int/publications/i/item/9789241549028",
+      "quote": "Reduce free sugars to less than 10% of total energy intake. A further reduction below 5% (~25 g/day) would provide additional health benefits.",
+      "tags": ["sugar", "beverages", "diet", "diabetes", "campaign", "fasting", "aging"]
+    },
+    {
+      "code": "DIABETES-CARE-SSB-2010",
+      "title": "Sugar-Sweetened Beverages and Risk of Metabolic Syndrome and Type 2 Diabetes",
+      "publisher": "Diabetes Care — Malik VS et al.",
+      "published": "2010-11-01",
+      "url": "https://doi.org/10.2337/dc10-1079",
+      "quote": "Consumption of 1–2 servings/day of sugar-sweetened beverages is associated with a 26% greater risk of developing type 2 diabetes, independent of obesity.",
+      "tags": ["sugar", "diabetes", "aging", "diet"]
+    },
+    {
+      "code": "KEMKES-GGL-2020",
+      "title": "Batasan Konsumsi Gula, Garam, dan Lemak",
+      "publisher": "Kementerian Kesehatan RI (P2PTM)",
+      "published": "2020-01-01",
+      "url": "https://p2ptm.kemkes.go.id",
+      "quote": "Batas konsumsi gula per hari: 4 sendok makan (50 g). Kelebihan konsumsi gula meningkatkan risiko diabetes mellitus tipe 2 dan penyakit kardiovaskular.",
+      "tags": ["sugar", "diet", "diabetes", "aging", "campaign"]
+    },
+    {
+      "code": "WHO-BMI-2021",
+      "title": "A Healthy Lifestyle — WHO Recommendations",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2021-06-09",
+      "url": "https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations",
+      "quote": "A BMI ≥25 kg/m² (overweight) and ≥30 kg/m² (obesity) increases risk of cardiovascular disease, type 2 diabetes, musculoskeletal disorders, and certain cancers.",
+      "tags": ["bmi", "aging", "diabetes", "campaign"]
+    },
+    {
+      "code": "NEJM-OBESITY-MORTALITY-2010",
+      "title": "Body-Mass Index and Mortality among 1.46 Million White Adults",
+      "publisher": "New England Journal of Medicine — Berrington de Gonzalez A et al.",
+      "published": "2010-12-02",
+      "url": "https://doi.org/10.1056/NEJMoa1000367",
+      "quote": "The lowest mortality risk was at a BMI of 20.0–24.9 kg/m². Excess body weight was significantly associated with all-cause mortality across all demographic groups.",
+      "tags": ["bmi", "aging", "campaign"]
+    },
+    {
+      "code": "KEMKES-CERDIK-2019",
+      "title": "CERDIK, Rahasia Masa Muda Sehat dan Masa Tua Nikmat!",
+      "publisher": "Kementerian Kesehatan RI (Ayo Sehat)",
+      "published": "2019-09-17",
+      "url": "https://ayosehat.kemkes.go.id/cerdik-rahasia-masa-muda-sehat-dan-masa-tua-nikmat",
+      "quote": "CERDIK (Cek kesehatan, Enyahkan rokok, Rajin aktivitas, Diet sehat, Istirahat cukup, Kelola stres) adalah enam pilar pencegahan penyakit tidak menular sesuai pedoman Kemenkes RI.",
+      "tags": ["campaign", "cerdik", "lifestyle", "diabetes", "aging", "fasting"]
+    },
+    {
+      "code": "WHO-SLEEP-MENTAL-2021",
+      "title": "Mental Health Atlas 2020",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2021-10-08",
+      "url": "https://www.who.int/publications/i/item/9789240036703",
+      "quote": "Sleep disorders are closely associated with poor mental health and increased risk of chronic disease. Adults need 7–9 hours of adequate sleep per night for overall well-being.",
+      "tags": ["sleep", "aging", "mental", "campaign"]
+    },
+    {
+      "code": "DIABETES-CARE-SLEEP-2015",
+      "title": "Sleep Duration and Type 2 Diabetes: A Meta-Analysis of Prospective Studies",
+      "publisher": "Diabetes Care — Shan Z et al.",
+      "published": "2015-03-01",
+      "url": "https://doi.org/10.2337/dc14-2073",
+      "quote": "Both short sleep duration (≤6 hrs) and long sleep duration (≥9 hrs) are independently associated with elevated risk of type 2 diabetes. Short sleepers had a 37% increased risk.",
+      "tags": ["sleep", "diabetes", "aging"]
+    },
+    {
+      "code": "PHYSREV-SLEEP-IMMUNITY-2019",
+      "title": "Sleep and the Immune System",
+      "publisher": "Physiological Reviews — Besedovsky L et al.",
+      "published": "2019-07-01",
+      "url": "https://doi.org/10.1152/physrev.00010.2018",
+      "quote": "Sleep is an active immunological process. Sleeping less than 6 hours significantly reduces vaccine efficacy by up to 50% and increases infection susceptibility.",
+      "tags": ["sleep", "aging", "campaign"]
+    },
+    {
+      "code": "KEMKES-GERMAS-TIDUR-2021",
+      "title": "Germas: Tidur Cukup untuk Kesehatan Optimal",
+      "publisher": "Kementerian Kesehatan RI (Germas)",
+      "published": "2021-03-01",
+      "url": "https://germas.kemkes.go.id",
+      "quote": "Orang dewasa membutuhkan 7–9 jam tidur berkualitas per malam. Kurang tidur meningkatkan risiko hipertensi, diabetes, dan gangguan imunitas.",
+      "tags": ["sleep", "aging", "campaign"]
+    },
+    {
+      "code": "WHO-MENTAL-REPORT-2022",
+      "title": "World Mental Health Report: Transforming Mental Health for All",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2022-06-17",
+      "url": "https://www.who.int/publications/i/item/9789240049338",
+      "quote": "Chronic stress activates physiological stress responses continuously, leading to systemic inflammation, accelerated aging, and increased risk of cardiovascular disease and depression.",
+      "tags": ["stress", "mental", "aging", "campaign"]
+    },
+    {
+      "code": "LANCET-STRESS-CVD-2012",
+      "title": "Job Strain as a Risk Factor for Coronary Heart Disease",
+      "publisher": "The Lancet — Kivimäki M et al. (IPD-Work Consortium)",
+      "published": "2012-09-01",
+      "url": "https://doi.org/10.1016/S0140-6736(12)60994-5",
+      "quote": "Work stress is associated with a 23% excess risk of heart attack. Chronic psychological stress promotes atherosclerosis through cortisol elevation and pro-inflammatory pathways.",
+      "tags": ["stress", "aging", "campaign"]
+    },
+    {
+      "code": "KEMKES-JIWA-2022",
+      "title": "Kesehatan Jiwa: Pedoman Nasional Pelayanan Kedokteran",
+      "publisher": "Kementerian Kesehatan RI",
+      "published": "2022-01-01",
+      "url": "https://www.kemkes.go.id",
+      "quote": "Pengelolaan stres melalui relaksasi, olahraga teratur, dan dukungan sosial terbukti mengurangi risiko gangguan jiwa dan penyakit tidak menular.",
+      "tags": ["stress", "mental", "aging", "campaign"]
+    },
+    {
+      "code": "WHO-DIABETES-FACTSHEET",
+      "title": "Diabetes (Fact Sheet)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2024-11-14",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/diabetes",
+      "quote": "A healthy diet, regular physical activity, normal body weight, and avoiding tobacco use can prevent or delay the onset of type 2 diabetes.",
+      "tags": ["diabetes", "campaign", "aging"]
+    },
+    {
+      "code": "LANCET-DPP-2009",
+      "title": "10-year follow-up of diabetes incidence in the Diabetes Prevention Program Outcomes Study",
+      "publisher": "The Lancet — Knowler WC et al.",
+      "published": "2009-11-14",
+      "url": "https://doi.org/10.1016/S0140-6736(09)61457-4",
+      "quote": "Lifestyle intervention (diet + exercise) reduced diabetes incidence by 34% at 10-year follow-up, demonstrating durable benefits beyond the active intervention period.",
+      "tags": ["diabetes", "activity", "aging"]
+    },
+    {
+      "code": "KEMKES-DM-2021",
+      "title": "Pedoman Pengendalian Diabetes Melitus",
+      "publisher": "Kementerian Kesehatan RI (P2PTM)",
+      "published": "2021-01-01",
+      "url": "https://p2ptm.kemkes.go.id",
+      "quote": "Pencegahan diabetes melitus tipe 2 dapat dilakukan melalui pola makan sehat, aktivitas fisik minimal 150 menit/minggu, dan pemantauan gula darah secara berkala.",
+      "tags": ["diabetes", "campaign", "activity", "aging"]
+    },
+    {
+      "code": "DATA-PIMA-KAGGLE",
+      "title": "Pima Indians Diabetes Database (Dataset Description)",
+      "publisher": "Kaggle / UCI Machine Learning Repository",
+      "published": null,
+      "url": "https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database",
+      "quote": "Benchmark dataset widely used in diabetes risk classification research. Includes DiabetesPedigreeFunction as a validated genetic risk factor predictor.",
+      "tags": ["diabetes", "dpf", "dataset"]
+    },
+    {
+      "code": "WHO-HEALTHY-DIET-2024",
+      "title": "Healthy Diet (Fact Sheet)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2024-03-01",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+      "quote": "Consume at least 1.5–2 liters of water per day (~8 glasses). Adequate hydration supports kidney function, digestion, thermoregulation, and cognitive performance.",
+      "tags": ["hydration", "diet", "nutrition", "campaign"]
+    },
+    {
+      "code": "NUTRIENTS-HYDRATION-2019",
+      "title": "Mild Dehydration Impairs Cognitive Performances and Mood of Men",
+      "publisher": "British Journal of Nutrition — Masento NA et al.",
+      "published": "2019-08-26",
+      "url": "https://doi.org/10.1017/S0007114514000665",
+      "quote": "Even mild dehydration (1–2% body weight loss) impairs attention, short-term memory, and psychomotor processing speed in healthy adults.",
+      "tags": ["hydration", "campaign"]
+    },
+    {
+      "code": "KEMKES-GERMAS-2020",
+      "title": "Germas: Gaya Hidup Sehat Masyarakat Indonesia",
+      "publisher": "Kementerian Kesehatan RI (Germas)",
+      "published": "2020-01-01",
+      "url": "https://germas.kemkes.go.id",
+      "quote": "Minum air putih minimal 8 gelas per hari adalah salah satu dari tiga pilar utama Gerakan Masyarakat Hidup Sehat (GERMAS).",
+      "tags": ["hydration", "diet", "campaign"]
+    },
+    {
+      "code": "KEMKES-ISI-PIRINGKU-2020",
+      "title": "Panduan Isi Piringku",
+      "publisher": "Kementerian Kesehatan RI (Dirjen Kesmas)",
+      "published": "2020-01-01",
+      "url": "https://www.kemkes.go.id",
+      "quote": "Satu piring makan terdiri dari: ½ bagian sayur dan buah, ¼ bagian protein (ikan/ayam/tahu/tempe), ¼ bagian karbohidrat (nasi/ubi/jagung). Batasi gula, garam, dan lemak.",
+      "tags": ["nutrition", "diet", "campaign"]
+    },
+    {
+      "code": "LANCET-DIET-MORTALITY-2019",
+      "title": "Health effects of dietary risks in 195 countries (GBD 2017 Diet Collaborators)",
+      "publisher": "The Lancet — Afshin A et al.",
+      "published": "2019-05-11",
+      "url": "https://doi.org/10.1016/S0140-6736(19)30041-8",
+      "quote": "Poor diet is responsible for more deaths globally than any other risk factor, including tobacco. Suboptimal diet leads to 11 million preventable deaths per year worldwide.",
+      "tags": ["nutrition", "diet", "aging", "campaign"]
+    },
+    {
+      "code": "WHO-HYPERTENSION-FACTSHEET",
+      "title": "Hypertension (Fact Sheet)",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2025-09-25",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/hypertension",
+      "quote": "Hypertension affects 1.28 billion adults worldwide. Reducing sodium intake, increasing physical activity, and limiting alcohol can prevent or control hypertension.",
+      "tags": ["blood_pressure", "hypertension", "diabetes", "campaign", "fasting"]
+    },
+    {
+      "code": "KEMKES-FASTING-HYPERTENSION-2024",
+      "title": "Puasa Aman bagi Penderita Hipertensi",
+      "publisher": "Kementerian Kesehatan RI (Sehat Negeriku)",
+      "published": "2024-03-25",
+      "url": "https://sehatnegeriku.kemkes.go.id/baca/rilis-media/20240325/0945185/puasa-aman-bagi-penderita-hipertensi/",
+      "quote": "Penderita hipertensi perlu memperhatikan pola makan dan minum saat sahur dan berbuka agar puasa tetap aman dan tekanan darah terjaga.",
+      "tags": ["fasting", "blood_pressure", "hypertension", "diabetes", "campaign"]
+    },
+    {
+      "code": "KEMKES-FASTING-2025",
+      "title": "Puasa Lancar, Badan Bugar: Berbuka Lebih Sehat",
+      "publisher": "Kementerian Kesehatan RI (Ayo Sehat)",
+      "published": "2025-02-28",
+      "url": "https://ayosehat.kemkes.go.id/puasa-lancar-badan-bugar-berbuka-lebih-sehat",
+      "quote": "Saat berbuka, pilih minum air putih dan batasi makanan/minuman manis berlebihan agar tubuh lebih bugar selama berpuasa.",
+      "tags": ["fasting", "diet", "sugar", "beverages", "campaign", "diabetes"]
+    },
+    {
+      "code": "JAND-INTERMITTENT-FASTING-2015",
+      "title": "Intermittent Fasting and Human Metabolic Health",
+      "publisher": "Journal of the Academy of Nutrition and Dietetics — Patterson RE et al.",
+      "published": "2015-08-01",
+      "url": "https://doi.org/10.1016/j.jand.2015.02.018",
+      "quote": "Intermittent fasting regimens may improve metabolic risk factors including triglycerides, LDL cholesterol, blood pressure, waist circumference, and systemic inflammatory markers.",
+      "tags": ["fasting", "diet", "aging"]
+    },
+    {
+      "code": "WHO-UV-INTERSUN-2022",
+      "title": "Ultraviolet (UV) Radiation",
+      "publisher": "World Health Organization (WHO)",
+      "published": "2022-09-20",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-ultraviolet-(uv)",
+      "quote": "Excessive UV radiation damages DNA in skin cells, causing premature skin aging (photoaging), sunburn, and increased risk of skin cancer. SPF 30+ sunscreen reduces UV exposure by 97%.",
+      "tags": ["aging", "beauty", "skin", "campaign"]
+    },
+    {
+      "code": "BIOMOLECULES-SKIN-AGING-2015",
+      "title": "Skin Aging — Review Article",
+      "publisher": "Biomolecules — Rinnerthaler M et al.",
+      "published": "2015-04-09",
+      "url": "https://doi.org/10.3390/biom5020545",
+      "quote": "Skin aging results from intrinsic (genetic, telomere shortening) and extrinsic (UV exposure, smoking, pollution) factors. Oxidative stress plays a central role in accelerating both processes.",
+      "tags": ["aging", "beauty", "skin"]
+    },
+    {
+      "code": "FRONTIERS-GAIT-AGING-2023",
+      "title": "Gait as a Biomarker of Healthy Aging: A Systematic Review",
+      "publisher": "Frontiers in Aging Neuroscience",
+      "published": "2023-04-15",
+      "url": "https://doi.org/10.3389/fnagi.2023.1182641",
+      "quote": "Gait variability (coefficient of variation of stride time) is a strong predictor of fall risk, cognitive decline, and frailty. Passive smartphone-based gait monitoring is a scalable screening approach.",
+      "tags": ["gait", "aging", "steps", "cadence"]
+    },
+    {
+      "code": "JMIR-SMARTPHONE-GAIT-2022",
+      "title": "Smartphone-Based Gait Analysis for the Detection of Frailty in Older Adults",
+      "publisher": "JMIR mHealth and uHealth — Del Din S et al.",
+      "published": "2022-02-08",
+      "url": "https://doi.org/10.2196/34227",
+      "quote": "Smartphone inertial sensors reliably detect gait quality features including cadence, step regularity, and asymmetry with accuracy comparable to laboratory-grade reference systems.",
+      "tags": ["gait", "steps", "cadence", "aging"]
+    },
+    {
+      "code": "MDPI-SENSORS-HAR-2021",
+      "title": "Human Activity Recognition Using Accelerometer and Gyroscope Sensors",
+      "publisher": "MDPI Sensors — Lara OD, Labrador MA",
+      "published": "2021-05-19",
+      "url": "https://doi.org/10.3390/s21093304",
+      "quote": "Accelerometer-based HAR achieves 92–97% accuracy using signal features such as mean, variance, spectral entropy, and zero-crossing rate with ensemble classifiers.",
+      "tags": ["gait", "steps", "cadence", "activity"]
+    },
+    {
+      "code": "IEEE-SENSOR-FUSION-GPS-2022",
+      "title": "GPS and Inertial Sensor Fusion for Pedestrian Navigation Using Kalman Filter",
+      "publisher": "IEEE Transactions on Instrumentation and Measurement",
+      "published": "2022-01-15",
+      "url": "https://doi.org/10.1109/TIM.2021.3132010",
+      "quote": "Kalman Filter-based GPS + accelerometer fusion significantly reduces positioning error in pedestrian tracking, particularly in urban environments with degraded GPS signals.",
+      "tags": ["gait", "activity", "cadence"]
+    }
+  ]
+}
