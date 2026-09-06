@@ -67,6 +67,8 @@ GoogleService-Info.plist
 *.pem
 *.key
 android/key.properties
+build_release.bat
+run_dev.bat
 
 # Symbolication related
 app.*.symbols

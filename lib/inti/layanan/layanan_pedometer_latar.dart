@@ -9,6 +9,7 @@
 // ==========================================
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -416,13 +417,49 @@ class PedometerBackgroundService {
 
     // Day change - reset everything
     if (lastDate != today) {
+      final prefix = prefs.getString(_keyUserPrefix) ?? 'guest_';
+
+      // Arsipkan langkah hari kemarin sebelum di-reset agar riwayat tidak hilang
+      if (lastDate.isNotEmpty && savedPassive > 0) {
+        try {
+          final historyListJson = prefs.getString('${prefix}dailySummaries');
+          List<dynamic> list = [];
+          if (historyListJson != null) {
+            final decoded = jsonDecode(historyListJson);
+            if (decoded is List) list = decoded;
+          }
+          final bool alreadyExists =
+              list.any((e) => e is Map && e['date'] == lastDate);
+          if (!alreadyExists) {
+            final calConsumed = prefs.getInt('${prefix}calorieConsumed') ?? 0;
+            final water = prefs.getInt('${prefix}waterGlasses') ?? 0;
+            final calBurned = (savedPassive * 0.03).round();
+            list.insert(0, {
+              'date': lastDate,
+              'steps': savedPassive,
+              'caloriesBurned': calBurned,
+              'caloriesConsumed': calConsumed,
+              'waterGlasses': water,
+              'sleepHours': 0.0,
+              'isSmoker': false,
+              'foodLogs': [],
+            });
+            if (list.length > 30) list = list.sublist(0, 30);
+            await prefs.setString('${prefix}dailySummaries', jsonEncode(list));
+            debugPrint(
+                '[PedometerBG] Archived $savedPassive steps for date $lastDate');
+          }
+        } catch (e) {
+          debugPrint('[PedometerBG] Error archiving daily summary: $e');
+        }
+      }
+
       await prefs.setString(_keyBgDate, today);
       await prefs.setInt(_keyBgPassive, 0);
       await prefs.setInt(_keyBgLastTotal, currentSensorSteps);
       await prefs.setInt(_keyBgLastGpsSteps, 0);
       EnhancedStepValidator.reset();
 
-      final prefix = prefs.getString(_keyUserPrefix) ?? 'guest_';
       await prefs.setInt('${prefix}passiveSteps', 0);
       await prefs.setInt('${prefix}lastKnownTotalSteps', currentSensorSteps);
       return;

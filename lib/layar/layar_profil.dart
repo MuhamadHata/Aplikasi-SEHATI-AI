@@ -460,7 +460,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final provider = context.watch<ActivityProvider>();
     final userName = provider.userName;
-    final userEmail = provider.userEmail;
     final photoUrl = provider.photoUrl;
     final weight = provider.weight;
     final heightCm = provider.heightCm;
@@ -524,59 +523,154 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        GestureDetector(
-                          onTap: _pickImage,
-                          child: Container(
-                            width: 72,
-                            height: 72,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: Theme.of(context)
-                                          .extension<AppThemeExtension>()
-                                          ?.gradientPrimary ??
-                                      AppColors.gradientPrimary),
-                              borderRadius: BorderRadius.circular(22),
-                              image: photoUrl != null
-                                  ? DecorationImage(
-                                      image: NetworkImage(photoUrl),
-                                      fit: BoxFit.cover)
-                                  : null,
-                            ),
-                            child: photoUrl == null
-                                ? const Center(
-                                    child: Icon(Icons.person_rounded,
-                                        size: 40, color: AppColors.primary))
-                                : null,
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        // Avatar with camera/edit badge
+                        Stack(
+                          clipBehavior: Clip.none,
                           children: [
-                            Text(userName,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: 27,
-                                    fontWeight: FontWeight.w700,
+                            GestureDetector(
+                              onTap: _pickImage,
+                              child: Container(
+                                width: 68,
+                                height: 68,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: Theme.of(context)
+                                              .extension<AppThemeExtension>()
+                                              ?.gradientPrimary ??
+                                          AppColors.gradientPrimary),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
                                     color: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.color,
-                                    fontFamily: 'Poppins')),
-                            Text(userEmail,
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.color)),
-                            const SizedBox(height: 6),
-                            Wrap(
-                                spacing: 8,
-                                runSpacing: 6,
+                                        .colorScheme
+                                        .primary
+                                        .withValues(alpha: 0.25),
+                                    width: 2,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withValues(alpha: 0.18),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
+                                  image: photoUrl != null
+                                      ? DecorationImage(
+                                          image: NetworkImage(photoUrl),
+                                          fit: BoxFit.cover)
+                                      : null,
+                                ),
+                                child: photoUrl == null
+                                    ? const Center(
+                                        child: Icon(Icons.person_rounded,
+                                            size: 38, color: Colors.white))
+                                    : null,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: -2,
+                              right: -2,
+                              child: GestureDetector(
+                                onTap: _pickImage,
+                                child: Container(
+                                  padding: const EdgeInsets.all(4.5),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Theme.of(context).scaffoldBackgroundColor,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: const Icon(
+                                    Icons.camera_alt_rounded,
+                                    size: 11,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 14),
+                        // Name and Badges (Email removed as requested)
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      userName,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w700,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.color,
+                                        fontFamily: 'Poppins',
+                                        letterSpacing: -0.2,
+                                      ),
+                                    ),
+                                  ),
+                                  if (provider.mbti != null &&
+                                      provider.mbti!.isNotEmpty) ...[
+                                    const SizedBox(width: 6),
+                                    GestureDetector(
+                                      onTap: () => Navigator.pushNamed(
+                                          context, '/tes-mbti'),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 7, vertical: 2.5),
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .primary,
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .secondary,
+                                            ],
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const Text('🧠 ',
+                                                style:
+                                                    TextStyle(fontSize: 9)),
+                                            Text(
+                                              provider.mbti!.toUpperCase(),
+                                              style: const TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w800,
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ],
+                              ),
+                              const SizedBox(height: 6),
+                              Wrap(
+                                spacing: 6,
+                                runSpacing: 4,
                                 children: [
                                   _BadgeChip(
                                       label: '🥗 Diet Aktif',
@@ -590,9 +684,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               .extension<AppThemeExtension>()
                                               ?.warning ??
                                           AppColors.warning),
-                                ]),
-                          ],
-                        )),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        // BRIN Logo & Edit Button
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -606,8 +704,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 border: Border.all(
                                   color: Theme.of(context)
                                       .dividerColor
-                                      .withValues(alpha: 0.1),
+                                      .withValues(alpha: 0.12),
                                 ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.04),
+                                    blurRadius: 4,
+                                    offset: const Offset(0, 1),
+                                  ),
+                                ],
                               ),
                               child: Image.asset(
                                 'assets/images/logo_brin.png',
@@ -615,28 +720,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             const SizedBox(width: 8),
-                            GestureDetector(
-                              onTap: _showEditProfile,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 6),
-                                decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHighest,
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Theme.of(context)
-                                            .dividerColor
-                                            .withValues(alpha: 0.1))),
-                                child: Text('Edit',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
+                            Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: _showEditProfile,
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 7),
+                                  decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .surfaceContainerHighest,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color: Theme.of(context)
+                                              .dividerColor
+                                              .withValues(alpha: 0.12))),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.edit_outlined,
+                                        size: 13,
                                         color: Theme.of(context)
                                             .textTheme
                                             .bodyLarge
-                                            ?.color)),
+                                            ?.color,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text('Edit',
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge
+                                                  ?.color)),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -651,30 +774,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: SliverList(
                   delegate: SliverChildListDelegate([
-                // Body stats
+                // Body stats (Compact, balanced 2x2 grid)
                 Row(children: [
                   _BodyStatCard(
-                      label: 'Tinggi',
-                      value: '$heightCm',
-                      unit: 'cm',
-                      emoji: '📏'),
+                    label: 'Tinggi',
+                    value: '$heightCm',
+                    unit: 'cm',
+                    emoji: '📏',
+                    icon: Icons.straighten_rounded,
+                    color: const Color(0xFF6366F1), // Indigo
+                    onTap: _showEditProfile,
+                  ),
                   const SizedBox(width: 10),
                   _BodyStatCard(
-                      label: 'Berat',
-                      value: '$weight',
-                      unit: 'kg',
-                      emoji: '⚖️'),
+                    label: 'Berat',
+                    value: '$weight',
+                    unit: 'kg',
+                    emoji: '⚖️',
+                    icon: Icons.monitor_weight_outlined,
+                    color: const Color(0xFF0284C7), // Sky Blue
+                    onTap: _showEditProfile,
+                  ),
                 ]),
                 const SizedBox(height: 10),
                 Row(children: [
                   _BodyStatCard(
-                      label: 'Usia', value: '$age', unit: 'thn', emoji: '🎂'),
+                    label: 'Usia',
+                    value: '$age',
+                    unit: 'thn',
+                    emoji: '🎂',
+                    icon: Icons.cake_outlined,
+                    color: const Color(0xFFD97706), // Amber
+                    onTap: _showEditProfile,
+                  ),
                   const SizedBox(width: 10),
                   _BodyStatCard(
-                      label: 'Gender',
-                      value: gender,
-                      unit: '',
-                      emoji: gender == 'Pria' ? '👨' : '👩'),
+                    label: 'Gender',
+                    value: gender,
+                    unit: '',
+                    emoji: gender == 'Pria' ? '👨' : '👩',
+                    icon: gender == 'Pria'
+                        ? Icons.male_rounded
+                        : Icons.female_rounded,
+                    color: gender == 'Pria'
+                        ? const Color(0xFF3B82F6)
+                        : const Color(0xFFEC4899),
+                    onTap: _showEditProfile,
+                  ),
                 ]),
                 const SizedBox(height: 20),
                 // BMI
@@ -1413,77 +1559,131 @@ class _BodyStatCard extends StatelessWidget {
   final String value;
   final String unit;
   final String emoji;
-  const _BodyStatCard(
-      {required this.label,
-      required this.value,
-      required this.unit,
-      required this.emoji});
+  final IconData? icon;
+  final Color? color;
+  final VoidCallback? onTap;
+
+  const _BodyStatCard({
+    required this.label,
+    required this.value,
+    required this.unit,
+    required this.emoji,
+    this.icon,
+    this.color,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final primaryColor = color ?? Theme.of(context).colorScheme.primary;
+    final effectiveIcon = icon ?? IkonMapper.dariEmoji(emoji);
+
     return Expanded(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(14),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(
                 color: Theme.of(context)
                     .dividerColor
-                    .withValues(alpha: isDark ? 0.15 : 0.08)),
-            boxShadow: isDark
-                ? []
-                : [
-                    const BoxShadow(
-                      color: Color(0x0A000000),
-                      blurRadius: 8,
-                      offset: Offset(0, 2),
-                    )
-                  ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Emoji in tinted circle
-            Container(
-              width: 36,
-              height: 36,
-              decoration: BoxDecoration(
-                color: Theme.of(context)
-                    .colorScheme
-                    .primary
-                    .withValues(alpha: 0.10),
-                borderRadius: BorderRadius.circular(10),
+                    .withValues(alpha: isDark ? 0.15 : 0.08),
               ),
-              child: Center(
-                  child: Icon(IkonMapper.dariEmoji(emoji), size: 18, color: Theme.of(context).colorScheme.primary)),
+              boxShadow: isDark
+                  ? []
+                  : [
+                      BoxShadow(
+                        color: primaryColor.withValues(alpha: 0.08),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
             ),
-            const SizedBox(height: 10),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: value,
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w800,
-                      color: Theme.of(context).textTheme.titleLarge?.color,
-                      fontFamily: 'Poppins',
-                      height: 1.0)),
-              if (unit.isNotEmpty)
-                TextSpan(
-                    text: ' $unit',
-                    style: TextStyle(
-                        fontSize: 11,
-                        color: Theme.of(context).textTheme.bodySmall?.color,
-                        fontFamily: 'Poppins')),
-            ])),
-            const SizedBox(height: 3),
-            Text(label,
-                style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).textTheme.labelSmall?.color)),
-          ],
+            child: Row(
+              children: [
+                // Themed Icon in tinted rounded container
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: primaryColor.withValues(alpha: isDark ? 0.22 : 0.12),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      effectiveIcon,
+                      size: 19,
+                      color: primaryColor,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+
+                // Value and Label neatly stacked
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: value,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.color,
+                                  fontFamily: 'Poppins',
+                                  height: 1.1,
+                                ),
+                              ),
+                              if (unit.isNotEmpty)
+                                TextSpan(
+                                  text: ' $unit',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.color,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).textTheme.bodySmall?.color,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

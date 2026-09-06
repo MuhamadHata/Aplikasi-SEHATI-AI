@@ -59,76 +59,109 @@ class StatCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(ComponentSpec.cardRadius),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // ── Body ──────────────────────────────────
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    ComponentSpec.cardPadding,
-                    ComponentSpec.cardPadding - 3,
-                    ComponentSpec.cardPadding,
-                    ComponentSpec.cardPadding - 5,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 12,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Icon container
-                      Container(
-                        width: 34,
-                        height: 34,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              gradientColors.first.withValues(alpha: 0.18),
-                              gradientColors.last.withValues(alpha: 0.10),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Icon container (Centered)
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                gradientColors.first.withValues(alpha: 0.18),
+                                gradientColors.last.withValues(alpha: 0.10),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          borderRadius:
-                              BorderRadius.circular(ComponentSpec.cardRadius - 4),
-                        ),
-                        child: Center(
-                          child: Icon(
-                            icon,
-                            size: 17,
+                          child: Center(
+                            child: Icon(
+                              icon,
+                              size: 19,
+                              color: isDark
+                                  ? Colors.white.withValues(alpha: 0.9)
+                                  : (accentColor.computeLuminance() > 0.6
+                                      ? Theme.of(context).colorScheme.primary
+                                      : accentColor),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: AppTokens.small),
+                        const SizedBox(height: 8),
 
-                      // Value + unit (Heading 1 + Caption)
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: value,
-                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                                    fontWeight: AppTypography.h1Weight,
-                                    height: 1.0,
-                                  ),
+                        // Value + unit (Heading 1 + Caption) Centered
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: value,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w800,
+                                        fontSize: 20,
+                                        height: 1.1,
+                                        fontFamily: 'Poppins',
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.color,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: ' $unit',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall
+                                            ?.color,
+                                      ),
+                                ),
+                              ],
                             ),
-                            TextSpan(
-                              text: ' $unit',
-                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 3),
+                        const SizedBox(height: 3),
 
-                      // Label (Caption 12sp Medium)
-                      Text(
-                        label,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              fontWeight: AppTypography.captionWeight,
-                            ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                        // Label (Caption 12sp Medium) Centered
+                        Text(
+                          label,
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.color,
+                                  ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
 

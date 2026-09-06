@@ -119,6 +119,25 @@ class ActivityRecord {
     };
   }
 
+  /// Format khusus untuk tabel PostgreSQL/Supabase 'activity_history' (snake_case)
+  Map<String, dynamic> toSupabaseJson(String userId) {
+    return {
+      'id': id,
+      'user_id': userId,
+      'type': type,
+      'date': date.toIso8601String(),
+      'duration_seconds': durationSeconds,
+      'distance_km': distanceKm,
+      'calories': calories,
+      'route': route
+          .map((latLng) => {
+                'lat': latLng.latitude,
+                'lng': latLng.longitude,
+              })
+          .toList(),
+    };
+  }
+
   factory ActivityRecord.fromJson(Map<String, dynamic> json) {
     DateTime parsedDate;
     final rawDate = json['date'] ?? json['created_at'] ?? json['timestamp'];
@@ -224,19 +243,63 @@ class DailySummary {
     };
   }
 
+  /// Format khusus untuk tabel PostgreSQL/Supabase 'daily_summaries' (snake_case)
+  Map<String, dynamic> toSupabaseJson(String userId) {
+    return {
+      'user_id': userId,
+      'date': date,
+      'steps': steps,
+      'calories_burned': caloriesBurned,
+      'calorie_consumed': caloriesConsumed,
+      'calories_consumed': caloriesConsumed,
+      'water_glasses': waterGlasses,
+      'sleep_hours': sleepHours,
+      'is_smoker': isSmoker,
+      'food_logs': foodLogs.map((e) => e.toJson()).toList(),
+      'last_update': DateTime.now().toIso8601String(),
+    };
+  }
+
   factory DailySummary.fromJson(Map<String, dynamic> json) {
+    // Dukung format lokal (camelCase) maupun database Supabase (snake_case)
+    final rawCalConsumed = json['caloriesConsumed'] ??
+        json['calorie_consumed'] ??
+        json['calories_consumed'] ??
+        0;
+    final rawCalBurned =
+        json['caloriesBurned'] ?? json['calories_burned'] ?? 0;
+    final rawSteps = json['steps'] ?? json['step_count'] ?? 0;
+    final rawWater = json['waterGlasses'] ?? json['water_glasses'] ?? 0;
+    final rawSleep = json['sleepHours'] ?? json['sleep_hours'] ?? 0;
+    final rawSmoker = json['isSmoker'] ?? json['is_smoker'] ?? false;
+    final rawFood = json['foodLogs'] ?? json['food_logs'];
+
     return DailySummary(
-      date: json['date'] ?? '',
-      caloriesConsumed: json['caloriesConsumed'] ?? 0,
-      caloriesBurned: json['caloriesBurned'] ?? 0,
-      steps: json['steps'] ?? 0,
-      waterGlasses: json['waterGlasses'] ?? 0,
-      sleepHours: (json['sleepHours'] as num?)?.toDouble() ?? 0,
-      isSmoker: json['isSmoker'] as bool? ?? false,
-      foodLogs: (json['foodLogs'] as List?)
-              ?.map((e) => FoodLog.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
+      date: json['date']?.toString() ?? '',
+      caloriesConsumed: (rawCalConsumed is num)
+          ? rawCalConsumed.toInt()
+          : int.tryParse('$rawCalConsumed') ?? 0,
+      caloriesBurned: (rawCalBurned is num)
+          ? rawCalBurned.toInt()
+          : int.tryParse('$rawCalBurned') ?? 0,
+      steps: (rawSteps is num)
+          ? rawSteps.toInt()
+          : int.tryParse('$rawSteps') ?? 0,
+      waterGlasses: (rawWater is num)
+          ? rawWater.toInt()
+          : int.tryParse('$rawWater') ?? 0,
+      sleepHours: (rawSleep is num)
+          ? rawSleep.toDouble()
+          : double.tryParse('$rawSleep') ?? 0.0,
+      isSmoker: rawSmoker is bool
+          ? rawSmoker
+          : (rawSmoker == 1 || rawSmoker.toString().toLowerCase() == 'true'),
+      foodLogs: (rawFood is List)
+          ? rawFood
+              .whereType<Map>()
+              .map((e) => FoodLog.fromJson(Map<String, dynamic>.from(e)))
+              .toList()
+          : [],
     );
   }
 }

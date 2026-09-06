@@ -906,10 +906,61 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                     ),
                     const SizedBox(height: AppTokens.small),
-                    _DetailRow('Kalori Terbakar', '${summary.caloriesBurned} kkal'),
-                    _DetailRow('Kalori Masuk', '${summary.caloriesConsumed} kkal'),
-                    _DetailRow('Langkah Kaki', formatter.format(summary.steps)),
-                    _DetailRow('Air Minum', '${summary.waterGlasses} gelas'),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildDailyDetailTile(
+                            context: context,
+                            icon: Icons.directions_walk_rounded,
+                            iconColor: const Color(0xFF6366F1),
+                            label: 'Langkah Kaki',
+                            value: '${formatter.format(summary.steps)} lgh',
+                            target: 'Target 10.000',
+                            progress: (summary.steps / 10000).clamp(0.0, 1.0),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: _buildDailyDetailTile(
+                            context: context,
+                            icon: Icons.local_fire_department_rounded,
+                            iconColor: const Color(0xFFF97316),
+                            label: 'Kalori Terbakar',
+                            value: '${formatter.format(summary.caloriesBurned)} kkal',
+                            target: 'Target 300 kkal',
+                            progress: (summary.caloriesBurned / 300).clamp(0.0, 1.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _buildDailyDetailTile(
+                            context: context,
+                            icon: Icons.water_drop_rounded,
+                            iconColor: const Color(0xFF0EA5E9),
+                            label: 'Air Minum',
+                            value: '${summary.waterGlasses} gelas',
+                            target: 'Target 8 gelas',
+                            progress: (summary.waterGlasses / 8).clamp(0.0, 1.0),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: _buildDailyDetailTile(
+                            context: context,
+                            icon: Icons.restaurant_rounded,
+                            iconColor: const Color(0xFF10B981),
+                            label: 'Kalori Masuk',
+                            value: '${formatter.format(summary.caloriesConsumed)} kkal',
+                            target: 'Target 2.100 kkal',
+                            progress: (summary.caloriesConsumed / 2100).clamp(0.0, 1.0),
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: AppTokens.medium),
                     SizedBox(
                       width: double.infinity,
@@ -941,6 +992,182 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildDailyDetailTile({
+    required BuildContext context,
+    required IconData icon,
+    required Color iconColor,
+    required String label,
+    required String value,
+    required String target,
+    required double progress,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF8FAFC),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: Theme.of(context).dividerColor.withValues(alpha: 0.08),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: iconColor.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(icon, size: 16, color: iconColor),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: iconColor.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  '${(progress * 100).toInt()}%',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    color: iconColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              value,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w800,
+                fontFamily: 'Poppins',
+                color: Theme.of(context).textTheme.titleLarge?.color,
+              ),
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w500,
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.color
+                  ?.withValues(alpha: 0.7),
+            ),
+          ),
+          const SizedBox(height: 6),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: LinearProgressIndicator(
+              value: progress,
+              backgroundColor: iconColor.withValues(alpha: 0.12),
+              valueColor: AlwaysStoppedAnimation(iconColor),
+              minHeight: 5,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            target,
+            style: TextStyle(
+              fontSize: 9.5,
+              color: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.color
+                  ?.withValues(alpha: 0.6),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDailyMetricRow({
+    required BuildContext context,
+    required IconData icon,
+    required Color iconColor,
+    required String label,
+    required String value,
+    required String unit,
+  }) {
+    return Row(
+      children: [
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: iconColor.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Icon(icon, size: 11, color: iconColor),
+        ),
+        const SizedBox(width: 6),
+        Expanded(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.color
+                  ?.withValues(alpha: 0.75),
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        const SizedBox(width: 4),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Poppins',
+                color: Theme.of(context).textTheme.titleSmall?.color,
+              ),
+            ),
+            if (unit.isNotEmpty) ...[
+              const SizedBox(width: 2.5),
+              Text(
+                unit,
+                style: TextStyle(
+                  fontSize: 9.5,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.color
+                      ?.withValues(alpha: 0.65),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ],
     );
   }
 
@@ -1000,24 +1227,95 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _greeting,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    fontWeight: AppTypography.body2Weight,
-                                    color: Theme.of(context).textTheme.bodyMedium?.color,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _greeting,
+                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                      fontWeight: AppTypography.body2Weight,
+                                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                                    ),
+                              ),
+                              const SizedBox(height: 2),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      activity.userName,
+                                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                                            fontSize: 26,
+                                            fontWeight: FontWeight.w800,
+                                            fontFamily: 'Poppins',
+                                            color: Theme.of(context).textTheme.titleLarge?.color,
+                                            letterSpacing: -0.5,
+                                            height: 1.2,
+                                          ) ??
+                                          const TextStyle(
+                                            fontSize: 26,
+                                            fontWeight: FontWeight.w800,
+                                            fontFamily: 'Poppins',
+                                            letterSpacing: -0.5,
+                                            height: 1.2,
+                                          ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              activity.userName,
-                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    fontWeight: AppTypography.h2Weight,
-                                  ),
-                            ),
-                          ],
+                                  if (activity.mbti != null && activity.mbti!.trim().isNotEmpty) ...[
+                                    const SizedBox(width: 8),
+                                    GestureDetector(
+                                      onTap: () => Navigator.pushNamed(context, '/tes-mbti'),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3.5),
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [
+                                              Theme.of(context).colorScheme.primary,
+                                              Theme.of(context).colorScheme.secondary,
+                                            ],
+                                          ),
+                                          borderRadius: BorderRadius.circular(12),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary
+                                                  .withValues(alpha: 0.3),
+                                              blurRadius: 6,
+                                              offset: const Offset(0, 2),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const Text(
+                                              '🧠 ',
+                                              style: TextStyle(fontSize: 10),
+                                            ),
+                                            Text(
+                                              activity.mbti!.toUpperCase(),
+                                              style: const TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.w800,
+                                                fontFamily: 'Poppins',
+                                                color: Colors.white,
+                                                letterSpacing: 0.6,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.min,
@@ -1217,48 +1515,48 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       StatCard(
-                        icon: Icons.water_drop_outlined,
+                        icon: Icons.water_drop_rounded,
                         label: 'Air Minum',
                         value: '$waterConsumed/$waterTarget',
                         unit: 'gls',
                         gradientColors: Theme.of(context).brightness == Brightness.dark
                             ? [
-                                const Color(0xFF082F49),
-                                const Color(0xFF0C4A6E),
+                                const Color(0xFF0369A1),
+                                const Color(0xFF0284C7),
                               ]
                             : const [
-                                Color(0xFFBAE6FD),
-                                Color(0xFFE0F2FE),
+                                Color(0xFF0284C7),
+                                Color(0xFF38BDF8),
                               ],
                       ),
                       StatCard(
-                        icon: Icons.directions_walk_outlined,
+                        icon: Icons.directions_walk_rounded,
                         label: 'Langkah',
                         value: formatter.format(stepsToday),
                         unit: 'steps',
                         gradientColors: Theme.of(context).brightness == Brightness.dark
                             ? [
-                                const Color(0xFF0F172A),
-                                const Color(0xFF1E293B),
+                                const Color(0xFF1E3A8A),
+                                const Color(0xFF2563EB),
                               ]
                             : const [
-                                Color(0xFFE2E8F0),
-                                Color(0xFFF1F5F9),
+                                Color(0xFF2563EB),
+                                Color(0xFF60A5FA),
                               ],
                       ),
                       StatCard(
-                        icon: Icons.local_fire_department_outlined,
+                        icon: Icons.local_fire_department_rounded,
                         label: 'Terbakar',
                         value: calBurned.toString(),
                         unit: 'kkal',
                         gradientColors: Theme.of(context).brightness == Brightness.dark
                             ? [
-                                const Color(0xFF451A03),
-                                const Color(0xFF78350F),
+                                const Color(0xFF9A3412),
+                                const Color(0xFFEA580C),
                               ]
                             : const [
-                                Color(0xFFFED7AA),
-                                Color(0xFFFFEDD5),
+                                Color(0xFFEA580C),
+                                Color(0xFFFB923C),
                               ],
                       ),
                     ],
@@ -1685,66 +1983,170 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: AppTokens.small),
-                  activity.dailySummaries.isEmpty
+                  activity.dailySummariesWithToday.isEmpty
                       ? Padding(
                           padding: const EdgeInsets.symmetric(vertical: AppTokens.medium),
                           child: Text(
-                            'Belum ada riwayat hari sebelumnya.',
+                            'Belum ada riwayat harian.',
                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                   fontWeight: AppTypography.body2Weight,
                                 ),
                           ),
                         )
                       : SizedBox(
-                          height: 160,
+                          height: 195,
                           child: ListView.separated(
                             scrollDirection: Axis.horizontal,
-                            itemCount: activity.dailySummaries.length,
+                            itemCount: activity.dailySummariesWithToday.length,
                             separatorBuilder: (_, __) =>
-                                const SizedBox(width: AppTokens.medium),
+                                const SizedBox(width: 12),
                             itemBuilder: (context, i) {
-                              final summary = activity.dailySummaries[i];
+                              final summary = activity.dailySummariesWithToday[i];
                               final dateParse =
                                   DateFormat('yyyy-MM-dd').parse(summary.date);
                               final labelDate = DateFormat('dd MMM', 'id_ID')
                                   .format(dateParse);
+                              final todayKey =
+                                  DateFormat('yyyy-MM-dd').format(DateTime.now());
+                              final dayName = summary.date == todayKey
+                                  ? 'Hari Ini'
+                                  : DateFormat('EEEE', 'id_ID')
+                                      .format(dateParse);
+
+                              final String statusText;
+                              final Color statusColor;
+                              if (summary.steps >= 6000 || summary.caloriesBurned >= 200) {
+                                statusText = 'Aktif';
+                                statusColor = const Color(0xFF10B981);
+                              } else if (summary.steps >= 2000 || summary.caloriesBurned >= 80) {
+                                statusText = 'Cukup';
+                                statusColor = const Color(0xFF3B82F6);
+                              } else {
+                                statusText = 'Santai';
+                                statusColor = const Color(0xFFF59E0B);
+                              }
+
                               return GestureDetector(
                                 onTap: () => _showDailyDetail(
                                     context, summary, activity, formatter),
                                 child: Container(
-                                  width: 160,
+                                  width: 215,
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                        colors: Theme.of(context)
-                                                .extension<AppThemeExtension>()
-                                                ?.gradientCard ??
-                                            AppColors.gradientCard),
-                                    borderRadius: BorderRadius.circular(ComponentSpec.cardRadius),
+                                    color: Theme.of(context).colorScheme.surface,
+                                    borderRadius: BorderRadius.circular(16),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withValues(alpha: 0.03),
+                                        blurRadius: 10,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
                                     border: Border.all(
                                       color: Theme.of(context)
                                           .dividerColor
-                                          .withValues(alpha: 0.1),
+                                          .withValues(alpha: 0.09),
                                     ),
                                   ),
-                                  padding: const EdgeInsets.all(ComponentSpec.cardPadding),
+                                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        labelDate,
-                                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                              fontWeight: AppTypography.h3Weight,
-                                              color: Theme.of(context)
-                                                  .textTheme
-                                                  .titleMedium
-                                                  ?.color,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                labelDate,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily: 'Poppins',
+                                                  color: Theme.of(context)
+                                                      .textTheme
+                                                      .titleMedium
+                                                      ?.color,
+                                                ),
+                                              ),
+                                              Text(
+                                                dayName,
+                                                style: TextStyle(
+                                                  fontSize: 10,
+                                                  color: Theme.of(context)
+                                                      .textTheme
+                                                      .bodySmall
+                                                      ?.color
+                                                      ?.withValues(alpha: 0.7),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 7, vertical: 2.5),
+                                            decoration: BoxDecoration(
+                                              color: statusColor.withValues(alpha: 0.12),
+                                              borderRadius: BorderRadius.circular(8),
+                                              border: Border.all(
+                                                color: statusColor.withValues(alpha: 0.25),
+                                                width: 0.8,
+                                              ),
                                             ),
+                                            child: Text(
+                                              statusText,
+                                              style: TextStyle(
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.w700,
+                                                color: statusColor,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(height: AppTokens.small),
-                                      _DetailRow('Terbakar', '${summary.caloriesBurned} kkal'),
-                                      _DetailRow('Langkah', '${formatter.format(summary.steps)} langkah'),
-                                      _DetailRow('Air', '${summary.waterGlasses} gelas'),
-                                      _DetailRow('Masuk', '${summary.caloriesConsumed} kkal'),
+                                      const SizedBox(height: 8),
+                                      Divider(
+                                        height: 1,
+                                        color: Theme.of(context)
+                                            .dividerColor
+                                            .withValues(alpha: 0.07),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      _buildDailyMetricRow(
+                                        context: context,
+                                        icon: Icons.directions_walk_rounded,
+                                        iconColor: const Color(0xFF6366F1),
+                                        label: 'Langkah',
+                                        value: formatter.format(summary.steps),
+                                        unit: 'langkah',
+                                      ),
+                                      const SizedBox(height: 5),
+                                      _buildDailyMetricRow(
+                                        context: context,
+                                        icon: Icons.local_fire_department_rounded,
+                                        iconColor: const Color(0xFFF97316),
+                                        label: 'Terbakar',
+                                        value: formatter.format(summary.caloriesBurned),
+                                        unit: 'kkal',
+                                      ),
+                                      const SizedBox(height: 5),
+                                      _buildDailyMetricRow(
+                                        context: context,
+                                        icon: Icons.water_drop_rounded,
+                                        iconColor: const Color(0xFF0EA5E9),
+                                        label: 'Air Minum',
+                                        value: '${summary.waterGlasses}',
+                                        unit: 'gelas',
+                                      ),
+                                      const SizedBox(height: 5),
+                                      _buildDailyMetricRow(
+                                        context: context,
+                                        icon: Icons.restaurant_rounded,
+                                        iconColor: const Color(0xFF10B981),
+                                        label: 'Asupan',
+                                        value: formatter.format(summary.caloriesConsumed),
+                                        unit: 'kkal',
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -2328,39 +2730,6 @@ class _AIQuickCard extends StatelessWidget {
   }
 }
 
-class _DetailRow extends StatelessWidget {
-  final String label;
-  final String value;
-
-  const _DetailRow(this.label, this.value);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: AppTypography.body2Size,
-              color: Theme.of(context).textTheme.bodyMedium?.color,
-            ),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: AppTypography.body2Size,
-              fontWeight: FontWeight.w700,
-              color: Theme.of(context).textTheme.titleSmall?.color,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class _TargetRow extends StatelessWidget {
   final String label;

@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'dart:convert';
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pedometer/pedometer.dart';
@@ -140,6 +141,7 @@ class ActivityProvider extends ChangeNotifier {
     _initPedometer();
     _cancelFirestoreStreams();
     _setupFirestoreStreams();
+    _startMidnightCheckTimer();
   }
 
   int _stepsAtLastSave = 0;
@@ -245,6 +247,7 @@ class ActivityProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    _midnightCheckTimer?.cancel();
     _authSubscription?.cancel();
     _stepSubscription?.cancel();
     _bgServiceSubscription?.cancel();
@@ -341,7 +344,7 @@ class ActivityProvider extends ChangeNotifier {
           .listen((docs) {
             if (docs.isEmpty) return;
             final fetched = docs.map((d) => DailySummary.fromJson(d)).toList();
-            _dailySummaries = fetched;
+            _mergeDailySummaries(fetched);
             notifyListeners();
           }, onError: (e) => debugPrint('DailySummaries stream error: $e'));
     } catch (e) {
@@ -430,13 +433,189 @@ class ActivityProvider extends ChangeNotifier {
     final user = Supabase.instance.client.auth.currentUser;
     if (user == null) return;
     try {
-      final summaryJson = summary.toJson();
-      summaryJson['user_id'] = user.id;
+      final summaryJson = summary.toSupabaseJson(user.id);
       await Supabase.instance.client
           .from('daily_summaries')
           .upsert(summaryJson, onConflict: 'user_id, date');
     } catch (e) {
       debugPrint('DailySummary Supabase sync error: $e');
+    }
+  }
+
+  void _mergeDailySummaries(List<DailySummary> incoming) {
+    if (incoming.isEmpty) return;
+    final Map<String, DailySummary> map = {};
+    for (final s in _dailySummaries) {
+      map[s.date] = s;
+    }
+    for (final s in incoming) {
+      if (!map.containsKey(s.date)) {
+        map[s.date] = s;
+      } else {
+        final existing = map[s.date]!;
+        final maxSteps = math.max(existing.steps, s.steps);
+        final maxCalBurned =
+            math.max(existing.caloriesBurned, s.caloriesBurned);
+        final maxCalConsumed =
+            math.max(existing.caloriesConsumed, s.caloriesConsumed);
+        final maxWater = math.max(existing.waterGlasses, s.waterGlasses);
+        final maxSleep = math.max(existing.sleepHours, s.sleepHours);
+        final food = s.foodLogs.length >= existing.foodLogs.length
+            ? s.foodLogs
+            : existing.foodLogs;
+        map[s.date] = DailySummary(
+          date: s.date,
+          caloriesConsumed: maxCalConsumed,
+          caloriesBurned: maxCalBurned,
+          steps: maxSteps,
+          waterGlasses: maxWater,
+          sleepHours: maxSleep,
+          isSmoker: s.isSmoker || existing.isSmoker,
+          foodLogs: food,
+        );
+      }
+    }
+    _dailySummaries = map.values.toList()
+      ..sort((a, b) => b.date.compareTo(a.date)); // newest first
+    if (_dailySummaries.length > 30) {
+      _dailySummaries = _dailySummaries.sublist(0, 30);
+    }
+    _saveDailySummariesToPrefs();
+  }
+
+  Future<void> _saveDailySummariesToPrefs() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(
+        '${_prefix}dailySummaries',
+        jsonEncode(_dailySummaries.map((e) => e.toJson()).toList()),
+      );
+    } catch (e) {
+      debugPrint('Error saving dailySummaries to prefs: $e');
+    }
+  }
+
+  Future<void> _backfillGapSummaries(DateTime fromDate, DateTime toDate) async {
+    final user = Supabase.instance.client.auth.currentUser;
+    final fromStr = DateFormat('yyyy-MM-dd').format(fromDate);
+    final toStr = DateFormat('yyyy-MM-dd').format(toDate);
+
+    final existingDates = _dailySummaries.map((s) => s.date).toSet();
+    final List<DailySummary> recoveredList = [];
+
+    final Map<String, Map<String, dynamic>> serverStatsMap = {};
+    final Map<String, List<FoodLog>> serverFoodLogsMap = {};
+    if (user != null) {
+      try {
+        final statsDocs = await Supabase.instance.client
+            .from('daily_stats')
+            .select()
+            .eq('user_id', user.id)
+            .gte('date', fromStr)
+            .lte('date', toStr);
+        for (final doc in statsDocs) {
+          if (doc['date'] != null) {
+            serverStatsMap[doc['date'].toString()] =
+                Map<String, dynamic>.from(doc);
+          }
+        }
+      } catch (e) {
+        debugPrint('Backfill stats query error: $e');
+      }
+
+      try {
+        final foodDocs = await Supabase.instance.client
+            .from('food_logs')
+            .select()
+            .eq('user_id', user.id)
+            .gte('date', fromStr)
+            .lte('date', toStr);
+        for (final doc in foodDocs) {
+          final d = doc['date']?.toString();
+          final items = doc['items'] as List<dynamic>?;
+          if (d != null && items != null) {
+            serverFoodLogsMap[d] = items
+                .whereType<Map>()
+                .map((e) => FoodLog.fromJson(Map<String, dynamic>.from(e)))
+                .toList();
+          }
+        }
+      } catch (e) {
+        debugPrint('Backfill food logs query error: $e');
+      }
+    }
+
+    DateTime cur = fromDate.add(const Duration(days: 1));
+    final endDay = DateTime(toDate.year, toDate.month, toDate.day);
+
+    while (cur.isBefore(endDay)) {
+      final dateKey = DateFormat('yyyy-MM-dd').format(cur);
+      if (!existingDates.contains(dateKey)) {
+        final stat = serverStatsMap[dateKey];
+        final food = serverFoodLogsMap[dateKey] ?? [];
+
+        if (stat != null) {
+          final pSteps = (stat['passive_steps'] as int?) ?? 0;
+          final rDist = (stat['running_distance'] as num?)?.toDouble() ?? 0.0;
+          final wDist = (stat['walking_distance'] as num?)?.toDouble() ?? 0.0;
+          final wGlasses = (stat['water_glasses'] as int?) ?? 0;
+          final calConsumed = (stat['calorie_consumed'] as int?) ?? 0;
+          final calBurned = (rDist * 60 + wDist * 45 + pSteps * 0.03).round();
+          final totalSteps = pSteps + ((rDist + wDist) * 1400).round();
+
+          final recovered = DailySummary(
+            date: dateKey,
+            caloriesConsumed: calConsumed,
+            caloriesBurned: calBurned,
+            steps: totalSteps,
+            waterGlasses: wGlasses,
+            foodLogs: food,
+          );
+          recoveredList.add(recovered);
+          _syncDailySummaryToFirestore(recovered);
+        } else {
+          final placeholder = DailySummary(
+            date: dateKey,
+            caloriesConsumed: 0,
+            caloriesBurned: 0,
+            steps: 0,
+            waterGlasses: 0,
+            foodLogs: food,
+          );
+          recoveredList.add(placeholder);
+          _syncDailySummaryToFirestore(placeholder);
+        }
+      }
+      cur = cur.add(const Duration(days: 1));
+    }
+
+    if (recoveredList.isNotEmpty) {
+      _mergeDailySummaries(recoveredList);
+      notifyListeners();
+      debugPrint(
+          '[ActivityProvider] Backfilled ${recoveredList.length} missing daily summaries');
+    }
+  }
+
+  Timer? _midnightCheckTimer;
+
+  void _startMidnightCheckTimer() {
+    _midnightCheckTimer?.cancel();
+    _midnightCheckTimer = Timer.periodic(const Duration(minutes: 1), (_) {
+      checkDateRollover();
+    });
+  }
+
+  Future<void> checkDateRollover() async {
+    final prefs = await SharedPreferences.getInstance();
+    final lastDateStr = prefs.getString('${_prefix}lastDate');
+    final todayStr = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
+    if (lastDateStr != null && lastDateStr != todayStr) {
+      debugPrint(
+          '[ActivityProvider] Date rollover detected in real-time ($lastDateStr -> $todayStr)');
+      await _loadData();
+      notifyListeners();
     }
   }
 
@@ -449,6 +628,14 @@ class ActivityProvider extends ChangeNotifier {
         'user_id': user.id,
         'date': todayStr,
         'items': _foodLogs.map((e) => e.toJson()).toList(),
+        'last_update': DateTime.now().toIso8601String(),
+      }, onConflict: 'user_id, date');
+
+      // Update langsung kalori di daily_stats agar server segera konsisten tanpa menunggu debounce
+      await Supabase.instance.client.from('daily_stats').upsert({
+        'user_id': user.id,
+        'date': todayStr,
+        'calorie_consumed': _calorieConsumed,
         'last_update': DateTime.now().toIso8601String(),
       }, onConflict: 'user_id, date');
     } catch (e) {
@@ -546,14 +733,8 @@ class ActivityProvider extends ChangeNotifier {
         foodLogs: List<FoodLog>.from(_foodLogs), // Capture food logs
       );
 
-      _dailySummaries.insert(0, summary); // newest first
-      _syncDailySummaryToFirestore(
-          summary); // persist to Firestore for realtime
-      if (_dailySummaries.length > 30) {
-        _dailySummaries = _dailySummaries.sublist(0, 30); // keep last 30 days
-      }
-      prefs.setString('${_prefix}dailySummaries',
-          jsonEncode(_dailySummaries.map((e) => e.toJson()).toList()));
+      _mergeDailySummaries([summary]);
+      _syncDailySummaryToFirestore(summary); // persist to Supabase for realtime
 
       _runningDistance = 0.0;
       _walkingDistance = 0.0;
@@ -565,7 +746,22 @@ class ActivityProvider extends ChangeNotifier {
       prefs.setString('${_prefix}lastDate', todayStr);
       prefs.remove('${_prefix}foodLogs'); // Clear prefs too
       _saveData();
+
+      // Check for multi-day gap (e.g. 28 Aug -> 6 Sep)
+      final lastDateParsed = DateTime.tryParse(lastDateStr);
+      if (lastDateParsed != null) {
+        final daysDiff = now
+            .difference(DateTime(lastDateParsed.year,
+                lastDateParsed.month, lastDateParsed.day))
+            .inDays;
+        if (daysDiff > 1) {
+          _backfillGapSummaries(lastDateParsed, now);
+        }
+      }
     } else {
+      if (lastDateStr == null) {
+        prefs.setString('${_prefix}lastDate', todayStr);
+      }
       _runningDistance = prefs.getDouble('${_prefix}runningDistance') ?? 0.0;
       _walkingDistance = prefs.getDouble('${_prefix}walkingDistance') ?? 0.0;
       _waterGlasses = prefs.getInt('${_prefix}waterGlasses') ?? 0;
@@ -588,6 +784,22 @@ class ActivityProvider extends ChangeNotifier {
           _calorieConsumed = totalCalFromLogs;
         }
       }
+    }
+
+    // Check if newest existing summary is older than yesterday, and backfill gaps
+    final yesterday = now.subtract(const Duration(days: 1));
+    final yesterdayStr = DateFormat('yyyy-MM-dd').format(yesterday);
+    if (_dailySummaries.isNotEmpty) {
+      final newestDateStr = _dailySummaries.first.date;
+      if (newestDateStr.compareTo(yesterdayStr) < 0) {
+        final newestDate = DateTime.tryParse(newestDateStr);
+        if (newestDate != null) {
+          _backfillGapSummaries(newestDate, now);
+        }
+      }
+    } else {
+      // If daily summaries is empty, recover from Supabase daily_stats for past 30 days
+      _backfillGapSummaries(now.subtract(const Duration(days: 30)), now);
     }
 
     final historyJson = prefs.getString('${_prefix}activityHistory');
@@ -621,6 +833,13 @@ class ActivityProvider extends ChangeNotifier {
       await _tryFirestoreFallback();
     }
 
+    // Pastikan _calorieConsumed selalu konsisten dengan food logs yang tersimpan setelah fallback
+    final totalCalFromLogsAfterFallback =
+        _foodLogs.fold<int>(0, (sum, f) => sum + f.calories);
+    if (totalCalFromLogsAfterFallback > _calorieConsumed) {
+      _calorieConsumed = totalCalFromLogsAfterFallback;
+    }
+
     // After loading everything, evaluate notifications
     try {
       final notifService = NotificationService();
@@ -652,13 +871,22 @@ class ActivityProvider extends ChangeNotifier {
           .maybeSingle();
 
       if (data != null) {
-        _runningDistance =
-            (data['running_distance'] as num?)?.toDouble() ?? 0.0;
-        _walkingDistance =
-            (data['walking_distance'] as num?)?.toDouble() ?? 0.0;
-        _waterGlasses = (data['water_glasses'] as int?) ?? 0;
-        _calorieConsumed = (data['calorie_consumed'] as int?) ?? 0;
-        _passiveSteps = (data['passive_steps'] as int?) ?? 0;
+        final r = (data['running_distance'] as num?)?.toDouble() ?? 0.0;
+        if (r > _runningDistance) _runningDistance = r;
+        final wk = (data['walking_distance'] as num?)?.toDouble() ?? 0.0;
+        if (wk > _walkingDistance) _walkingDistance = wk;
+        final w = (data['water_glasses'] as int?) ?? 0;
+        if (w > _waterGlasses) _waterGlasses = w;
+
+        final serverCal = (data['calorie_consumed'] as int?) ?? 0;
+        final localFoodCal =
+            _foodLogs.fold<int>(0, (sum, f) => sum + f.calories);
+        // JANGAN menimpa nilai lokal dengan nilai server yang lebih kecil/stale
+        _calorieConsumed = [serverCal, _calorieConsumed, localFoodCal]
+            .reduce((a, b) => a > b ? a : b);
+
+        final s = (data['passive_steps'] as int?) ?? 0;
+        if (s > _passiveSteps) _passiveSteps = s;
       }
 
       // Load profile info
@@ -846,9 +1074,28 @@ class ActivityProvider extends ChangeNotifier {
     }
   }
 
-  // Getters
   List<ActivityRecord> get history => _history;
   List<DailySummary> get dailySummaries => _dailySummaries;
+
+  /// Ringkasan hari ini (live progress)
+  DailySummary get todaySummary => DailySummary(
+        date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        caloriesConsumed: calorieConsumed,
+        caloriesBurned: caloriesBurned,
+        steps: steps,
+        waterGlasses: waterGlasses,
+        sleepHours: todaySleepRecord?.durationHours ?? 0.0,
+        isSmoker: isSmoker,
+        foodLogs: List<FoodLog>.from(_foodLogs),
+      );
+
+  /// Ringkasan harian lengkap termasuk progress live hari ini (terbaru di index 0)
+  List<DailySummary> get dailySummariesWithToday {
+    final todayStr = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    final hasToday = _dailySummaries.any((s) => s.date == todayStr);
+    if (hasToday) return _dailySummaries;
+    return [todaySummary, ..._dailySummaries];
+  }
   bool get isSmoker => _isSmoker;
   bool get hasSmokingExposure => _smokingStatus != smokingStatusNone;
   String get smokingStatus => _smokingStatus;
@@ -1066,7 +1313,10 @@ class ActivityProvider extends ChangeNotifier {
   String get userName => _userName;
   String get userEmail => _userEmail;
   String? get photoUrl => _photoUrl;
-  int get calorieConsumed => _calorieConsumed;
+  int get calorieConsumed {
+    final localFoodCal = _foodLogs.fold<int>(0, (sum, f) => sum + f.calories);
+    return localFoodCal > _calorieConsumed ? localFoodCal : _calorieConsumed;
+  }
   String? get workoutGoal => _workoutGoal;
   String? get workoutLevel => _workoutLevel;
   List<String> get workoutMuscleGroups => _workoutMuscleGroups;
@@ -1102,7 +1352,7 @@ class ActivityProvider extends ChangeNotifier {
       _calcCaloriesForSession(_activeType, _activeSeconds, _activeDistanceKm);
   bool get hasWorkoutPreferences => _workoutGoal != null;
   String? get activeDietProgram => _activeDietProgram;
-  int get calories => _calorieConsumed;
+  int get calories => calorieConsumed;
   List<FoodLog> get foodLogs => _foodLogs;
 
   // ── Health Trajectory Longitudinal ──────────────────────────────────────────
@@ -1390,7 +1640,7 @@ class ActivityProvider extends ChangeNotifier {
           category: category,
           mealType: mealType,
         ));
-    _calorieConsumed += calories;
+    _calorieConsumed = _foodLogs.fold<int>(0, (sum, f) => sum + f.calories);
     _saveFoodLogs();
     _syncFoodLogsToFirestore(); // sync to Supabase for database persistence
     _saveData();
@@ -1413,7 +1663,7 @@ class ActivityProvider extends ChangeNotifier {
     );
     if (idx == -1) return;
     _foodLogs.removeAt(idx);
-    _calorieConsumed = (_calorieConsumed - log.calories).clamp(0, 99999);
+    _calorieConsumed = _foodLogs.fold<int>(0, (sum, f) => sum + f.calories);
     _saveFoodLogs();
     _syncFoodLogsToFirestore();
     _saveData();
@@ -1517,9 +1767,7 @@ class ActivityProvider extends ChangeNotifier {
     final user = Supabase.instance.client.auth.currentUser;
     if (user == null) return;
     try {
-      final docData = session.toJson();
-      docData['user_id'] = user.id;
-      docData['date'] = session.date.toIso8601String();
+      final docData = session.toSupabaseJson(user.id);
       await Supabase.instance.client.from('activity_history').upsert(docData);
     } catch (e) {
       debugPrint('History Supabase sync error: $e');

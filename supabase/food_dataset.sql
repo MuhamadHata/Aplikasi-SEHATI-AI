@@ -69,7 +69,8 @@ CREATE TRIGGER trg_food_dataset_updated_at
   FOR EACH ROW EXECUTE FUNCTION update_food_dataset_updated_at();
 
 -- 6. View untuk export dataset training (hanya data terverifikasi)
-CREATE OR REPLACE VIEW food_dataset_training AS
+CREATE OR REPLACE VIEW food_dataset_training
+WITH (security_invoker = true) AS
 SELECT
   food_hash,
   food_name,

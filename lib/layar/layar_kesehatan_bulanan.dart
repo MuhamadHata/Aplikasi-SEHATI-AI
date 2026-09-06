@@ -219,22 +219,31 @@ class MonthlyHealthScreen extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       // Achievement breakdown
-                      const _SectionTitle('Detail Pencapaian'),
+                      const _SectionTitle('Detail Pencapaian Target'),
                       const SizedBox(height: 12),
                       _AchievRow(
-                          label: 'Target Air Minum (8 gls/hari)',
-                          percent: waterScore,
-                          color: const Color(0xFF3B82F6)),
-                      const SizedBox(height: 8),
+                        icon: Icons.water_drop_rounded,
+                        label: 'Target Air Minum',
+                        currentText: '${avgWater.toStringAsFixed(1)} / 8 gls/hari',
+                        percent: waterScore,
+                        color: const Color(0xFF3B82F6),
+                      ),
+                      const SizedBox(height: 10),
                       _AchievRow(
-                          label: 'Target Langkah (10.000/hari)',
-                          percent: stepsScore,
-                          color: primaryColor),
-                      const SizedBox(height: 8),
+                        icon: Icons.directions_walk_rounded,
+                        label: 'Target Langkah Kaki',
+                        currentText: '${NumberFormat('#,###').format(avgSteps)} / 10.000/hari',
+                        percent: stepsScore,
+                        color: primaryColor,
+                      ),
+                      const SizedBox(height: 10),
                       _AchievRow(
-                          label: 'Target Kalori Terbakar (300/hari)',
-                          percent: calScore,
-                          color: const Color(0xFF10B981)),
+                        icon: Icons.local_fire_department_rounded,
+                        label: 'Target Kalori Terbakar',
+                        currentText: '$avgCalBurned / 300 kkal/hari',
+                        percent: calScore,
+                        color: const Color(0xFF10B981),
+                      ),
                       const SizedBox(height: 80),
                     ]),
                   ),
@@ -298,20 +307,21 @@ class _AvgCard extends StatelessWidget {
   final Color color;
   final bool isDark;
 
-  const _AvgCard(
-      {required this.icon,
-      required this.label,
-      required this.value,
-      required this.color,
-      required this.isDark});
+  const _AvgCard({
+    required this.icon,
+    required this.label,
+    required this.value,
+    required this.color,
+    required this.isDark,
+  });
 
   @override
   Widget build(BuildContext context) => Expanded(
         child: Container(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
           decoration: BoxDecoration(
             color: isDark ? const Color(0xFF1E293B) : Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(14),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.03),
@@ -320,7 +330,8 @@ class _AvgCard extends StatelessWidget {
               ),
             ],
             border: Border.all(
-                color: Theme.of(context).dividerColor.withValues(alpha: 0.08)),
+              color: Theme.of(context).dividerColor.withValues(alpha: 0.08),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -328,25 +339,39 @@ class _AvgCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(icon, size: 26, color: Theme.of(context).colorScheme.primary),
-                  Icon(Icons.trending_up,
-                      size: 16, color: color.withValues(alpha: 0.5)),
+                  Container(
+                    width: 34,
+                    height: 34,
+                    decoration: BoxDecoration(
+                      color: color.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(icon, size: 20, color: color),
+                  ),
+                  Icon(
+                    Icons.trending_up_rounded,
+                    size: 18,
+                    color: color.withValues(alpha: 0.6),
+                  ),
                 ],
               ),
               const SizedBox(height: 12),
-              Text(
-                value,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: color,
-                  fontFamily: 'Poppins',
-                  letterSpacing: -0.5,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w800,
+                    color: color,
+                    fontFamily: 'Poppins',
+                    letterSpacing: -0.5,
+                  ),
+                  maxLines: 1,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.visible,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 3),
               Text(
                 label.replaceAll('\n', ' '),
                 style: TextStyle(
@@ -359,6 +384,8 @@ class _AvgCard extends StatelessWidget {
                       ?.withValues(alpha: 0.7),
                   letterSpacing: 0.1,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),
@@ -442,13 +469,19 @@ class _BarChartCard extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: 40,
+                reservedSize: 36,
                 getTitlesWidget: (val, meta) {
                   if (val == meta.max || val == 0) {
                     return const SizedBox.shrink();
                   }
+                  String text;
+                  if (val >= 1000) {
+                    text = '${(val / 1000).toStringAsFixed(val % 1000 == 0 ? 0 : 1)}k';
+                  } else {
+                    text = val.toInt().toString();
+                  }
                   return Text(
-                    val.toInt().toString(),
+                    text,
                     style: TextStyle(
                         fontSize: 10, color: Theme.of(context).hintColor),
                   );
@@ -461,12 +494,21 @@ class _BarChartCard extends StatelessWidget {
                 getTitlesWidget: (val, _) {
                   final idx = val.toInt();
                   if (idx >= 0 && idx < data.length) {
-                    // Show labels every 5 days or first/last
-                    if (idx == 0 || idx == data.length - 1 || idx % 5 == 0) {
+                    final step = (data.length / 5).ceil().clamp(1, 10);
+                    final isFirst = idx == 0;
+                    final isLast = idx == data.length - 1;
+                    final isStep = idx % step == 0;
+                    final tooCloseToLast = (data.length - 1 - idx) < (step * 0.7);
+
+                    if (isFirst || (isStep && !tooCloseToLast) || isLast) {
+                      final rawDate = data[idx].date;
+                      final dateStr = rawDate.length >= 10
+                          ? rawDate.substring(8)
+                          : '${idx + 1}';
                       return Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          data[idx].date.substring(8),
+                          dateStr,
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
@@ -605,11 +647,21 @@ class _LineChartCard extends StatelessWidget {
                 getTitlesWidget: (val, _) {
                   final idx = val.toInt();
                   if (idx >= 0 && idx < data.length) {
-                    if (idx == 0 || idx == data.length - 1 || idx % 5 == 0) {
+                    final step = (data.length / 5).ceil().clamp(1, 10);
+                    final isFirst = idx == 0;
+                    final isLast = idx == data.length - 1;
+                    final isStep = idx % step == 0;
+                    final tooCloseToLast = (data.length - 1 - idx) < (step * 0.7);
+
+                    if (isFirst || (isStep && !tooCloseToLast) || isLast) {
+                      final rawDate = data[idx].date;
+                      final dateStr = rawDate.length >= 10
+                          ? rawDate.substring(8)
+                          : '${idx + 1}';
                       return Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          data[idx].date.substring(8),
+                          dateStr,
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w700,
@@ -667,54 +719,109 @@ class _LineChartCard extends StatelessWidget {
 }
 
 class _AchievRow extends StatelessWidget {
+  final IconData icon;
   final String label;
+  final String currentText;
   final double percent;
   final Color color;
 
-  const _AchievRow(
-      {required this.label, required this.percent, required this.color});
+  const _AchievRow({
+    required this.icon,
+    required this.label,
+    required this.currentText,
+    required this.percent,
+    required this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final int pct = (percent * 100).round();
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
+        color: isDark ? const Color(0xFF1E293B) : Colors.white,
+        borderRadius: BorderRadius.circular(14),
         border: Border.all(
-            color: Theme.of(context).dividerColor.withValues(alpha: 0.1)),
+          color: Theme.of(context).dividerColor.withValues(alpha: 0.08),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(icon, size: 16, color: color),
+              ),
+              const SizedBox(width: 10),
               Expanded(
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Theme.of(context).textTheme.bodyMedium?.color,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      label,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).textTheme.titleSmall?.color,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      currentText,
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.color
+                            ?.withValues(alpha: 0.7),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Text(
-                '${(percent * 100).round()}%',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: color,
+              const SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  '$pct%',
+                  style: TextStyle(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w800,
+                    color: color,
+                    fontFamily: 'Poppins',
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 10),
           ClipRRect(
             borderRadius: BorderRadius.circular(4),
             child: LinearProgressIndicator(
-              value: percent,
-              backgroundColor: color.withValues(alpha: 0.1),
+              value: percent.clamp(0.0, 1.0),
+              backgroundColor: color.withValues(alpha: 0.12),
               valueColor: AlwaysStoppedAnimation(color),
               minHeight: 6,
             ),

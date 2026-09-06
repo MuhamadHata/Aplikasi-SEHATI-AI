@@ -397,23 +397,56 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
   }
 
   Widget _buildNoResult(bool isDark) {
+    final queryText = _searchCtrl.text.trim();
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.search_off_rounded, size: 48, color: isDark ? Colors.white38 : Colors.grey.shade400),
-          const SizedBox(height: 12),
-          Text('Makanan tidak ditemukan',
-              style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: isDark ? Colors.white70 : const Color(0xFF475569))),
-          const SizedBox(height: 6),
-          Text('Coba kata kunci lain atau nama yang lebih umum',
-              style: TextStyle(
-                  fontSize: 13,
-                  color: isDark ? Colors.white38 : const Color(0xFF94A3B8))),
-        ],
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.search_off_rounded,
+                size: 48, color: isDark ? Colors.white38 : Colors.grey.shade400),
+            const SizedBox(height: 12),
+            Text('Makanan tidak ditemukan',
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: isDark ? Colors.white70 : const Color(0xFF475569))),
+            const SizedBox(height: 6),
+            Text('Coba kata kunci lain atau catat langsung dengan estimasi porsi',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: 13,
+                    color: isDark ? Colors.white38 : const Color(0xFF94A3B8))),
+            if (queryText.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              OutlinedButton.icon(
+                onPressed: () {
+                  _openPortionDialog(_FoodEntry(
+                    name: queryText,
+                    calories: 150,
+                    protein: 5.0,
+                    carbs: 20.0,
+                    fat: 5.0,
+                    fiber: 1.0,
+                    sugarGrams: 2.0,
+                    category: 'Umum',
+                    serving: '100g',
+                    emoji: _emojiForCategory(queryText),
+                  ));
+                },
+                icon: const Icon(Icons.add_circle_outline, size: 18),
+                label: Text('Catat "$queryText" Manual'),
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                ),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -555,6 +588,9 @@ class _PortionSheetState extends State<_PortionSheet> {
       fiber: widget.food.fiber * _grams / 100,
       sugarGrams: widget.food.sugarGrams * _grams / 100,
       caffeineMg: 0,
+      serving: '${_grams.toStringAsFixed(0)}g',
+      category: widget.food.category,
+      mealType: _mealType.toLowerCase().replaceAll(' ', '_'),
     );
 
     if (!ok) {

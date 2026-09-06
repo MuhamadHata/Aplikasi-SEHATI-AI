@@ -4641,6 +4641,13 @@ class _FoodLogTab extends StatelessWidget {
                             content: Text('✅ $name ($cal kkal) berhasil dicatat!'),
                             backgroundColor: Colors.green,
                           ));
+                        } else {
+                          ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+                            content: Text((ap.fastingMode == 'ramadan' && ap.isFastingNow)
+                                ? 'Sedang puasa: catat makanan saat sahur atau berbuka.'
+                                : 'Gagal mencatat: kalori harus lebih dari 0 kkal.'),
+                            backgroundColor: Colors.orange,
+                          ));
                         }
                       },
                       child: const Text('✅ Simpan',

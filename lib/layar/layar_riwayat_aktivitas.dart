@@ -47,12 +47,7 @@ class _ActivityHistoryScreenState extends State<ActivityHistoryScreen> {
       allDatesSet.add(s.date);
     }
     final todayStr = DateFormat('yyyy-MM-dd').format(DateTime.now());
-    if (provider.steps > 0 ||
-        provider.waterGlasses > 0 ||
-        provider.calorieConsumed > 0 ||
-        history.isNotEmpty) {
-      allDatesSet.add(todayStr);
-    }
+    allDatesSet.add(todayStr);
 
     final sortedDates = allDatesSet.toList()..sort((a, b) => b.compareTo(a));
     final hasAnyData = sortedDates.isNotEmpty || history.isNotEmpty;
