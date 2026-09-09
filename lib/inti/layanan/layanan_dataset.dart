@@ -119,7 +119,7 @@ class DatasetService {
               'sugar': sugarG,
               'caffeineMg': caffeineMg,
               'category': category,
-              'servingMl': servingMl,
+              'serving': servingMl > 0 ? '$servingMl ml' : '1 gelas (250ml)',
             };
             _verifiedCategories.add(name);
           }
@@ -127,6 +127,54 @@ class DatasetService {
         debugPrint('[DatasetService] Loaded beverages_id.csv entries.');
       } catch (e) {
         debugPrint('[DatasetService] Error loading beverages_id.csv: $e');
+      }
+
+      // 3B. Load nilai-gizi.csv (Kemenkes / Panganku Indonesian Food Composition)
+      try {
+        final csvString =
+            await rootBundle.loadString('ai_workspace/dataset/nilai-gizi.csv');
+        final lines = const LineSplitter().convert(csvString);
+
+        int startIndex = 1; // skip header
+        for (int i = startIndex; i < lines.length; i++) {
+          final line = lines[i].trim();
+          if (line.isEmpty) continue;
+
+          final parts = _splitCsvLine(line);
+          if (parts.length >= 7) {
+            final name = parts[0].trim();
+            final key = name.toLowerCase();
+            if (_nutritionData.containsKey(key)) continue;
+
+            final energyKcal = double.tryParse(parts[3].trim())?.round() ?? 0;
+            final protein = double.tryParse(parts[4].trim()) ?? 0.0;
+            final carbs = double.tryParse(parts[5].trim()) ?? 0.0;
+            final fat = double.tryParse(parts[6].trim()) ?? 0.0;
+            final sugar = parts.length > 7
+                ? (double.tryParse(parts[7].trim()) ?? 0.0)
+                : 0.0;
+            final fiber = parts.length > 9
+                ? (double.tryParse(parts[9].trim()) ?? 0.0)
+                : 0.0;
+            final serving = parts[2].trim();
+
+            _nutritionData[key] = {
+              'name': name,
+              'calories': energyKcal,
+              'protein': protein,
+              'fat': fat,
+              'carbs': carbs,
+              'fiber': fiber,
+              'sugar': sugar,
+              'category': 'Pangan Lokal',
+              'serving': serving.isNotEmpty ? serving : '100g',
+            };
+            _verifiedCategories.add(name);
+          }
+        }
+        debugPrint('[DatasetService] Loaded nilai-gizi.csv entries.');
+      } catch (e) {
+        debugPrint('[DatasetService] Error loading nilai-gizi.csv: $e');
       }
 
       // 4. Load from Supabase User Contributions (Community Dataset)
@@ -207,35 +255,359 @@ class DatasetService {
     return clues.toString();
   }
 
-  /// Searches for exact or partial match in the nutrition dataset.
-
+  /// Searches for exact, prefix, substring, or alias match in the nutrition dataset.
   Future<List<String>> search(String query, {int maxResults = 30}) async {
     await loadNutritionDataset();
-    final q = query.toLowerCase();
-    final results = _nutritionData.keys.where((k) => k.toLowerCase().contains(q)).take(maxResults).toList();
-    return results;
+    final q = query.toLowerCase().trim();
+    if (q.isEmpty) return [];
+
+    final exactMatches = <String>[];
+    final prefixMatches = <String>[];
+    final subMatches = <String>[];
+    final aliasMatches = <String>[];
+    final seen = <String>{};
+
+    for (final entry in _nutritionData.entries) {
+      final key = entry.key;
+      final val = entry.value;
+      final name = (val['name'] as String? ?? key);
+      final nameLower = name.toLowerCase();
+
+      // Collect aliases if any
+      final aliases = <String>[];
+      if (val['aliases'] != null && val['aliases'] is List) {
+        for (final a in val['aliases'] as List) {
+          aliases.add(a.toString().toLowerCase());
+        }
+      }
+
+      if (key == q || nameLower == q) {
+        if (seen.add(name)) exactMatches.add(name);
+      } else if (key.startsWith(q) || nameLower.startsWith(q)) {
+        if (seen.add(name)) prefixMatches.add(name);
+      } else if (key.contains(q) || nameLower.contains(q)) {
+        if (seen.add(name)) subMatches.add(name);
+      } else if (aliases.any((a) => a == q || a.startsWith(q) || a.contains(q))) {
+        if (seen.add(name)) aliasMatches.add(name);
+      }
+    }
+
+    final combined = [
+      ...exactMatches,
+      ...prefixMatches,
+      ...subMatches,
+      ...aliasMatches,
+    ];
+
+    return combined.take(maxResults).toList();
   }
 
+  /// Finds nutrition data with support for alias matching and substring searching
   Future<Map<String, dynamic>?> findNutrition(String query) async {
     if (!_isDataLoaded) await loadNutritionDataset();
 
     final normalizedQuery = query.toLowerCase().trim();
     if (normalizedQuery.isEmpty) return null;
 
-    // 1. Exact match
+    // 1. Exact key match
     if (_nutritionData.containsKey(normalizedQuery)) {
       return _nutritionData[normalizedQuery];
     }
 
-    // 2. Substring match
+    // 2. Check aliases across all entries
     for (final entry in _nutritionData.entries) {
-      if (entry.key.contains(normalizedQuery) ||
-          normalizedQuery.contains(entry.key)) {
+      final val = entry.value;
+      if (val['aliases'] != null && val['aliases'] is List) {
+        for (final a in val['aliases'] as List) {
+          final alias = a.toString().toLowerCase().trim();
+          if (alias == normalizedQuery) {
+            return val;
+          }
+        }
+      }
+    }
+
+    // 3. Exact name match
+    for (final entry in _nutritionData.entries) {
+      final name = (entry.value['name'] as String?)?.toLowerCase().trim();
+      if (name != null && name == normalizedQuery) {
         return entry.value;
       }
     }
 
+    // 4. Substring match in key, aliases, or name
+    for (final entry in _nutritionData.entries) {
+      final key = entry.key;
+      final val = entry.value;
+      final name = (val['name'] as String?)?.toLowerCase().trim() ?? '';
+
+      if (key.contains(normalizedQuery) || normalizedQuery.contains(key)) {
+        return val;
+      }
+      if (name.isNotEmpty &&
+          (name.contains(normalizedQuery) || normalizedQuery.contains(name))) {
+        return val;
+      }
+
+      if (val['aliases'] != null && val['aliases'] is List) {
+        for (final a in val['aliases'] as List) {
+          final alias = a.toString().toLowerCase().trim();
+          if (alias.contains(normalizedQuery) || normalizedQuery.contains(alias)) {
+            return val;
+          }
+        }
+      }
+    }
+
+    // 5. Word-level match
+    final queryWords = normalizedQuery
+        .split(RegExp(r'\s+'))
+        .where((w) => w.length > 2)
+        .toList();
+    if (queryWords.isNotEmpty) {
+      for (final entry in _nutritionData.entries) {
+        final key = entry.key;
+        final allMatched = queryWords.every((w) => key.contains(w));
+        if (allMatched) {
+          return entry.value;
+        }
+      }
+    }
+
     return null;
+  }
+
+  /// Parses a food string containing potential extra lauk / add-on modifiers.
+  /// Examples:
+  /// - "Mie Gacoan" -> Mie Gacoan base (621 kkal, 2 pangsit in ingredients)
+  /// - "Mie Gacoan + Telur Ceplok" -> 621 + 92 = 713 kkal, includes 2 pangsit + Telur Ceplok
+  /// - "Mie Gacoan + 2 Telur Ceplok + Kerupuk Putih" -> 621 + 184 + 65 = 870 kkal
+  /// - "Nasi Goreng dan Telur Dadar" -> 540 + 110 = 650 kkal
+  Future<ParsedFoodNutrition> parseFoodWithAddons(String query) async {
+    if (!_isDataLoaded) await loadNutritionDataset();
+
+    final text = query.trim();
+    if (text.isEmpty) {
+      return const ParsedFoodNutrition(
+        rawQuery: '',
+        formattedName: 'Makanan Terdeteksi',
+        emoji: '🍽️',
+        totalCalories: 250,
+        totalProtein: 10.0,
+        totalCarbs: 30.0,
+        totalFat: 8.0,
+        totalFiber: 1.0,
+        totalSugar: 2.0,
+        totalCaffeine: 0,
+        category: 'Umum',
+        serving: '1 porsi',
+        combinedIngredients: [],
+        isMatchedInDb: false,
+      );
+    }
+
+    // Split by delimiters: +, plus, dan, dengan, with, &, comma
+    final rawParts = text.split(
+        RegExp(r'\s*(?:\+|\bplus\b|\bdan\b|\bdengan\b|\bwith\b|&|,)\s*',
+            caseSensitive: false));
+    final parts = rawParts.map((p) => p.trim()).where((p) => p.isNotEmpty).toList();
+
+    if (parts.isEmpty) {
+      return ParsedFoodNutrition(
+        rawQuery: text,
+        formattedName: text,
+        emoji: '🍽️',
+        totalCalories: 250,
+        totalProtein: 10.0,
+        totalCarbs: 30.0,
+        totalFat: 8.0,
+        totalFiber: 1.0,
+        totalSugar: 2.0,
+        totalCaffeine: 0,
+        category: 'Umum',
+        serving: '1 porsi',
+        combinedIngredients: [text],
+        isMatchedInDb: false,
+      );
+    }
+
+    // 1. Identify base food
+    final baseQuery = parts[0];
+    final baseData = await findNutrition(baseQuery);
+    final isMatched = baseData != null;
+
+    final String baseName = baseData?['name'] as String? ?? baseQuery;
+    final int baseCalories = (baseData?['calories'] as num?)?.toInt() ?? 250;
+    final double baseProtein = (baseData?['protein'] as num?)?.toDouble() ?? 10.0;
+    final double baseCarbs = (baseData?['carbs'] as num?)?.toDouble() ?? 30.0;
+    final double baseFat = (baseData?['fat'] as num?)?.toDouble() ?? 8.0;
+    final double baseFiber = (baseData?['fiber'] as num?)?.toDouble() ?? 1.0;
+    final double baseSugar = (baseData?['sugar'] as num?)?.toDouble() ?? 2.0;
+    final int baseCaffeine = (baseData?['caffeineMg'] as num?)?.toInt() ?? 0;
+    final String baseEmoji = baseData?['emoji'] as String? ?? '🍽️';
+    final String baseCategory = baseData?['category'] as String? ?? 'Makanan Utama';
+    final String baseServing = baseData?['serving'] as String? ?? '1 porsi';
+
+    List<String> baseIngredients = [];
+    if (baseData != null && baseData['ingredients'] != null) {
+      if (baseData['ingredients'] is List) {
+        baseIngredients = List<String>.from(baseData['ingredients']);
+      } else if (baseData['ingredients'] is String) {
+        baseIngredients = (baseData['ingredients'] as String)
+            .split('|')
+            .map((s) => s.trim())
+            .toList();
+      }
+    }
+    if (baseIngredients.isEmpty) {
+      baseIngredients = [baseName];
+    }
+
+    int totalCalories = baseCalories;
+    double totalProtein = baseProtein;
+    double totalCarbs = baseCarbs;
+    double totalFat = baseFat;
+    double totalFiber = baseFiber;
+    double totalSugar = baseSugar;
+    int totalCaffeine = baseCaffeine;
+
+    final List<ParsedAddonItem> addons = [];
+    final List<String> combinedIngredients = List<String>.from(baseIngredients);
+
+    // 2. Parse any extra lauk / addons
+    for (int i = 1; i < parts.length; i++) {
+      final part = parts[i];
+      int qty = 1;
+      String addonQuery = part;
+
+      // Match pattern like "2 Telur Ceplok" or "2x Kerupuk"
+      final prefixMatch = RegExp(
+              r'^(\d+)\s*(?:x|buah|butir|potong|lembar|porsi|tusuk|keping)?\s+(.*)$',
+              caseSensitive: false)
+          .firstMatch(part);
+      if (prefixMatch != null) {
+        qty = int.tryParse(prefixMatch.group(1) ?? '1') ?? 1;
+        addonQuery = prefixMatch.group(2)?.trim() ?? part;
+      } else {
+        final suffixMatch = RegExp(
+                r'^(.*?)\s+(\d+)\s*(?:x|buah|butir|potong|lembar|porsi|tusuk|keping)?$',
+                caseSensitive: false)
+            .firstMatch(part);
+        if (suffixMatch != null) {
+          addonQuery = suffixMatch.group(1)?.trim() ?? part;
+          qty = int.tryParse(suffixMatch.group(2) ?? '1') ?? 1;
+        }
+      }
+
+      if (qty <= 0) qty = 1;
+
+      final addonData = await findNutrition(addonQuery);
+      String aName = addonData?['name'] as String? ?? addonQuery;
+      int aCal = 0;
+      double aProt = 0.0;
+      double aCarb = 0.0;
+      double aFat = 0.0;
+      double aSugar = 0.0;
+
+      if (addonData != null) {
+        aCal = ((addonData['calories'] as num?)?.toInt() ?? 80) * qty;
+        aProt = ((addonData['protein'] as num?)?.toDouble() ?? 5.0) * qty;
+        aCarb = ((addonData['carbs'] as num?)?.toDouble() ?? 5.0) * qty;
+        aFat = ((addonData['fat'] as num?)?.toDouble() ?? 5.0) * qty;
+        aSugar = ((addonData['sugar'] as num?)?.toDouble() ?? 0.5) * qty;
+      } else {
+        // Fallback realistic estimation for common side dish words
+        final lowerA = addonQuery.toLowerCase();
+        if (lowerA.contains('telur')) {
+          aCal = 92 * qty;
+          aProt = 6.3 * qty;
+          aCarb = 0.6 * qty;
+          aFat = 7.0 * qty;
+        } else if (lowerA.contains('tempe')) {
+          aCal = 110 * qty;
+          aProt = 6.0 * qty;
+          aCarb = 5.0 * qty;
+          aFat = 7.5 * qty;
+        } else if (lowerA.contains('tahu')) {
+          aCal = 75 * qty;
+          aProt = 5.0 * qty;
+          aCarb = 2.5 * qty;
+          aFat = 5.0 * qty;
+        } else if (lowerA.contains('kerupuk')) {
+          aCal = 65 * qty;
+          aProt = 0.5 * qty;
+          aCarb = 10.5 * qty;
+          aFat = 2.5 * qty;
+        } else if (lowerA.contains('sambal')) {
+          aCal = 35 * qty;
+          aProt = 0.5 * qty;
+          aCarb = 2.5 * qty;
+          aFat = 2.5 * qty;
+        } else if (lowerA.contains('nasi')) {
+          aCal = 130 * qty;
+          aProt = 2.4 * qty;
+          aCarb = 28.5 * qty;
+          aFat = 0.2 * qty;
+        } else if (lowerA.contains('pangsit')) {
+          aCal = 117 * qty;
+          aProt = 4.5 * qty;
+          aCarb = 10.0 * qty;
+          aFat = 6.5 * qty;
+        } else {
+          aCal = 80 * qty;
+          aProt = 4.0 * qty;
+          aCarb = 8.0 * qty;
+          aFat = 4.0 * qty;
+        }
+      }
+
+      totalCalories += aCal;
+      totalProtein += aProt;
+      totalCarbs += aCarb;
+      totalFat += aFat;
+      totalSugar += aSugar;
+
+      final addonItem = ParsedAddonItem(
+        name: aName,
+        quantity: qty,
+        calories: aCal,
+        protein: aProt,
+        carbs: aCarb,
+        fat: aFat,
+        sugar: aSugar,
+      );
+      addons.add(addonItem);
+
+      final addonLabel = qty > 1 ? '$qty $aName' : aName;
+      combinedIngredients.add('$addonLabel (+$aCal kkal)');
+    }
+
+    String formattedName = baseName;
+    if (addons.isNotEmpty) {
+      final addonNames = addons
+          .map((a) => a.quantity > 1 ? '${a.quantity}x ${a.name}' : a.name)
+          .join(' + ');
+      formattedName = '$baseName + $addonNames';
+    }
+
+    return ParsedFoodNutrition(
+      rawQuery: text,
+      formattedName: formattedName,
+      emoji: baseEmoji,
+      totalCalories: totalCalories,
+      totalProtein: double.parse(totalProtein.toStringAsFixed(1)),
+      totalCarbs: double.parse(totalCarbs.toStringAsFixed(1)),
+      totalFat: double.parse(totalFat.toStringAsFixed(1)),
+      totalFiber: double.parse(totalFiber.toStringAsFixed(1)),
+      totalSugar: double.parse(totalSugar.toStringAsFixed(1)),
+      totalCaffeine: totalCaffeine,
+      category: baseCategory,
+      serving: baseServing,
+      combinedIngredients: combinedIngredients,
+      baseFoodData: baseData,
+      addons: addons,
+      isMatchedInDb: isMatched,
+    );
   }
 
   /// Saves a user's manual correction to the Community Dataset in Supabase
@@ -459,4 +831,64 @@ class DatasetService {
       'totalEntries': _nutritionData.length,
     };
   }
+}
+
+/// Model hasil parsing makanan beserta potensi lauk tambahan / add-on
+class ParsedFoodNutrition {
+  final String rawQuery;
+  final String formattedName;
+  final String emoji;
+  final int totalCalories;
+  final double totalProtein;
+  final double totalCarbs;
+  final double totalFat;
+  final double totalFiber;
+  final double totalSugar;
+  final int totalCaffeine;
+  final String category;
+  final String serving;
+  final List<String> combinedIngredients;
+  final Map<String, dynamic>? baseFoodData;
+  final List<ParsedAddonItem> addons;
+  final bool isMatchedInDb;
+
+  const ParsedFoodNutrition({
+    required this.rawQuery,
+    required this.formattedName,
+    required this.emoji,
+    required this.totalCalories,
+    required this.totalProtein,
+    required this.totalCarbs,
+    required this.totalFat,
+    required this.totalFiber,
+    required this.totalSugar,
+    required this.totalCaffeine,
+    required this.category,
+    required this.serving,
+    required this.combinedIngredients,
+    this.baseFoodData,
+    this.addons = const [],
+    this.isMatchedInDb = false,
+  });
+}
+
+/// Model untuk rincian 1 jenis lauk tambahan / pelengkap
+class ParsedAddonItem {
+  final String name;
+  final int quantity;
+  final int calories;
+  final double protein;
+  final double carbs;
+  final double fat;
+  final double sugar;
+
+  const ParsedAddonItem({
+    required this.name,
+    required this.quantity,
+    required this.calories,
+    required this.protein,
+    required this.carbs,
+    required this.fat,
+    this.sugar = 0.0,
+  });
 }

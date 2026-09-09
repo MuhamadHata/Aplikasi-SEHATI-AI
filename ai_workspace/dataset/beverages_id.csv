@@ -1,0 +1,16 @@
+name,serving_ml,energy_kcal,sugar_g,caffeine_mg,category,notes
+Air putih,250,0,0,0,Minuman,Tanpa kalori
+Teh tawar,250,0,0,0,Minuman,Tanpa gula
+Kopi hitam tanpa gula,200,2,0,80,Minuman,Perkiraan kafein per cangkir
+Teh manis,250,100,25,25,Minuman,Perkiraan gula dari 5-6 sdt
+Kopi susu manis,250,180,28,80,Minuman,Perkiraan gula tinggi
+Susu UHT plain,250,150,12,0,Minuman,Gula alami laktosa
+Susu cokelat kemasan,250,190,24,0,Minuman,Sering tinggi gula
+Minuman bersoda,330,140,35,35,Minuman,Perkiraan gula tinggi
+Minuman energi,250,110,27,80,Minuman,Perkiraan kafein dan gula
+Minuman isotonik,500,120,30,0,Minuman,Perkiraan gula per botol
+Jus jeruk kemasan,250,110,24,0,Minuman,Perkiraan gula tinggi
+Es kelapa muda,300,90,20,0,Minuman,Tergantung tambahan gula
+Wedang jahe manis,250,60,15,0,Minuman,Perkiraan
+Smoothie buah,350,250,40,0,Minuman,Tergantung bahan
+Milk tea boba,500,400,60,100,Minuman,Perkiraan gula sangat tinggi

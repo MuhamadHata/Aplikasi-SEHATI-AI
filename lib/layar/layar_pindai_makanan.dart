@@ -74,96 +74,442 @@ class _FoodScanScreenState extends State<FoodScanScreen>
   }
 
 
+  Widget _miniMacro(String label, String value, Color color) {
+    return Column(
+      children: [
+        Text(value,
+            style:
+                TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: color)),
+        const SizedBox(height: 2),
+        Text(label,
+            style: const TextStyle(
+                fontSize: 10,
+                color: AppColors.textSecondary,
+                fontWeight: FontWeight.w600)),
+      ],
+    );
+  }
+
+  String _buildRecommendationFor(ParsedFoodNutrition parsed) {
+    if (parsed.totalCalories > 700) {
+      return 'Porsi ini memiliki asupan kalori cukup tinggi (${parsed.totalCalories} kkal). Seimbangkan dengan aktivitas fisik atau kurangi konsumsi camilan manis pada jadwal makan berikutnya. (Kemenkes RI, 2020)';
+    } else if (parsed.totalProtein >= 20.0) {
+      return 'Pilihan yang kaya protein (${parsed.totalProtein}g), sangat baik untuk pemulihan otot dan mempertahankan rasa kenyang lebih lama. (WHO, 2020)';
+    } else {
+      return 'Sesuai dengan komposisi pangan Indonesia. Pastikan asupan cairan dan serat tercukupi sepanjang hari. (Kemenkes RI, 2020)';
+    }
+  }
+
   Future<void> _showEditDialog() async {
     if (_result == null) return;
 
     final nameCtrl = TextEditingController(text: _result!.name);
     final servingCtrl = TextEditingController(text: _result!.serving);
 
-    await showDialog(
+    const quickAddons = [
+      'Telur Ceplok',
+      'Telur Dadar',
+      'Tempe Goreng',
+      'Tahu Goreng',
+      'Kerupuk Putih',
+      'Sambal Bawang',
+      'Nasi Putih',
+      'Pangsit Goreng',
+      'Perkedel',
+      'Sate Usus',
+    ];
+
+    await showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
       builder: (ctx) {
-        return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          title: const Text('Koreksi Nama & Porsi'),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Info hint
-                Container(
-                  padding: const EdgeInsets.all(10),
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            final theme = Theme.of(context);
+            final isDark = theme.brightness == Brightness.dark;
+
+            return FutureBuilder<ParsedFoodNutrition>(
+              future: DatasetService.instance.parseFoodWithAddons(nameCtrl.text),
+              builder: (context, snapshot) {
+                final parsed = snapshot.data;
+
+                return Container(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom + 20,
+                    top: 20,
+                    left: 20,
+                    right: 20,
+                  ),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(10),
+                    color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(24)),
                   ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.lightbulb_outline_rounded, size: 18, color: AppColors.primary),
-                      SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Koreksi nama & porsi, lalu tekan Simpan. '  
-                          'AI akan otomatis mencari data nutrisi yang benar.',
-                          style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Container(
+                            width: 40,
+                            height: 4,
+                            margin: const EdgeInsets.only(bottom: 16),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade400,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: nameCtrl,
-                  textCapitalization: TextCapitalization.words,
-                  decoration: const InputDecoration(
-                    labelText: 'Nama Makanan / Minuman',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                TextField(
-                  controller: servingCtrl,
-                  decoration: const InputDecoration(
-                    labelText: 'Porsi (misal: 1 Gelas, 2 Potong)',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: const Text('Batal'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                final cName = nameCtrl.text.trim();
-                final cServe = servingCtrl.text.trim();
-                Navigator.pop(ctx);
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Koreksi & Tambah Lauk',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Poppins',
+                                color: isDark
+                                    ? Colors.white
+                                    : const Color(0xFF0F172A),
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.close_rounded),
+                              onPressed: () => Navigator.pop(ctx),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        TextField(
+                          controller: nameCtrl,
+                          textCapitalization: TextCapitalization.words,
+                          onChanged: (_) => setModalState(() {}),
+                          decoration: InputDecoration(
+                            labelText: 'Nama Makanan (contoh: Mie Gacoan)',
+                            hintText: 'Ketik nama makanan...',
+                            prefixIcon: const Icon(Icons.restaurant_rounded),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                        // Autocomplete suggestions from database
+                        FutureBuilder<List<String>>(
+                          future: DatasetService.instance.search(
+                              nameCtrl.text.split('+').first.trim(),
+                              maxResults: 4),
+                          builder: (context, searchSnap) {
+                            final suggestions = searchSnap.data ?? [];
+                            if (suggestions.isEmpty ||
+                                nameCtrl.text.trim().isEmpty) {
+                              return const SizedBox.shrink();
+                            }
+                            return Container(
+                              margin: const EdgeInsets.only(top: 6),
+                              constraints: const BoxConstraints(maxHeight: 120),
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? const Color(0xFF0F172A)
+                                    : const Color(0xFFF1F5F9),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: suggestions.length,
+                                itemBuilder: (context, i) {
+                                  final s = suggestions[i];
+                                  return ListTile(
+                                    dense: true,
+                                    visualDensity: VisualDensity.compact,
+                                    title: Text(s,
+                                        style: const TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600)),
+                                    onTap: () {
+                                      final parts = nameCtrl.text.split('+');
+                                      if (parts.length > 1) {
+                                        final addonsPart =
+                                            parts.sublist(1).join('+');
+                                        nameCtrl.text = '$s + $addonsPart';
+                                      } else {
+                                        nameCtrl.text = s;
+                                      }
+                                      setModalState(() {});
+                                    },
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                        const SizedBox(height: 14),
+                        Text(
+                          'Tambah Lauk / Pelengkap Cepat:',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: isDark
+                                ? Colors.white70
+                                : const Color(0xFF475569),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: quickAddons.map((addon) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: ActionChip(
+                                  avatar: const Icon(
+                                      Icons.add_circle_outline_rounded,
+                                      size: 16),
+                                  label: Text(addon,
+                                      style: const TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600)),
+                                  backgroundColor: isDark
+                                      ? const Color(0xFF334155)
+                                      : const Color(0xFFF1F5F9),
+                                  onPressed: () {
+                                    final currentText = nameCtrl.text.trim();
+                                    if (currentText.isEmpty) {
+                                      nameCtrl.text = addon;
+                                    } else {
+                                      nameCtrl.text = '$currentText + $addon';
+                                    }
+                                    setModalState(() {});
+                                  },
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        TextField(
+                          controller: servingCtrl,
+                          decoration: InputDecoration(
+                            labelText: 'Porsi / Kuantitas',
+                            hintText: parsed?.serving ?? '1 Porsi',
+                            prefixIcon: const Icon(Icons.lunch_dining_rounded),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Live Nutrition & Ingredients Preview Card
+                        if (parsed != null) ...[
+                          Container(
+                            padding: const EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              color: AppColors.primary
+                                  .withValues(alpha: isDark ? 0.15 : 0.08),
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                  color: AppColors.primary
+                                      .withValues(alpha: 0.3)),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(parsed.emoji,
+                                        style: const TextStyle(fontSize: 24)),
+                                    const SizedBox(width: 8),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            parsed.formattedName,
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w800,
+                                              fontFamily: 'Poppins',
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Text(
+                                            '${parsed.category} • ${parsed.serving}',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: theme.colorScheme.onSurface
+                                                  .withValues(alpha: 0.7),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10, vertical: 6),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.success
+                                            .withValues(alpha: 0.2),
+                                        borderRadius:
+                                            BorderRadius.circular(10),
+                                      ),
+                                      child: Text(
+                                        '${parsed.totalCalories} kkal',
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w800,
+                                          color: AppColors.success,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    _miniMacro('Protein', '${parsed.totalProtein}g',
+                                        AppColors.primary),
+                                    _miniMacro('Karbo', '${parsed.totalCarbs}g',
+                                        AppColors.warning),
+                                    _miniMacro('Lemak', '${parsed.totalFat}g',
+                                        AppColors.accent),
+                                    _miniMacro('Gula', '${parsed.totalSugar}g',
+                                        AppColors.error),
+                                  ],
+                                ),
+                                if (parsed.combinedIngredients.isNotEmpty) ...[
+                                  const Divider(height: 18),
+                                  Text(
+                                    'Komposisi & Bahan (${parsed.combinedIngredients.length}):',
+                                    style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    parsed.combinedIngredients.join(', '),
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: theme.colorScheme.onSurface
+                                          .withValues(alpha: 0.8),
+                                      height: 1.4,
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                        // Action Buttons
+                        Row(
+                          children: [
+                            Expanded(
+                              child: OutlinedButton(
+                                onPressed: () {
+                                  final cName = nameCtrl.text.trim();
+                                  final cServe = servingCtrl.text.trim();
+                                  Navigator.pop(ctx);
+                                  if (cName.isNotEmpty) {
+                                    _startAnalysis(cName, cServe);
+                                  }
+                                },
+                                style: OutlinedButton.styleFrom(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 12),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                ),
+                                child: const FittedBox(
+                                  child: Text('Scan Ulang AI',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600)),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              flex: 2,
+                              child: ElevatedButton.icon(
+                                onPressed: () async {
+                                  final cName = nameCtrl.text.trim();
+                                  final cServe = servingCtrl.text.trim();
+                                  if (cName.isEmpty) return;
 
-                if (cName.isNotEmpty && cServe.isNotEmpty) {
-                  // Re-analyze with corrected name & serving — AI fetches correct nutrition
-                  _startAnalysis(cName, cServe);
+                                  Navigator.pop(ctx);
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('🔍 Menganalisis ulang dengan data yang dikoreksi...'),
-                      backgroundColor: AppColors.primary,
-                      duration: Duration(seconds: 3),
+                                  if (parsed != null &&
+                                      (parsed.isMatchedInDb ||
+                                          parsed.addons.isNotEmpty)) {
+                                    setState(() {
+                                      _result = FoodItem(
+                                        id: DateTime.now()
+                                            .millisecondsSinceEpoch,
+                                        name: parsed.formattedName,
+                                        emoji: parsed.emoji,
+                                        serving: cServe.isNotEmpty
+                                            ? cServe
+                                            : parsed.serving,
+                                        calories: parsed.totalCalories,
+                                        protein: parsed.totalProtein,
+                                        carbs: parsed.totalCarbs,
+                                        fat: parsed.totalFat,
+                                        fiber: parsed.totalFiber,
+                                        sugarGrams: parsed.totalSugar,
+                                        caffeineMg: parsed.totalCaffeine,
+                                        category: parsed.category,
+                                        ingredients:
+                                            parsed.combinedIngredients,
+                                        recommendation:
+                                            _buildRecommendationFor(parsed),
+                                        citationCodes: const [
+                                          'DKPI-KEMKES-2020'
+                                        ],
+                                      );
+                                      _hasResult = true;
+                                      _scanning = false;
+                                    });
+
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            '✅ Nutrisi diperbarui dari database: ${parsed.formattedName} (${parsed.totalCalories} kkal)'),
+                                        backgroundColor: AppColors.success,
+                                        duration: const Duration(seconds: 3),
+                                      ),
+                                    );
+                                  } else {
+                                    _startAnalysis(cName, cServe);
+                                  }
+                                },
+                                icon: const Icon(Icons.check_circle_rounded,
+                                    size: 18),
+                                label: const Text('Simpan (Database)',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w700)),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primary,
+                                  foregroundColor: Colors.white,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 12),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  );
-                }
+                  ),
+                );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('Simpan & Analisis Ulang'),
-            ),
-          ],
+            );
+          },
         );
       },
     );

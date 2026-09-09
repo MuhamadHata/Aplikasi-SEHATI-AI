@@ -30,16 +30,19 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
   bool _initialized = false;
 
   static const List<_CategoryQuick> _quickCategories = [
-    _CategoryQuick(emoji: '🍚', label: 'Nasi', query: 'nasi'),
-    _CategoryQuick(emoji: '🍗', label: 'Ayam', query: 'ayam'),
-    _CategoryQuick(emoji: '🥦', label: 'Sayur', query: 'sayur'),
-    _CategoryQuick(emoji: '🍜', label: 'Mie', query: 'mie'),
-    _CategoryQuick(emoji: '🥛', label: 'Susu', query: 'susu'),
-    _CategoryQuick(emoji: '🍌', label: 'Buah', query: 'buah'),
-    _CategoryQuick(emoji: '🍞', label: 'Roti', query: 'roti'),
-    _CategoryQuick(emoji: '🥚', label: 'Telur', query: 'telur'),
-    _CategoryQuick(emoji: '🥩', label: 'Daging', query: 'daging'),
-    _CategoryQuick(emoji: '🫙', label: 'Tahu', query: 'tahu'),
+    _CategoryQuick(emoji: '🍚', label: 'Nasi & Padang', query: 'nasi'),
+    _CategoryQuick(emoji: '🍜', label: 'Mie & Bakso', query: 'mie'),
+    _CategoryQuick(emoji: '🍗', label: 'Ayam & Bebek', query: 'ayam'),
+    _CategoryQuick(emoji: '🍢', label: 'Sate & Daging', query: 'sate'),
+    _CategoryQuick(emoji: '🥟', label: 'Camilan & Jajan', query: 'camilan'),
+    _CategoryQuick(emoji: '🥞', label: 'Martabak & Kue', query: 'martabak'),
+    _CategoryQuick(emoji: '🧋', label: 'Minuman Segar', query: 'es '),
+    _CategoryQuick(emoji: '☕', label: 'Kopi & Teh', query: 'kopi'),
+    _CategoryQuick(emoji: '🧈', label: 'Tahu & Tempe', query: 'tempe'),
+    _CategoryQuick(emoji: '🥚', label: 'Telur & Lauk', query: 'telur'),
+    _CategoryQuick(emoji: '🍲', label: 'Soto & Sup', query: 'soto'),
+    _CategoryQuick(emoji: '🥦', label: 'Sayuran', query: 'sayur'),
+    _CategoryQuick(emoji: '🍎', label: 'Buah', query: 'buah'),
   ];
 
   @override
@@ -80,11 +83,23 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
 
   Future<void> _search(String q) async {
     final names =
-        await DatasetService.instance.search(q, maxResults: 30);
+        await DatasetService.instance.search(q, maxResults: 40);
     final entries = <_FoodEntry>[];
     for (final name in names) {
       final data = await DatasetService.instance.findNutrition(name);
       if (data != null) {
+        List<String> ingredients = [];
+        if (data['ingredients'] != null) {
+          if (data['ingredients'] is List) {
+            ingredients = List<String>.from(data['ingredients']);
+          } else if (data['ingredients'] is String) {
+            ingredients = (data['ingredients'] as String)
+                .split('|')
+                .map((s) => s.trim())
+                .toList();
+          }
+        }
+
         entries.add(_FoodEntry(
           name: (data['name'] as String?) ?? name,
           calories: (data['calories'] as num?)?.toInt() ?? 0,
@@ -95,7 +110,9 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
           sugarGrams: (data['sugar'] as num?)?.toDouble() ?? 0,
           category: (data['category'] as String?) ?? 'Umum',
           serving: (data['serving'] as String?) ?? '',
-          emoji: _emojiForCategory((data['category'] as String?) ?? ''),
+          emoji: (data['emoji'] as String?) ??
+              _emojiForCategory((data['category'] as String?) ?? ''),
+          ingredients: ingredients,
         ));
       }
     }
@@ -175,14 +192,14 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(isDark ? 0.2 : 0.06),
+                    color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.06),
                     blurRadius: 12,
                     offset: const Offset(0, 3),
                   ),
                 ],
                 border: Border.all(
                   color: isDark
-                      ? primary.withOpacity(0.25)
+                      ? primary.withValues(alpha: 0.25)
                       : const Color(0xFFE2E8F0),
                 ),
               ),
@@ -288,7 +305,7 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
                     ),
                     boxShadow: [
                       BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
+                          color: Colors.black.withValues(alpha: 0.04),
                           blurRadius: 8,
                           offset: const Offset(0, 2))
                     ],
@@ -327,9 +344,9 @@ class _ManualFoodSearchScreenState extends State<ManualFoodSearchScreen>
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: primary.withOpacity(isDark ? 0.1 : 0.06),
+              color: primary.withValues(alpha: isDark ? 0.1 : 0.06),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: primary.withOpacity(0.2)),
+              border: Border.all(color: primary.withValues(alpha: 0.2)),
             ),
             child: Text(
               'Ketik nama makanan untuk mencari dari database lebih dari 1.000 makanan Indonesia. Pilih makanan lalu masukkan porsi untuk menghitung kalori secara otomatis.',
@@ -498,7 +515,7 @@ class _FoodListTile extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                  color: primary.withOpacity(0.1),
+                  color: primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12)),
               child: Center(
                   child:
@@ -520,7 +537,9 @@ class _FoodListTile extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     food.calories > 0
-                        ? '${food.calories} kkal / 100g'
+                        ? (food.serving.isNotEmpty
+                            ? '${food.calories} kkal • ${food.serving}'
+                            : '${food.calories} kkal / 100g')
                         : food.category,
                     style: TextStyle(
                         fontSize: 12,
@@ -549,6 +568,8 @@ class _PortionSheet extends StatefulWidget {
 
 class _PortionSheetState extends State<_PortionSheet> {
   final TextEditingController _gramCtrl = TextEditingController(text: '100');
+  late bool _isPortionMode;
+  double _portionMult = 1.0;
   double _grams = 100;
   String _mealType = 'Sarapan';
 
@@ -559,11 +580,38 @@ class _PortionSheetState extends State<_PortionSheet> {
     'Camilan'
   ];
   static const List<double> _quickPortions = [50, 100, 150, 200, 250, 300];
+  static const List<double> _quickMultipliers = [0.5, 1.0, 1.5, 2.0];
 
-  double get _scaledCalories => widget.food.calories * _grams / 100;
-  double get _scaledProtein => widget.food.protein * _grams / 100;
-  double get _scaledCarbs => widget.food.carbs * _grams / 100;
-  double get _scaledFat => widget.food.fat * _grams / 100;
+  @override
+  void initState() {
+    super.initState();
+    _isPortionMode = widget.food.serving.isNotEmpty &&
+        !widget.food.serving.toLowerCase().startsWith('100g');
+  }
+
+  double get _scaledCalories => _isPortionMode
+      ? widget.food.calories * _portionMult
+      : widget.food.calories * _grams / 100;
+
+  double get _scaledProtein => _isPortionMode
+      ? widget.food.protein * _portionMult
+      : widget.food.protein * _grams / 100;
+
+  double get _scaledCarbs => _isPortionMode
+      ? widget.food.carbs * _portionMult
+      : widget.food.carbs * _grams / 100;
+
+  double get _scaledFat => _isPortionMode
+      ? widget.food.fat * _portionMult
+      : widget.food.fat * _grams / 100;
+
+  double get _scaledFiber => _isPortionMode
+      ? widget.food.fiber * _portionMult
+      : widget.food.fiber * _grams / 100;
+
+  double get _scaledSugar => _isPortionMode
+      ? widget.food.sugarGrams * _portionMult
+      : widget.food.sugarGrams * _grams / 100;
 
   @override
   void dispose() {
@@ -578,6 +626,10 @@ class _PortionSheetState extends State<_PortionSheet> {
 
   void _log() {
     final ap = context.read<ActivityProvider>();
+    final servingLabel = _isPortionMode
+        ? '${_portionMult == 1.0 ? "1" : _portionMult.toString()} ${widget.food.serving.isNotEmpty ? widget.food.serving : "porsi"}'
+        : '${_grams.toStringAsFixed(0)}g';
+
     final ok = ap.addFoodLog(
       widget.food.name,
       _scaledCalories.round(),
@@ -585,10 +637,11 @@ class _PortionSheetState extends State<_PortionSheet> {
       protein: _scaledProtein,
       carbs: _scaledCarbs,
       fat: _scaledFat,
-      fiber: widget.food.fiber * _grams / 100,
-      sugarGrams: widget.food.sugarGrams * _grams / 100,
+      fiber: _scaledFiber,
+      sugarGrams: _scaledSugar,
       caffeineMg: 0,
-      serving: '${_grams.toStringAsFixed(0)}g',
+      serving: servingLabel,
+      ingredients: widget.food.ingredients,
       category: widget.food.category,
       mealType: _mealType.toLowerCase().replaceAll(' ', '_'),
     );
@@ -647,10 +700,12 @@ class _PortionSheetState extends State<_PortionSheet> {
                     width: 56,
                     height: 56,
                     decoration: BoxDecoration(
-                        color: primary.withOpacity(0.12),
+                        color: primary.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(12)),
                     child: Center(
-                        child: Icon(IkonMapper.dariEmoji(widget.food.emoji), size: 28, color: Theme.of(context).colorScheme.primary)),
+                        child: Icon(IkonMapper.dariEmoji(widget.food.emoji),
+                            size: 28,
+                            color: Theme.of(context).colorScheme.primary)),
                   ),
                   const SizedBox(width: 14),
                   Expanded(
@@ -667,7 +722,10 @@ class _PortionSheetState extends State<_PortionSheet> {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis),
                         const SizedBox(height: 2),
-                        Text('${widget.food.calories} kkal per 100g',
+                        Text(
+                            widget.food.serving.isNotEmpty
+                                ? '${widget.food.calories} kkal • ${widget.food.serving}'
+                                : '${widget.food.calories} kkal per 100g',
                             style: TextStyle(
                                 fontSize: 13,
                                 color: isDark
@@ -678,117 +736,254 @@ class _PortionSheetState extends State<_PortionSheet> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Text('Porsi Cepat (gram)',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color:
-                          isDark ? Colors.white70 : const Color(0xFF334155))),
-              const SizedBox(height: 10),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: _quickPortions.map((p) {
-                    final sel = _grams == p;
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() => _grams = p);
-                        _gramCtrl.text = p.toStringAsFixed(0);
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        margin: const EdgeInsets.only(right: 8),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 9),
-                        decoration: BoxDecoration(
-                          color: sel
-                              ? primary
-                              : (isDark
-                                  ? const Color(0xFF334155)
-                                  : const Color(0xFFF1F5F9)),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                              color: sel
-                                  ? primary
-                                  : (isDark
-                                      ? const Color(0xFF475569)
-                                      : const Color(0xFFE2E8F0))),
+              if (widget.food.ingredients.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? const Color(0xFF0F172A)
+                        : const Color(0xFFF1F5F9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('🍱 ', style: TextStyle(fontSize: 14)),
+                      Expanded(
+                        child: Text(
+                          'Komposisi: ${widget.food.ingredients.join(', ')}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark ? Colors.white70 : const Color(0xFF475569),
+                            height: 1.3,
+                          ),
                         ),
-                        child: Text('${p.toStringAsFixed(0)}g',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+              const SizedBox(height: 18),
+              // Toggle Mode (Porsi vs Gram)
+              if (widget.food.serving.isNotEmpty &&
+                  !widget.food.serving.toLowerCase().startsWith('100g')) ...[
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? const Color(0xFF0F172A)
+                        : const Color(0xFFF1F5F9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => setState(() => _isPortionMode = true),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: _isPortionMode ? primary : Colors.transparent,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Porsi Standar',
+                              style: TextStyle(
                                 fontSize: 13,
-                                color: sel
+                                fontWeight: FontWeight.w700,
+                                color: _isPortionMode
                                     ? Colors.white
+                                    : (isDark ? Colors.white70 : const Color(0xFF475569)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => setState(() => _isPortionMode = false),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: !_isPortionMode ? primary : Colors.transparent,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Timbang Gram',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: !_isPortionMode
+                                    ? Colors.white
+                                    : (isDark ? Colors.white70 : const Color(0xFF475569)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+              ],
+              if (_isPortionMode) ...[
+                Text('Pilih Porsi',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: isDark ? Colors.white70 : const Color(0xFF334155))),
+                const SizedBox(height: 10),
+                Row(
+                  children: _quickMultipliers.map((m) {
+                    final sel = _portionMult == m;
+                    final label = m == 1.0 ? '1 Porsi' : '${m}x Porsi';
+                    return Expanded(
+                      child: GestureDetector(
+                        onTap: () => setState(() => _portionMult = m),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          margin: const EdgeInsets.only(right: 6),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          decoration: BoxDecoration(
+                            color: sel
+                                ? primary
+                                : (isDark
+                                    ? const Color(0xFF334155)
+                                    : const Color(0xFFF1F5F9)),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                                color: sel
+                                    ? primary
                                     : (isDark
-                                        ? Colors.white70
-                                        : const Color(0xFF475569)))),
+                                        ? const Color(0xFF475569)
+                                        : const Color(0xFFE2E8F0))),
+                          ),
+                          child: Center(
+                            child: Text(label,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 12,
+                                    color: sel
+                                        ? Colors.white
+                                        : (isDark
+                                            ? Colors.white70
+                                            : const Color(0xFF475569)))),
+                          ),
+                        ),
                       ),
                     );
                   }).toList(),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Text('Atau masukkan gram',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color:
-                          isDark ? Colors.white70 : const Color(0xFF334155))),
-              const SizedBox(height: 8),
-              Container(
-                decoration: BoxDecoration(
-                  color: isDark
-                      ? const Color(0xFF0F172A)
-                      : const Color(0xFFF8FAFC),
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      color: isDark
-                          ? const Color(0xFF334155)
-                          : const Color(0xFFE2E8F0)),
-                ),
-                child: TextField(
-                  controller: _gramCtrl,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: _updateGrams,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: isDark ? Colors.white : const Color(0xFF0F172A)),
-                  decoration: InputDecoration(
-                    hintText: '100',
-                    hintStyle: TextStyle(
-                        color:
-                            isDark ? Colors.white38 : const Color(0xFFCBD5E1)),
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 14, horizontal: 16),
-                    suffix: Text('gram',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: isDark
-                                ? Colors.white54
-                                : const Color(0xFF94A3B8))),
+              ] else ...[
+                Text('Porsi Cepat (gram)',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: isDark ? Colors.white70 : const Color(0xFF334155))),
+                const SizedBox(height: 10),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _quickPortions.map((p) {
+                      final sel = _grams == p;
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() => _grams = p);
+                          _gramCtrl.text = p.toStringAsFixed(0);
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          margin: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 9),
+                          decoration: BoxDecoration(
+                            color: sel
+                                ? primary
+                                : (isDark
+                                    ? const Color(0xFF334155)
+                                    : const Color(0xFFF1F5F9)),
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                                color: sel
+                                    ? primary
+                                    : (isDark
+                                        ? const Color(0xFF475569)
+                                        : const Color(0xFFE2E8F0))),
+                          ),
+                          child: Text('${p.toStringAsFixed(0)}g',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13,
+                                  color: sel
+                                      ? Colors.white
+                                      : (isDark
+                                          ? Colors.white70
+                                          : const Color(0xFF475569)))),
+                        ),
+                      );
+                    }).toList(),
                   ),
                 ),
-              ),
+                const SizedBox(height: 14),
+                Text('Atau masukkan gram',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: isDark ? Colors.white70 : const Color(0xFF334155))),
+                const SizedBox(height: 8),
+                Container(
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? const Color(0xFF0F172A)
+                        : const Color(0xFFF8FAFC),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: isDark
+                            ? const Color(0xFF334155)
+                            : const Color(0xFFE2E8F0)),
+                  ),
+                  child: TextField(
+                    controller: _gramCtrl,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    onChanged: _updateGrams,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A)),
+                    decoration: InputDecoration(
+                      hintText: '100',
+                      hintStyle: TextStyle(
+                          color: isDark ? Colors.white38 : const Color(0xFFCBD5E1)),
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 14, horizontal: 16),
+                      suffix: Text('gram',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: isDark
+                                  ? Colors.white54
+                                  : const Color(0xFF94A3B8))),
+                    ),
+                  ),
+                ),
+              ],
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      primary.withOpacity(isDark ? 0.15 : 0.08),
-                      primary.withOpacity(isDark ? 0.05 : 0.03),
+                      primary.withValues(alpha: isDark ? 0.15 : 0.08),
+                      primary.withValues(alpha: isDark ? 0.05 : 0.03),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: primary.withOpacity(0.2)),
+                  border: Border.all(color: primary.withValues(alpha: 0.2)),
                 ),
                 child: Column(
                   children: [
@@ -852,7 +1047,7 @@ class _PortionSheetState extends State<_PortionSheet> {
                         padding: const EdgeInsets.symmetric(vertical: 9),
                         decoration: BoxDecoration(
                           color: sel
-                              ? primary.withOpacity(0.15)
+                              ? primary.withValues(alpha: 0.15)
                               : (isDark
                                   ? const Color(0xFF0F172A)
                                   : const Color(0xFFF8FAFC)),
@@ -957,6 +1152,7 @@ class _FoodEntry {
   final int calories;
   final double protein, carbs, fat, fiber, sugarGrams;
   final String category, serving, emoji;
+  final List<String> ingredients;
 
   const _FoodEntry({
     required this.name,
@@ -969,6 +1165,7 @@ class _FoodEntry {
     required this.category,
     required this.serving,
     required this.emoji,
+    this.ingredients = const [],
   });
 }
 

@@ -65,7 +65,8 @@ class GeminiService {
 
     await initialize();
     return _executeWithFailover((provider) {
-      if (provider.type == _AiProviderType.groq) {
+      if (provider.type == _AiProviderType.groq ||
+          provider.type == _AiProviderType.openrouter) {
         return _generateGroqText(
           provider,
           prompt,
@@ -103,7 +104,8 @@ class GeminiService {
 
     await initialize();
     return _executeWithFailover((provider) {
-      if (provider.type == _AiProviderType.groq) {
+      if (provider.type == _AiProviderType.groq ||
+          provider.type == _AiProviderType.openrouter) {
         return _generateGroqChat(
           provider,
           messages,
@@ -145,7 +147,8 @@ class GeminiService {
 
     await initialize();
     return _executeWithFailover((provider) {
-      if (provider.type == _AiProviderType.groq) {
+      if (provider.type == _AiProviderType.groq ||
+          provider.type == _AiProviderType.openrouter) {
         return _generateGroqWithImage(
           provider,
           prompt,
@@ -338,22 +341,29 @@ class GeminiService {
         )
         .timeout(timeout);
 
-    if (response.statusCode == 404 && model == 'qwen/qwen3.8-27b') {
-      debugPrint('[HybridAI] Model $model returned 404, fallback to qwen/qwen3.6-27b');
-      response = await http
-          .post(
-            Uri.parse(provider.baseUrl),
-            headers: {
-              'Authorization': 'Bearer ${provider.currentKey}',
-              'Content-Type': 'application/json',
-            },
-            body: jsonEncode({
-              'model': 'qwen/qwen3.6-27b',
-              'messages': messages,
-              'temperature': temperature,
-            }),
-          )
-          .timeout(timeout);
+    if (response.statusCode == 404 || response.statusCode == 400) {
+      final fallbackModel = provider.type == _AiProviderType.openrouter
+          ? 'meta-llama/llama-3.3-70b-instruct:free'
+          : 'qwen/qwen3.6-27b';
+      if (model != fallbackModel) {
+        debugPrint(
+          '[HybridAI] Model $model failed (${response.statusCode}), fallback to $fallbackModel',
+        );
+        response = await http
+            .post(
+              Uri.parse(provider.baseUrl),
+              headers: {
+                'Authorization': 'Bearer ${provider.currentKey}',
+                'Content-Type': 'application/json',
+              },
+              body: jsonEncode({
+                'model': fallbackModel,
+                'messages': messages,
+                'temperature': temperature,
+              }),
+            )
+            .timeout(timeout);
+      }
     }
 
     return _parseGroqResponse(response);
@@ -499,7 +509,11 @@ class GeminiService {
   /// melainkan tampil alami, naratif, dan profesional.
   static String cleanAiText(String text) {
     if (text.isEmpty) return text;
+    // Bersihkan tag <think>...</think> dari model reasoning
     var cleaned = text
+        .replaceAll(RegExp(r'<think>[\s\S]*?<\/think>', caseSensitive: false), '')
+        .trim();
+    cleaned = cleaned
         .replaceAll('**', '')
         .replaceAll('__', '')
         .replaceAll('`', '');
@@ -576,6 +590,7 @@ class GeminiService {
     final normalized = error.toLowerCase();
     return normalized.contains('401') ||
         normalized.contains('403') ||
+        normalized.contains('404') ||
         normalized.contains('500') ||
         normalized.contains('502') ||
         normalized.contains('503') ||
@@ -588,7 +603,9 @@ class GeminiService {
         normalized.contains('temporarily unavailable') ||
         normalized.contains('unavailable') ||
         normalized.contains('invalid api key') ||
-        normalized.contains('api key not valid');
+        normalized.contains('api key not valid') ||
+        normalized.contains('model not found') ||
+        normalized.contains('not found');
   }
 
   Future<void> _loadConfiguration() async {
@@ -608,10 +625,16 @@ class GeminiService {
       fallback:
           assetConfig?['NUBI_GEMINI_KEYS'] ?? assetConfig?['geminiKeys'],
     );
+    final openrouterKeys = _parseKeys(
+      '',
+      fallback:
+          assetConfig?['NUBI_OPENROUTER_KEYS'] ?? assetConfig?['openrouterKeys'],
+    );
 
     _providers = _buildProviders(
       groqKeys: groqKeys,
       geminiKeys: geminiKeys,
+      openrouterKeys: openrouterKeys,
       preferredProviderRaw: preferredRaw,
     );
     _currentProviderIndex = _initialProviderIndex(
@@ -640,6 +663,7 @@ class GeminiService {
   List<_AiProvider> _buildProviders({
     required List<String> groqKeys,
     required List<String> geminiKeys,
+    required List<String> openrouterKeys,
     required String preferredProviderRaw,
   }) {
     final providers = <_AiProvider>[];
@@ -650,9 +674,22 @@ class GeminiService {
           type: _AiProviderType.groq,
           label: 'Groq',
           apiKeys: groqKeys,
-          textModel: 'qwen/qwen3.8-27b',
-          visionModel: 'qwen/qwen3.8-27b',
+          textModel: 'openai/gpt-oss-20b',
+          visionModel: 'qwen/qwen3.6-27b',
           baseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+        ),
+      );
+    }
+
+    if (openrouterKeys.isNotEmpty) {
+      providers.add(
+        _AiProvider(
+          type: _AiProviderType.openrouter,
+          label: 'OpenRouter',
+          apiKeys: openrouterKeys,
+          textModel: 'meta-llama/llama-3.3-70b-instruct:free',
+          visionModel: 'meta-llama/llama-3.2-11b-vision-instruct:free',
+          baseUrl: 'https://openrouter.ai/api/v1/chat/completions',
         ),
       );
     }
@@ -663,8 +700,8 @@ class GeminiService {
           type: _AiProviderType.gemini,
           label: 'Gemini',
           apiKeys: geminiKeys,
-          textModel: 'gemini-2.0-flash',
-          visionModel: 'gemini-2.0-flash',
+          textModel: 'gemini-3.5-flash',
+          visionModel: 'gemini-3.5-flash',
           baseUrl: 'https://generativelanguage.googleapis.com/v1beta/models',
         ),
       );
@@ -719,6 +756,8 @@ class GeminiService {
     switch (raw.trim().toLowerCase()) {
       case 'groq':
         return _AiProviderType.groq;
+      case 'openrouter':
+        return _AiProviderType.openrouter;
       case 'gemini':
         return _AiProviderType.gemini;
       default:
@@ -740,6 +779,7 @@ class GeminiService {
 
 enum _AiProviderType {
   groq,
+  openrouter,
   gemini,
 }
 
