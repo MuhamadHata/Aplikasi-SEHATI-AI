@@ -17,20 +17,25 @@
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web-blue" alt="Platforms" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/MuhamadHata/Aplikasi-SEHATI-AI/releases/latest/download/app-release.apk">
-    <img src="https://img.shields.io/badge/📥%20Download-Direct%20APK%20(v1.0.0)-24A1DE?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
-  </a>
-</p>
-
 ---
 
-## 📥 Download Aplikasi (Android APK)
+<div align="center">
 
-Bagi pengguna yang ingin langsung mencoba aplikasi **SEHATI-AI** di smartphone Android:
+# 📲 DOWNLOAD APLIKASI SEHATI-AI (APK)
 
-- 🚀 **[Download APK Rilis Terbaru (v1.0.0)](https://github.com/MuhamadHata/Aplikasi-SEHATI-AI/releases/latest/download/app-release.apk)**
-- 🏷️ **[Lihat Semua Catatan Rilis (GitHub Releases)](https://github.com/MuhamadHata/Aplikasi-SEHATI-AI/releases)**
+### 🚀 Unduh & Coba Langsung Aplikasi Android SEHATI-AI:
+
+<br />
+
+<a href="https://github.com/MuhamadHata/Aplikasi-SEHATI-AI/releases">
+  <img src="https://img.shields.io/badge/📥%20DOWNLOAD%20APK%20RELEASE%20(v1.0.0)-CLICK%20HERE-28a745?style=for-the-badge&logo=android&logoColor=white" width="400" height="60" alt="Download APK Button" />
+</a>
+
+<br /><br />
+
+### 👉 **[KLIK DI SINI UNTUK MASUK HALAMAN DOWNLOAD RELEASES](https://github.com/MuhamadHata/Aplikasi-SEHATI-AI/releases)** 👈
+
+</div>
 
 ---
 
