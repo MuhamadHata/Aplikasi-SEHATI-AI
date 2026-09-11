@@ -53,7 +53,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('onboarding_completed', true);
     if (mounted) {
-      Navigator.pushReplacementNamed(context, '/auth');
+      Navigator.pushNamedAndRemoveUntil(context, '/auth', (route) => false);
     }
   }
 

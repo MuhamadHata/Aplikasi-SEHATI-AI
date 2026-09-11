@@ -145,7 +145,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
             TextField(
                 controller: aCtrl,
                 decoration: InputDecoration(
-                    labelText: 'Usia',
+                    labelText: 'Usia (Tahun)',
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.cake_outlined, size: 20),
+                      tooltip: 'Hitung Usia dari Tanggal Lahir',
+                      onPressed: () async {
+                        final now = DateTime.now();
+                        final currentAge = int.tryParse(aCtrl.text) ?? 25;
+                        final initialYear = (now.year - currentAge).clamp(1910, now.year);
+                        final picked = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime(initialYear, now.month, now.day),
+                          firstDate: DateTime(1910),
+                          lastDate: now,
+                          helpText: 'PILIH TANGGAL LAHIR (ULANG TAHUN)',
+                        );
+                        if (picked != null) {
+                          int age = now.year - picked.year;
+                          if (now.month < picked.month ||
+                              (now.month == picked.month &&
+                                  now.day < picked.day)) {
+                            age--;
+                          }
+                          aCtrl.text = age.toString();
+                        }
+                      },
+                    ),
                     labelStyle: TextStyle(
                         color: Theme.of(context).textTheme.bodySmall?.color)),
                 style: TextStyle(

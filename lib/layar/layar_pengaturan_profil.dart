@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../inti/tema/design_tokens.dart';
@@ -14,29 +15,141 @@ class SetupProfileScreen extends StatefulWidget {
 class _SetupProfileScreenState extends State<SetupProfileScreen> {
   final _weightCtrl = TextEditingController();
   final _heightCtrl = TextEditingController();
-  final _ageCtrl = TextEditingController();
+  DateTime? _birthDate;
+  int? _age;
   String _selectedGender = 'Pria';
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInitialBirthDate();
+  }
+
+  @override
+  void dispose() {
+    _weightCtrl.dispose();
+    _heightCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadInitialBirthDate() async {
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      final metaBirthDate = user?.userMetadata?['birth_date'] as String?;
+      final metaAge = user?.userMetadata?['age'] as int?;
+
+      final prefs = await SharedPreferences.getInstance();
+      final tempBirthDateStr =
+          prefs.getString('temp_birth_date') ?? metaBirthDate;
+      final tempAge = prefs.getInt('temp_age') ?? metaAge;
+
+      if (tempBirthDateStr != null) {
+        final parsed = DateTime.tryParse(tempBirthDateStr);
+        if (parsed != null && mounted) {
+          setState(() {
+            _birthDate = parsed;
+            _age = _calculateAge(parsed);
+          });
+          return;
+        }
+      }
+      if (tempAge != null && mounted) {
+        setState(() {
+          _age = tempAge;
+          _birthDate = DateTime(DateTime.now().year - tempAge, 1, 1);
+        });
+      }
+    } catch (_) {}
+  }
+
+  int _calculateAge(DateTime birthDate) {
+    final today = DateTime.now();
+    int age = today.year - birthDate.year;
+    if (today.month < birthDate.month ||
+        (today.month == birthDate.month && today.day < birthDate.day)) {
+      age--;
+    }
+    return age;
+  }
+
+  String _formatDate(DateTime date) {
+    const months = [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+    ];
+    return '${date.day} ${months[date.month - 1]} ${date.year}';
+  }
+
+  Future<void> _pickBirthDate() async {
+    final initial = _birthDate ??
+        DateTime.now().subtract(const Duration(days: 365 * 22));
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: DateTime(1910),
+      lastDate: DateTime.now(),
+      helpText: 'PILIH TANGGAL LAHIR (ULANG TAHUN)',
+      confirmText: 'PILIH',
+      cancelText: 'BATAL',
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  primary: const Color(0xFF0F52BA),
+                ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        _birthDate = picked;
+        _age = _calculateAge(picked);
+      });
+    }
+  }
 
   Future<void> _saveProfile() async {
     final wText = _weightCtrl.text.trim();
     final hText = _heightCtrl.text.trim();
-    final aText = _ageCtrl.text.trim();
 
-    if (wText.isEmpty || hText.isEmpty || aText.isEmpty) {
+    if (wText.isEmpty || hText.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Mohon isi semua data tubuh Anda')),
+        const SnackBar(content: Text('Mohon isi tinggi dan berat badan Anda')),
+      );
+      return;
+    }
+
+    if (_birthDate == null || _age == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Mohon pilih tanggal lahir / ulang tahun Anda'),
+          backgroundColor: Colors.orange,
+        ),
       );
       return;
     }
 
     final weight = double.tryParse(wText);
     final height = double.tryParse(hText);
-    final age = int.tryParse(aText);
+    final age = _age!;
 
-    if (weight == null || height == null || age == null) {
+    if (weight == null || height == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Masukkan angka yang valid')),
+        const SnackBar(
+            content: Text('Masukkan angka tinggi dan berat yang valid')),
       );
       return;
     }
@@ -76,18 +189,37 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
     try {
       final user = Supabase.instance.client.auth.currentUser;
       if (user != null) {
-        await Supabase.instance.client.from('users').update({
+        final metaName = user.userMetadata?['full_name'] ??
+            user.userMetadata?['name'] ??
+            'User';
+
+        // Menggunakan upsert agar akun baru via Google yang belum memiliki baris
+        // di public.users dapat dibuat secara otomatis tanpa error update
+        await Supabase.instance.client.from('users').upsert({
+          'id': user.id,
+          'email': user.email,
+          'name': metaName,
           'weight': weight,
           'height': height,
           'age': age,
           'gender': _selectedGender,
           'profile_completed': true,
-        }).eq('id', user.id);
+        });
+
+        // Simpan juga tanggal lahir di auth user metadata
+        try {
+          await Supabase.instance.client.auth.updateUser(
+            UserAttributes(data: {
+              'birth_date': _birthDate!.toIso8601String().split('T')[0],
+              'age': age,
+            }),
+          );
+        } catch (_) {}
 
         if (mounted) {
-          // Tarik ulang profil terbaru dari database untuk memastikan nama Tersinkronisasi
+          // Tarik ulang profil terbaru dari database untuk memastikan nama tersinkronisasi
           await context.read<ActivityProvider>().loadProfile();
-          
+
           final double hM = height / 100.0;
           final double bmi = weight / (hM * hM);
           if (mounted) {
@@ -95,7 +227,8 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
             context.read<ActivityProvider>().updateAge(age);
             context.read<ActivityProvider>().updateGender(_selectedGender);
 
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/home', (route) => false);
           }
         }
       } else {
@@ -157,9 +290,7 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
                 const SizedBox(height: 16),
                 _buildInputField('Berat Badan (kg)', 'Contoh: 65', _weightCtrl,
                     Icons.monitor_weight_outlined),
-                const SizedBox(height: 16),
-                _buildInputField('Usia (Tahun)', 'Contoh: 25', _ageCtrl,
-                    Icons.cake_outlined),
+                _buildBirthDatePicker(context),
                 const SizedBox(height: 16),
 
                 Column(
@@ -306,6 +437,100 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
             ),
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBirthDatePicker(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Tanggal Lahir (Ulang Tahun)',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: theme.textTheme.bodyMedium?.color,
+            letterSpacing: 0.4,
+          ),
+        ),
+        const SizedBox(height: 8),
+        InkWell(
+          onTap: _pickBirthDate,
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: _birthDate != null
+                    ? theme.colorScheme.primary.withValues(alpha: 0.5)
+                    : theme.dividerColor.withValues(alpha: 0.1),
+                width: _birthDate != null ? 1.5 : 1.0,
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.cake_outlined,
+                  color: _birthDate != null
+                      ? theme.colorScheme.primary
+                      : theme.textTheme.bodySmall?.color,
+                  size: 20,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    _birthDate != null
+                        ? _formatDate(_birthDate!)
+                        : 'Pilih Tanggal Lahir (Contoh: 15 Mei 1998)',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: _birthDate != null
+                          ? theme.colorScheme.onSurface
+                          : theme.textTheme.bodySmall?.color,
+                      fontFamily: 'Poppins',
+                      fontWeight: _birthDate != null
+                          ? FontWeight.w600
+                          : FontWeight.normal,
+                    ),
+                  ),
+                ),
+                if (_age != null)
+                  Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color:
+                            theme.colorScheme.primary.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Text(
+                      'Usia: $_age Thn',
+                      style: TextStyle(
+                        color: theme.colorScheme.primary,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ),
+                Icon(
+                  Icons.calendar_today_rounded,
+                  color: theme.colorScheme.primary,
+                  size: 18,
+                ),
+              ],
+            ),
           ),
         ),
       ],

@@ -60,6 +60,13 @@
             <intent-filter>
                 <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
             </intent-filter>
+            <!-- ✅ Supabase OAuth Deep Link: untuk Login dengan Google via browser callback -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="io.supabase.sehati" android:host="login-callback" />
+            </intent-filter>
         </activity>
         <!-- Health Connect Permission Controller (Android 14+) -->
         <activity

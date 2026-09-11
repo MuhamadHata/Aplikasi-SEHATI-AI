@@ -104,24 +104,32 @@ class _SplashScreenState extends State<SplashScreen>
                   data != null && data['profile_completed'] == true;
               if (mounted) {
                 if (isCompleted) {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/home', (route) => false);
                 } else {
-                  Navigator.pushReplacementNamed(context, '/setup-profile');
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/setup-profile', (route) => false);
                 }
               }
             } catch (e) {
               debugPrint('Profile check error or timeout: $e');
-              if (mounted) Navigator.pushReplacementNamed(context, '/home');
+              if (mounted) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/home', (route) => false);
+              }
             }
           } else if (onboardingDone) {
-            Navigator.pushReplacementNamed(context, '/auth');
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/auth', (route) => false);
           } else {
-            Navigator.pushReplacementNamed(context, '/onboarding');
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/onboarding', (route) => false);
           }
         }
       } catch (e) {
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/auth');
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/auth', (route) => false);
         }
       }
     });

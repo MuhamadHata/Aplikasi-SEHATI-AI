@@ -98,9 +98,10 @@ class SehatiAIApp extends StatelessWidget {
           darkTheme: AppTheme.dark,
           themeMode:
               themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          initialRoute: '/splash',
+          initialRoute: '/',
           onGenerateRoute: (settings) {
             switch (settings.name) {
+              case '/':
               case '/splash':
                 return _fadeRoute(const SplashScreen(), settings);
               case '/onboarding':

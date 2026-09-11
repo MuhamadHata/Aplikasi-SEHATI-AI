@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../inti/tema/design_tokens.dart';
 import '../../inti/layanan/layanan_autentikasi.dart';
@@ -18,26 +21,120 @@ class _AuthScreenState extends State<AuthScreen> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   final _authService = AuthService();
+  StreamSubscription<AuthState>? _authSubscription;
+  DateTime? _selectedBirthDate;
+  int? _calculatedAge;
+
+  @override
+  void initState() {
+    super.initState();
+    // Dengarkan perubahan autentikasi (termasuk redirect Supabase Google OAuth)
+    _authSubscription = _authService.authStateChanges.listen((data) {
+      if (data.event == AuthChangeEvent.signedIn && mounted) {
+        _checkProfileAndNavigate();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _authSubscription?.cancel();
+    _nameCtrl.dispose();
+    _emailCtrl.dispose();
+    _passCtrl.dispose();
+    super.dispose();
+  }
+
+  int _calculateAge(DateTime birthDate) {
+    final today = DateTime.now();
+    int age = today.year - birthDate.year;
+    if (today.month < birthDate.month ||
+        (today.month == birthDate.month && today.day < birthDate.day)) {
+      age--;
+    }
+    return age;
+  }
+
+  String _formatDate(DateTime date) {
+    const months = [
+      'Januari',
+      'Februari',
+      'Maret',
+      'April',
+      'Mei',
+      'Juni',
+      'Juli',
+      'Agustus',
+      'September',
+      'Oktober',
+      'November',
+      'Desember'
+    ];
+    return '${date.day} ${months[date.month - 1]} ${date.year}';
+  }
+
+  Future<void> _pickBirthDate() async {
+    final initial = _selectedBirthDate ??
+        DateTime.now().subtract(const Duration(days: 365 * 22));
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: DateTime(1910),
+      lastDate: DateTime.now(),
+      helpText: 'PILIH TANGGAL LAHIR (ULANG TAHUN)',
+      confirmText: 'PILIH',
+      cancelText: 'BATAL',
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  primary: const Color(0xFF0F52BA),
+                ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        _selectedBirthDate = picked;
+        _calculatedAge = _calculateAge(picked);
+      });
+    }
+  }
 
   Future<void> _checkProfileAndNavigate() async {
     final user = Supabase.instance.client.auth.currentUser;
     if (user != null) {
       try {
         final data = await Supabase.instance.client
-            .from('users').select('profile_completed')
+            .from('users')
+            .select('profile_completed')
             .eq('id', user.id)
             .maybeSingle();
         if (data != null && data['profile_completed'] == true) {
-          if (mounted) Navigator.pushReplacementNamed(context, '/home');
+          if (mounted) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/home', (route) => false);
+          }
         } else {
-          if (mounted) Navigator.pushReplacementNamed(context, '/setup-profile');
+          if (mounted) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/setup-profile', (route) => false);
+          }
         }
       } catch (e) {
         debugPrint('Profile check fallback: $e');
-        if (mounted) Navigator.pushReplacementNamed(context, '/home');
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/home', (route) => false);
+        }
       }
     } else {
-      if (mounted) Navigator.pushReplacementNamed(context, '/home');
+      if (mounted) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/home', (route) => false);
+      }
     }
   }
 
@@ -50,9 +147,14 @@ class _AuthScreenState extends State<AuthScreen> {
       }
     } catch (e) {
       if (mounted) {
+        String msg = e.toString().replaceAll('Exception: ', '');
+        if (msg.contains('ApiException: 10') || msg.contains('Api10')) {
+          msg =
+              'Google Sign-In belum terdaftar: Masukkan SHA-1 Release APK ke Google Cloud Console.';
+        }
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Login Google: ${e.toString().replaceAll('Exception: ', '')}'), 
+            content: Text(msg),
             backgroundColor: AppColors.accent,
             behavior: SnackBarBehavior.floating,
           ),
@@ -70,6 +172,28 @@ class _AuthScreenState extends State<AuthScreen> {
         (!_isLogin && _nameCtrl.text.isEmpty)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Mohon isi semua field.')),
+      );
+      return;
+    }
+
+    if (!_isLogin && _selectedBirthDate == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Mohon pilih tanggal lahir / ulang tahun Anda.'),
+          backgroundColor: AppColors.warning,
+        ),
+      );
+      return;
+    }
+
+    if (!_isLogin &&
+        _calculatedAge != null &&
+        (_calculatedAge! < 10 || _calculatedAge! > 120)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Usia harus antara 10–120 tahun.'),
+          backgroundColor: AppColors.warning,
+        ),
       );
       return;
     }
@@ -99,13 +223,29 @@ class _AuthScreenState extends State<AuthScreen> {
           name: _nameCtrl.text.trim(),
           email: emailText,
           password: _passCtrl.text.trim(),
+          birthDate: _selectedBirthDate,
+          age: _calculatedAge,
         );
+
+        // Simpan sementara tanggal lahir dan usia ke SharedPreferences
+        try {
+          final prefs = await SharedPreferences.getInstance();
+          if (_selectedBirthDate != null) {
+            await prefs.setString('temp_birth_date',
+                _selectedBirthDate!.toIso8601String().split('T')[0]);
+          }
+          if (_calculatedAge != null) {
+            await prefs.setInt('temp_age', _calculatedAge!);
+          }
+        } catch (_) {}
+
         if (res.session == null) {
           if (mounted) {
             setState(() => _isLogin = true);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('✅ Pendaftaran berhasil! Silakan cek email Anda untuk verifikasi akun, lalu masuk.'),
+                content: Text(
+                    '✅ Pendaftaran berhasil! Silakan cek email Anda untuk verifikasi akun, lalu masuk.'),
                 backgroundColor: AppColors.primary,
                 duration: Duration(seconds: 6),
                 behavior: SnackBarBehavior.floating,
@@ -128,7 +268,8 @@ class _AuthScreenState extends State<AuthScreen> {
             errMsg.toLowerCase().contains('incorrect')) {
           errMsg = 'Email belum terdaftar atau password Anda salah';
         } else if (errMsg.contains('email_not_confirmed')) {
-          errMsg = 'Email belum diverifikasi. Silahkan cek kotak masuk/spam Email Anda.';
+          errMsg =
+              'Email belum diverifikasi. Silahkan cek kotak masuk/spam Email Anda.';
         } else if (errMsg.contains('over_email_send_rate_limit')) {
           errMsg = 'Terlalu banyak percobaan daftar. Tunggu hingga 1 menit.';
         } else {
@@ -154,137 +295,206 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      body: Stack(
-        children: [
-          // Background
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  theme.colorScheme.primary.withValues(alpha: 0.05),
-                  theme.scaffoldBackgroundColor,
-                  theme.scaffoldBackgroundColor
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          // Decor
-          Positioned(
-            top: -100,
-            right: -60,
-            child: Container(
-              width: 280,
-              height: 280,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
+        if (!_isLogin) {
+          // Jika di tab Daftar, kembali ke tab Masuk
+          setState(() => _isLogin = true);
+        } else {
+          // Keluar dari aplikasi dengan aman
+          SystemNavigator.pop();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        body: Stack(
+          children: [
+            // Background
+            Container(
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: theme.colorScheme.primary.withValues(alpha: 0.05),
+                gradient: LinearGradient(
+                  colors: [
+                    theme.colorScheme.primary.withValues(alpha: 0.05),
+                    theme.scaffoldBackgroundColor,
+                    theme.scaffoldBackgroundColor
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
-          SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                children: [
-                  const SizedBox(height: 60),
-                  // Logo — SEHATI-AI (sesuai desain)
-                  Column(
-                    children: [
-                      Container(
-                        width: 88,
-                        height: 88,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF0F52BA),
-                          borderRadius: BorderRadius.circular(24),
-                          boxShadow: [
-                            BoxShadow(color: const Color(0xFF0F52BA).withValues(alpha: 0.25), blurRadius: 16, offset: const Offset(0, 6)),
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(24),
-                          child: Image.asset(
-                            'assets/images/app_icon.png',
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const Icon(Icons.favorite_rounded, size: 40, color: Colors.white),
+            // Decor
+            Positioned(
+              top: -100,
+              right: -60,
+              child: Container(
+                width: 280,
+                height: 280,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: theme.colorScheme.primary.withValues(alpha: 0.05),
+                ),
+              ),
+            ),
+            SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  children: [
+                    // Tombol kembali saat berada di tab Daftar
+                    if (!_isLogin)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12, bottom: 4),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(20),
+                            onTap: () => setState(() => _isLogin = true),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 6),
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.surface,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: theme.dividerColor
+                                      .withValues(alpha: 0.1),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(Icons.arrow_back_ios_new_rounded,
+                                      size: 14,
+                                      color: theme.colorScheme.primary),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    'Kembali ke Masuk',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w600,
+                                      color: theme.colorScheme.primary,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 14),
-                      RichText(
-                        text: const TextSpan(children: [
-                          TextSpan(
-                              text: 'SEHATI',
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w900,
-                                  color: Color(0xFF0F172A),
-                                  letterSpacing: 1.2)),
-                          TextSpan(
-                              text: '-AI',
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w900,
-                                  color: Color(0xFF0F52BA),
-                                  letterSpacing: 1.2)),
-                        ]),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text('Evaluasi Holistik Aktivitas & Nutrisi',
-                          style: TextStyle(fontSize: 13, color: Color(0xFF64748B), letterSpacing: 0.3, fontFamily: 'Poppins')),
-                    ],
-                  ),
-                  const SizedBox(height: 36),
-                  // Toggle
-                  Container(
-                    decoration: BoxDecoration(
-                        color: theme.colorScheme.surface,
-                        borderRadius: BorderRadius.circular(8)),
-                    padding: const EdgeInsets.all(4),
-                    child: Row(
+                      )
+                    else
+                      const SizedBox(height: 20),
+                    const SizedBox(height: 20),
+                    // Logo — SEHATI-AI (sesuai desain)
+                    Column(
                       children: [
-                        _TabButton(
-                            label: 'Masuk',
-                            isActive: _isLogin,
-                            onTap: () => setState(() => _isLogin = true)),
-                        _TabButton(
-                            label: 'Daftar',
-                            isActive: !_isLogin,
-                            onTap: () => setState(() => _isLogin = false)),
+                        Container(
+                          width: 88,
+                          height: 88,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0F52BA),
+                            borderRadius: BorderRadius.circular(24),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: const Color(0xFF0F52BA)
+                                      .withValues(alpha: 0.25),
+                                  blurRadius: 16,
+                                  offset: const Offset(0, 6)),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(24),
+                            child: Image.asset(
+                              'assets/images/app_icon.png',
+                              fit: BoxFit.cover,
+                              errorBuilder: (_, __, ___) => const Icon(
+                                  Icons.favorite_rounded,
+                                  size: 40,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        RichText(
+                          text: const TextSpan(children: [
+                            TextSpan(
+                                text: 'SEHATI',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color(0xFF0F172A),
+                                    letterSpacing: 1.2)),
+                            TextSpan(
+                                text: '-AI',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color(0xFF0F52BA),
+                                    letterSpacing: 1.2)),
+                          ]),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text('Evaluasi Holistik Aktivitas & Nutrisi',
+                            style: TextStyle(
+                                fontSize: 13,
+                                color: Color(0xFF64748B),
+                                letterSpacing: 0.3,
+                                fontFamily: 'Poppins')),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 28),
-                  // Form fields
-                  if (!_isLogin) ...[
+                    const SizedBox(height: 36),
+                    // Toggle
+                    Container(
+                      decoration: BoxDecoration(
+                          color: theme.colorScheme.surface,
+                          borderRadius: BorderRadius.circular(8)),
+                      padding: const EdgeInsets.all(4),
+                      child: Row(
+                        children: [
+                          _TabButton(
+                              label: 'Masuk',
+                              isActive: _isLogin,
+                              onTap: () => setState(() => _isLogin = true)),
+                          _TabButton(
+                              label: 'Daftar',
+                              isActive: !_isLogin,
+                              onTap: () => setState(() => _isLogin = false)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 28),
+                    // Form fields
+                    if (!_isLogin) ...[
+                      _InputField(
+                          key: const ValueKey('name_field'),
+                          label: 'Nama Lengkap',
+                          hint: 'Nama Anda',
+                          controller: _nameCtrl,
+                          icon: Icons.person_outline),
+                      const SizedBox(height: 14),
+                      _buildBirthDateField(theme),
+                      const SizedBox(height: 14),
+                    ],
                     _InputField(
-                        key: const ValueKey('name_field'),
-                        label: 'Nama Lengkap',
-                        hint: 'Nama Anda',
-                        controller: _nameCtrl,
-                        icon: Icons.person_outline),
+                        key: const ValueKey('email_field'),
+                        label: 'Email',
+                        hint: 'email@contoh.com',
+                        controller: _emailCtrl,
+                        icon: Icons.email_outlined,
+                        isEmail: true),
                     const SizedBox(height: 14),
-                  ],
-                  _InputField(
-                      key: const ValueKey('email_field'),
-                      label: 'Email',
-                      hint: 'email@contoh.com',
-                      controller: _emailCtrl,
-                      icon: Icons.email_outlined,
-                      isEmail: true),
-                  const SizedBox(height: 14),
-                  _InputField(
-                      key: const ValueKey('pass_field'),
-                      label: 'Password',
-                      hint: 'Minimal 8 karakter',
-                      controller: _passCtrl,
-                      icon: Icons.lock_outline,
-                      isPassword: true),
+                    _InputField(
+                        key: const ValueKey('pass_field'),
+                        label: 'Password',
+                        hint: 'Minimal 8 karakter',
+                        controller: _passCtrl,
+                        icon: Icons.lock_outline,
+                        isPassword: true),
                   if (_isLogin) ...[
                     const SizedBox(height: 8),
                     Align(
@@ -374,6 +584,99 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
         ],
       ),
+      ),
+    );
+  }
+
+  Widget _buildBirthDateField(ThemeData theme) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Tanggal Lahir (Ulang Tahun)',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: theme.textTheme.bodyMedium?.color,
+            letterSpacing: 0.4,
+          ),
+        ),
+        const SizedBox(height: 8),
+        InkWell(
+          onTap: _pickBirthDate,
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: _selectedBirthDate != null
+                    ? theme.colorScheme.primary.withValues(alpha: 0.5)
+                    : theme.dividerColor.withValues(alpha: 0.1),
+                width: _selectedBirthDate != null ? 1.5 : 1.0,
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.cake_outlined,
+                  color: _selectedBirthDate != null
+                      ? theme.colorScheme.primary
+                      : theme.textTheme.labelSmall?.color,
+                  size: 20,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    _selectedBirthDate != null
+                        ? _formatDate(_selectedBirthDate!)
+                        : 'Pilih Tanggal Lahir (Contoh: 15 Mei 1998)',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: _selectedBirthDate != null
+                          ? theme.colorScheme.onSurface
+                          : theme.textTheme.labelSmall?.color,
+                      fontFamily: 'Poppins',
+                      fontWeight: _selectedBirthDate != null
+                          ? FontWeight.w600
+                          : FontWeight.normal,
+                    ),
+                  ),
+                ),
+                if (_calculatedAge != null)
+                  Container(
+                    margin: const EdgeInsets.only(right: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(
+                        color:
+                            theme.colorScheme.primary.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Text(
+                      'Usia: $_calculatedAge Thn',
+                      style: TextStyle(
+                        color: theme.colorScheme.primary,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ),
+                Icon(
+                  Icons.calendar_today_rounded,
+                  color: theme.colorScheme.primary,
+                  size: 18,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
